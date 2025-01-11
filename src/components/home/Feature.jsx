@@ -1,3 +1,8 @@
+"use client";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 export default function FeatureCards() {
   const features = [
     {
@@ -30,22 +35,39 @@ export default function FeatureCards() {
       highlight: true, // To mark the highlighted card
     },
   ];
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animation duration in milliseconds
+      offset: 100, // Offset from the top before animation starts
+    });
+  }, []);
   return (
-    <div className="bg-gray-50 py-12">
-      <div className="container mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {features.map((feature) => (
-            <div
-              key={feature.id}
-              className={`p-6 rounded-lg shadow-md hover:bg-red-600 group hover:text-white duration-300 transition-transform ease-in-out`}
-            >
-              <div className={`text-4xl mb-4 group-hover:text-white`}>
-                {feature.icon}
+    <div
+      style={{
+        backgroundImage: "url('/images/bg-hero.jpg')",
+        backgroundOrigin: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
+    >
+      <div className="bg-gray-800  bg-opacity-60 py-20">
+        <div className="container mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {features.map((feature, index) => (
+              <div
+                data-aos="fade-up"
+                data-aos-delay={index * 300}
+                key={feature.id}
+                className={`p-6 rounded-lg bg-white  shadow-md hover:bg-yellow-500 group hover:text-white duration-500 transition-all ease-in-out`}
+              >
+                <div className={`text-4xl mb-4 group-hover:text-white`}>
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+                <p className="">{feature.description}</p>
               </div>
-              <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-              <p className="">{feature.description}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>

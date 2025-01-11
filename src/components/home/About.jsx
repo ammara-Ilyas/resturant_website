@@ -1,7 +1,18 @@
+"use client";
 import Head from "next/head";
+import { useEffect } from "react";
 import AboutSection from "./AboutSection";
 import ImageGrid from "./ImageGrid";
+import AOS from "aos";
+import "aos/dist/aos.css";
 export default function About() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animation duration in milliseconds
+      offset: 100, // Offset from the top before animation starts
+      delay: 0, // Delay in milliseconds
+    });
+  }, []);
   return (
     <>
       <Head>
@@ -9,12 +20,14 @@ export default function About() {
         <meta name="description" content="Welcome to our restaurant!" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="bg-white text-gray-900 font-sans">
+      <main className="w-[85%] mx-auto mt-20 text-gray-900 font-sans border-2 ">
         <div className="container mx-auto py-8">
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="flex flex-row items-center justify-center gap-6">
             {/* Image Grid */}
-            <ImageGrid />
-
+            <div className=" w-[100%] ml-7">
+              {" "}
+              <ImageGrid />
+            </div>
             {/* About Section */}
             <AboutSection />
           </div>
