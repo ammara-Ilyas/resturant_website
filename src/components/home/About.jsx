@@ -20,7 +20,7 @@ export default function About() {
         <meta name="description" content="Welcome to our restaurant!" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="w-[85%] mx-auto mt-20 text-gray-900 font-sans border-2 ">
+      <main className="w-[85%] mx-auto mt-20 text-gray-900 font-sans ">
         <div className="container mx-auto py-8">
           <div className="flex flex-row items-center justify-center gap-6">
             {/* Image Grid */}
@@ -28,7 +28,6 @@ export default function About() {
               {" "}
               <ImageGrid />
             </div>
-            {/* About Section */}
             <AboutSection />
           </div>
         </div>

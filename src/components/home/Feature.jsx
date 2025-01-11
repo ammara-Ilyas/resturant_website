@@ -58,7 +58,7 @@ export default function FeatureCards() {
                 data-aos="fade-up"
                 data-aos-delay={index * 300}
                 key={feature.id}
-                className={`p-6 rounded-lg bg-white  shadow-md hover:bg-yellow-500 group hover:text-white duration-500 transition-all ease-in-out`}
+                className={`p-6 rounded-lg bg-white  shadow-md hover:bg-yellow-600 group hover:text-white duration-500 transition-all ease-in-out`}
               >
                 <div className={`text-4xl mb-4 group-hover:text-white`}>
                   {feature.icon}

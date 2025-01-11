@@ -1,12 +1,14 @@
 import React from "react";
-
+import Heading from "../miniWidgets/Heading";
+import VideoPopup from "../miniWidgets/Video";
+import BookingForm from "../miniWidgets/BookingForm";
 const ReservationForm = () => {
   return (
-    <div className="bg-gray-50 py-16">
+    <div className="bg-gray-50 py-16 ">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 px-8  items-center">
           {/* Left Section: Image with Play Button */}
-          <div className="relative">
+          {/* <div className="relative">
             <img
               src="/images/dining.jpg"
               alt="Dining"
@@ -30,55 +32,22 @@ const ReservationForm = () => {
                 </svg>
               </button>
             </div>
-          </div>
-
+          </div> */}
+          <VideoPopup />
           {/* Right Section: Form */}
-          <div className="bg-[#0b132a] text-white rounded-lg shadow-lg p-8">
-            <h2 className="text-lg text-orange-400 font-semibold">
-              Reservation
-            </h2>
-            <h3 className="text-3xl font-bold mb-6">Book A Table Online</h3>
-            <form>
-              {/* Row 1: Name and Email */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  className="p-3 rounded bg-gray-100 text-gray-800 w-full focus:outline-none focus:ring focus:ring-orange-400"
-                />
-                <input
-                  type="email"
-                  placeholder="Your Email"
-                  className="p-3 rounded bg-gray-100 text-gray-800 w-full focus:outline-none focus:ring focus:ring-orange-400"
-                />
-              </div>
-              {/* Row 2: Date & Time, Number of People */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <input
-                  type="datetime-local"
-                  className="p-3 rounded bg-gray-100 text-gray-800 w-full focus:outline-none focus:ring focus:ring-orange-400"
-                />
-                <select className="p-3 rounded bg-gray-100 text-gray-800 w-full focus:outline-none focus:ring focus:ring-orange-400">
-                  <option>People 1</option>
-                  <option>People 2</option>
-                  <option>People 3</option>
-                  <option>People 4</option>
-                </select>
-              </div>
-              {/* Row 3: Special Request */}
-              <textarea
-                rows="4"
-                placeholder="Special Request"
-                className="p-3 rounded bg-gray-100 text-gray-800 w-full focus:outline-none focus:ring focus:ring-orange-400 mb-4"
-              ></textarea>
-              {/* Submit Button */}
-              <button
-                type="submit"
-                className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-lg shadow-lg transition duration-300"
-              >
-                BOOK NOW
-              </button>
-            </form>
+          <div className="bg-[#0b132a] text-white shadow-lg p-8">
+            <div className="flex items-center ">
+              <div>
+                {" "}
+                <Heading text="Reservation" />
+              </div>{" "}
+              <span className="h-[2px] w-[7%] items-center border-[1px] rounded-md border-yellow-500"></span>{" "}
+            </div>
+
+            <h3 className="text-3xl font-bold mb-6 font-sans letter-wide">
+              Book A Table Online
+            </h3>
+            <BookingForm />
           </div>
         </div>
       </div>
