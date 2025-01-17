@@ -1,133 +1,174 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { FaQuoteLeft } from "react-icons/fa";
+import Image from "next/image";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import Heading from "../miniWidgets/Heading";
+
+const CustomDot = ({ onClick, ...rest }) => {
+  const { active, index } = rest; // Get dot's index and active state
+  // console.log("rest", rest);
+
+  const handleClick = () => {
+    console.log(`Dot clicked for card index: ${index}`); // Log the card index
+    onClick();
+  };
+
+  return (
+    <li
+      style={{
+        display: "inline-block",
+        cursor: "pointer",
+        background: active ? "#FF5722" : "#CCC",
+        width: "18px",
+        height: "18px",
+        borderRadius: "50%",
+        border: "2px solid green",
+      }}
+      onClick={handleClick}
+    />
+  );
+};
 
 const TestimonialSlider = () => {
   const testimonials = [
     {
       name: "Client 1",
       profession: "Designer",
-      image: "https://via.placeholder.com/50", // Replace with actual image URL
+      image: "/images/testimonial/testimonial-1.jpg",
       message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
     {
       name: "Client 2",
       profession: "Developer",
-      image: "https://via.placeholder.com/50", // Replace with actual image URL
+      image: "/images/testimonial/testimonial-2.jpg",
       message:
         "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
     {
       name: "Client 3",
       profession: "Manager",
-      image: "https://via.placeholder.com/50", // Replace with actual image URL
+      image: "/images/testimonial/testimonial-3.jpg",
       message:
         "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
     },
+    {
+      name: "Client 2",
+      profession: "Developer",
+      image: "/images/testimonial/testimonial-2.jpg",
+      message:
+        "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    },
   ];
-
-  // State to track the currently active slide
+  const carouselRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Handle slide change
-  const handleSlideChange = (nextSlideIndex) => {
-    console.log("slide", nextSlideIndex);
-    console.log("active slide", activeIndex);
-
-    setActiveIndex(nextSlideIndex);
+  const centerActiveCard = (index) => {
+    if (carouselRef.current) {
+      carouselRef.current.goToSlide(index);
+    }
+    setActiveIndex(index);
   };
-  const CustomDot = ({ index, onClick, isActive }) => (
-    <li
-      onClick={() => onClick()}
-      className={`w-4 h-4 mx-1 rounded-full cursor-pointer ${
-        isActive ? "bg-yellow-500" : "bg-gray-400"
-      }`}
-    />
-  );
 
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3, // Show 4 items on desktop
+      partialVisibilityGutter: 30, // Adjust gutter between cards
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2, // Show 2 items on tablets
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1, // Show 1 item on mobile
+    },
+  };
   return (
-    <div
-      className="pt-16 pb-36 bg-black bg-opacity-40 px-28"
-      style={{
-        paddingBottom: "30px",
-        position: "relative",
-        backgroundImage: `url("/images/bg_02.webp")`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
-      <Carousel
-        additionalTransfrom={0}
-        // arrows
-        centerMode={false}
-        autoPlay
-        showDots={true}
-        autoPlaySpeed={3000}
-        className="mb-12"
-        containerClass="carousel-container"
-        draggable
-        focusOnSelect={true}
-        infinite
-        itemClass="carousel-item-padding-40-px"
-        keyBoardControl
-        minimumTouchDrag={80}
-        pauseOnHover
-        // renderArrowsWhenDisabled={false}
-        // renderButtonGroupOutside={false}
-        renderDotsOutside
-        responsive={{
-          desktop: {
-            breakpoint: { max: 3000, min: 1024 },
-            items: 3, // Show 4 items on desktop
-            partialVisibilityGutter: 30, // Adjust gutter between cards
-          },
-          tablet: {
-            breakpoint: { max: 1024, min: 464 },
-            items: 2, // Show 2 items on tablets
-          },
-          mobile: {
-            breakpoint: { max: 464, min: 0 },
-            items: 1, // Show 1 item on mobile
-          },
+    <div className="flex flex-col justify-between my-20">
+      <div className="flex items-center mb-2 w-[70%] justify-center mx-auto">
+        {" "}
+        <span className="h-[2px] w-[8%] mr-1 border-[1px] rounded-md border-custom-color"></span>{" "}
+        <div className="w-[13%]">
+          {" "}
+          <Heading text="Testimonial" />
+        </div>{" "}
+        <span className="h-[2px] w-[8%] border-[1px] ml-1 rounded-md border-custom-color"></span>{" "}
+      </div>
+      <h2 className="text-black mb-6  text-4xl text-center font-serif font-bold  letter-wide">
+        Our Clients Say!!!
+      </h2>
+      <div
+        style={{
+          position: "relative",
+          backgroundImage: `url("/images/bg-hero.jpg")`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
         }}
-        // dotListClass="custom-dot-list-style border-2 flex justify-center gap-2 mt-4"
-        rewind={false}
-        rewindWithAnimation={false}
-        rtl={false}
-        shouldResetAutoplay
-        sliderClass=""
-        slidesToSlide={1}
-        swipeable
-        afterChange={(nextSlide) => handleSlideChange(nextSlide)} // Track active slide index
       >
-        {testimonials.map((testimonial, index) => (
-          <div
-            key={index}
-            className={`w-[95%] bg-opacity-80 border-2 border-red-800 rounded-lg overflow-hidden p-6 transition-all duration-300 ${
-              activeIndex % testimonials.length === index
-                ? "bg-yellow-400 text-white"
-                : "bg-white text-black"
-            }`}
+        <div className="pt-20 pb-16 bg-black bg-opacity-70 px-28">
+          <Carousel
+            ref={carouselRef} // Attach the ref here
+            additionalTransfrom={0}
+            // arrows
+            autoPlay
+            showDots={true}
+            autoPlaySpeed={3000}
+            className="mb-12"
+            containerClass="carousel-container"
+            draggable
+            focusOnSelect={true}
+            infinite
+            itemClass="carousel-item-padding-40-px"
+            keyBoardControl
+            minimumTouchDrag={80}
+            pauseOnHover
+            renderDotsOutside
+            responsive={responsive}
+            // dotListClass="custom-dot-list-style border-2 flex justify-center gap-2 mt-4"
+            customDot={<CustomDot />}
+            rewind={false}
+            rewindWithAnimation={false}
+            rtl={false}
+            shouldResetAutoplay
+            sliderClass=""
+            slidesToSlide={1}
+            swipeable
+            afterChange={(nextSlideIndex) => setActiveIndex(nextSlideIndex)} // Track active index
           >
-            <p>index {index + 1}</p>
-            <p>active index {activeIndex % testimonials.length}</p>
-            <p className="mb-4">{testimonial.message}</p>
-            <div className="flex items-center justify-center gap-4">
-              <img
-                src={testimonial.image}
-                alt={testimonial.name}
-                className="rounded-full w-12 h-12"
-              />
-              <div>
-                <p className="font-bold">{testimonial.name}</p>
-                <p className="text-sm">{testimonial.profession}</p>
+            {testimonials.map((testimonial, index) => (
+              <div
+                key={index}
+                onClick={() => centerActiveCard(index)} // Center the clicked card
+                className={`w-[95%] bg-opacity-80 rounded-lg hover:bg-yellow-600 hover:text-white  ease-in-out overflow-hidden p-6 transition-all duration-500 ${
+                  activeIndex % testimonials.length === index
+                    ? "bg-white text-black"
+                    : "bg-white text-black"
+                }`}
+              >
+                <FaQuoteLeft className="text-4xl " />
+                <p className="my-4">{testimonial.message}</p>
+                <div className="flex items-center  gap-4">
+                  <Image
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    className="rounded-full w-12 h-12"
+                    width={48}
+                    height={48}
+                  />
+                  <div>
+                    <p className="font-bold">{testimonial.name}</p>
+                    <p className="text-sm">{testimonial.profession}</p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        ))}
-      </Carousel>
+            ))}
+          </Carousel>
+        </div>
+      </div>
     </div>
   );
 };

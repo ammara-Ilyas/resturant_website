@@ -1,11 +1,11 @@
 import React from "react";
-
+import Navbar from "../layout/Navbar";
 function HeroSection() {
   return (
     <section
-      className="relative h-[45vh] bg-black bg-opacity-20 w-100vh"
+      className="relative h-[45vh] bg-black bg-opacity-50 w-100vh"
       style={{
-        backgroundImage: `url("/images/bg_01.webp")`,
+        backgroundImage: `url("/images/bg-hero.jpg")`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",

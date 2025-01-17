@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import Card from "../miniWidgets/Card";
+import ChefCard from "../miniWidgets/Card";
 import Heading from "../miniWidgets/Heading";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -46,7 +46,7 @@ const ChefsCard = () => {
         </div>{" "}
         <span className="h-[2px] w-[8%] border-[1px] ml-1 rounded-md border-custom-color"></span>{" "}
       </div>
-      <h2 className="text-black text-4xl font-serif font-bold letter-wide">
+      <h2 className="text-black text-4xl font-serif font-bold mb-2 letter-wide">
         Our Master Chefs
       </h2>
       <div className="flex w-[85%] mx-auto flex-wrap justify-center gap-2 py-8">
@@ -57,7 +57,7 @@ const ChefsCard = () => {
             data-aos-delay={index * 200}
             key={index}
           >
-            <Card chef={chef} />
+            <ChefCard chef={chef} />
           </div>
         ))}
       </div>

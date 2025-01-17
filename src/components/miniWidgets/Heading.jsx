@@ -13,3 +13,13 @@ export default function Heading({ text }) {
     </div>
   );
 }
+
+export const Party = ({ text }) => {
+  return (
+    <h3
+      className={`${dancingScript.className} text-[20px] font-semibold uppercase`}
+    >
+      {text}
+    </h3>
+  );
+};

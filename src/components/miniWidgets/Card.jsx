@@ -8,8 +8,9 @@ import {
   FaTwitter,
   FaYoutube,
 } from "react-icons/fa";
+import { Party } from "./Heading";
 
-const Card = ({ chef }) => {
+const ChefCard = ({ chef }) => {
   const icons = [
     { id: "facebook", icon: <FaFacebookF />, link: "https://facebook.com" },
     { id: "instagram", icon: <FaInstagram />, link: "https://instagram.com" },
@@ -72,4 +73,35 @@ const Card = ({ chef }) => {
   );
 };
 
-export default Card;
+export default ChefCard;
+
+export const EventCard = ({ testimonial }) => {
+  return (
+    <div
+      className="w-[100%] mx-auto h-[500px] group duration-500 transition-all ease-in-out"
+      style={{
+        position: "relative",
+        backgroundImage: `url(${testimonial.image})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      {/* Background Image */}
+      <div className="bg-black bg-opacity-60 flex flex-col justify-end gap-4 h-full">
+        {/* Overlay */}
+
+        {/* Content */}
+        <div className=" bottom-0 p-6 text-white w-full group-hover:scale-105 duration-500 transition-all ease-in-out ">
+          <Party text={testimonial.party} />
+          <div className=" flex flex-col justify-center">
+            {" "}
+            <p className="text-3xl font-bold my-1">{testimonial.price}$</p>
+            <span className="inline-block w-[80px] h-[2px] bg-custom-color rounded-lg"></span>
+          </div>
+          <p className="text-[16px] pt-3">{testimonial.message}</p>
+        </div>
+      </div>
+    </div>
+  );
+};

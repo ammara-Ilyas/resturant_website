@@ -1,0 +1,142 @@
+[
+  {
+    "name": "Magnam Tiste",
+    "category": "Starters",
+    "description": "Lorem, deren, trataro, filede, nerada",
+    "price": "$5.95",
+    "image": "/images/menu/menu-item-1.png"
+  },
+  {
+    "name": "Aut Luia",
+    "category": "Starters",
+    "description": "Lorem, deren, trataro, filede, nerada",
+    "price": "$14.95",
+    "image": "/images/menu/menu-item-1.png"
+  },
+  {
+    "name": "Est Eligendi",
+    "category": "Breakfast",
+    "description": "Lorem, deren, trataro, filede, nerada",
+    "price": "$8.95",
+    "image": "/images/menu/menu-item-1.png"
+  },
+  {
+    "name": "Eos Luibusdam",
+    "category": "Lunch",
+    "description": "Lorem, deren, trataro, filede, nerada",
+    "price": "$12.95",
+    "image": "/images/menu/menu-item-1.png"
+  },
+  {
+    "name": "Laboriosam Direva",
+    "category": "Dinner",
+    "description": "Lorem, deren, trataro, filede, nerada",
+    "price": "$9.95",
+    "image": "/images/menu/menu-item-1.png"
+  },
+  {
+    "name": "Vero Amet",
+    "category": "Lunch",
+    "description": "Lorem, deren, trataro, filede, nerada",
+    "price": "$10.95",
+    "image": "/images/menu/menu-item-1.png"
+  },
+  {
+    "name": "Nemo Ipsum",
+    "category": "Dinner",
+    "description": "Lorem, deren, trataro, filede, nerada",
+    "price": "$15.95",
+    "image": "/images/menu/menu-item-1.png"
+  },
+  {
+    "name": "Dolor Sit",
+    "category": "Breakfast",
+    "description": "Lorem, deren, trataro, filede, nerada",
+    "price": "$7.95",
+    "image": "/images/menu/menu-item-1.png"
+  },
+  {
+    "name": "Amet Consectetur",
+    "category": "Starters",
+    "description": "Lorem, deren, trataro, filede, nerada",
+    "price": "$6.95",
+    "image": "/images/menu/menu-item-1.png"
+  },
+  {
+    "name": "Adipiscing Elit",
+    "category": "Dessert",
+    "description": "Lorem, deren, trataro, filede, nerada",
+    "price": "$4.95",
+    "image": "/images/menu/menu-item-1.png"
+  },
+  {
+    "name": "Fusce Vestibulum",
+    "category": "Starters",
+    "description": "Lorem, deren, trataro, filede, nerada",
+    "price": "$5.50",
+    "image": "/images/menu/menu-item-1.png"
+  },
+  {
+    "name": "Curabitur Sollicitudin",
+    "category": "Lunch",
+    "description": "Lorem, deren, trataro, filede, nerada",
+    "price": "$13.95",
+    "image": "/images/menu/menu-item-1.png"
+  },
+  {
+    "name": "Pellentesque Habitant",
+    "category": "Breakfast",
+    "description": "Lorem, deren, trataro, filede, nerada",
+    "price": "$9.25",
+    "image": "/images/menu/menu-item-1.png"
+  },
+  {
+    "name": "Suspendisse Ornare",
+    "category": "Dinner",
+    "description": "Lorem, deren, trataro, filede, nerada",
+    "price": "$11.75",
+    "image": "/images/menu/menu-item-1.png"
+  },
+  {
+    "name": "Cras Ultricies",
+    "category": "Dessert",
+    "description": "Lorem, deren, trataro, filede, nerada",
+    "price": "$6.50",
+    "image": "/images/menu/menu-item-1.png"
+  },
+  {
+    "name": "Quisque Euismod",
+    "category": "Lunch",
+    "description": "Lorem, deren, trataro, filede, nerada",
+    "price": "$12.50",
+    "image": "/images/menu/menu-item-1.png"
+  },
+  {
+    "name": "Vestibulum Ante",
+    "category": "Breakfast",
+    "description": "Lorem, deren, trataro, filede, nerada",
+    "price": "$8.50",
+    "image": "/images/menu/menu-item-1.png"
+  },
+  {
+    "name": "Nullam Vitae",
+    "category": "Starters",
+    "description": "Lorem, deren, trataro, filede, nerada",
+    "price": "$6.25",
+    "image": "/images/menu/menu-item-1.png"
+  },
+  {
+    "name": "Mauris Varius",
+    "category": "Dinner",
+    "description": "Lorem, deren, trataro, filede, nerada",
+    "price": "$14.50",
+    "image": "/images/menu/menu-item-1.png"
+  },
+  {
+    "name": "Duis Ultricies",
+    "category": "Dessert",
+    "description": "Lorem, deren, trataro, filede, nerada",
+    "price": "$5.95",
+    "image": "/images/menu/menu-item-1.png"
+  }
+]

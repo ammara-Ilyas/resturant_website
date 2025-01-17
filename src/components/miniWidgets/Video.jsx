@@ -1,5 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import Image from "next/image";
 const VideoPlayer = () => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
@@ -7,9 +9,14 @@ const VideoPlayer = () => {
   const handlePlayButtonClick = () => {
     setIsVideoPlaying(true);
   };
-
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      offset: 100,
+    });
+  }, []);
   return (
-    <div className="relative h-full">
+    <div className="relative h-full" data-aos="zoom-in" data-aos-delay={300}>
       {isVideoPlaying ? (
         <div
           className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-75 flex justify-center items-center animate-slideIn"
