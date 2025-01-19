@@ -82,7 +82,7 @@ const TestimonialSlider = () => {
       items: 2, // Show 2 items on tablets
     },
     mobile: {
-      breakpoint: { max: 464, min: 0 },
+      breakpoint: { max: 650, min: 0 },
       items: 1, // Show 1 item on mobile
     },
   };
@@ -91,13 +91,13 @@ const TestimonialSlider = () => {
       <div className="flex items-center mb-2 w-[70%] justify-center mx-auto">
         {" "}
         <span className="h-[2px] w-[8%] mr-1 border-[1px] rounded-md border-custom-color"></span>{" "}
-        <div className="w-[13%]">
+        <div className="w-auto">
           {" "}
           <Heading text="Testimonial" />
         </div>{" "}
         <span className="h-[2px] w-[8%] border-[1px] ml-1 rounded-md border-custom-color"></span>{" "}
       </div>
-      <h2 className="text-black mb-6  text-4xl text-center font-serif font-bold  letter-wide">
+      <h2 className="text-black mb-6 text-3xl sm:text-4xl text-center font-serif font-bold  letter-wide">
         Our Clients Say!!!
       </h2>
       <div

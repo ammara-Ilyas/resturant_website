@@ -40,19 +40,19 @@ const ChefsCard = () => {
       <div className="flex items-center w-[70%] justify-center">
         {" "}
         <span className="h-[2px] w-[8%] mr-1 border-[1px] rounded-md border-custom-color"></span>{" "}
-        <div className="w-[18%]">
+        <div className="w-auto">
           {" "}
           <Heading text="Team Members" />
         </div>{" "}
         <span className="h-[2px] w-[8%] border-[1px] ml-1 rounded-md border-custom-color"></span>{" "}
       </div>
-      <h2 className="text-black text-4xl font-serif font-bold mb-2 letter-wide">
+      <h2 className="text-black text-3xl sm:text-4xl font-serif font-bold mb-2 letter-wide">
         Our Master Chefs
       </h2>
-      <div className="flex w-[85%] mx-auto flex-wrap justify-center gap-2 py-8">
+      <div className="flex w-[85%] lg:w-[95%] xl:w-[85%] mx-auto flex-wrap justify-center gap-2 py-8">
         {chefsData.map((chef, index) => (
           <div
-            className=" w-[30%]"
+            className="w-[100%] sm:w-[80%] md:w-[45%] lg:w-[30%] mt-2"
             data-aos="zoom-in"
             data-aos-delay={index * 200}
             key={index}

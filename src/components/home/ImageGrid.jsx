@@ -6,14 +6,14 @@ import "aos/dist/aos.css";
 const ImageGrid = () => {
   useEffect(() => {
     AOS.init({
-      duration: 1000, // Animation duration in milliseconds
-      offset: 100, // Offset from the top before animation starts
-      delay: 100, // Delay in milliseconds
+      duration: 1000,
+      offset: 100,
+      delay: 100,
     });
   }, []);
 
   return (
-    <div className="flex flex-wrap gap-2 p-4 ">
+    <div className="flex flex-wrap gap-2 p-4 w-[90%] lg:w-[100%] xl:w-[90%]">
       <div className=" w-[48%] h-[50%] ">
         {" "}
         <Image

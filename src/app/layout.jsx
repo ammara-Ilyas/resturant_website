@@ -4,6 +4,8 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { MenuProvider } from "@/contextApi/MenuContext";
 import ProgressBarProviders from "@/components/miniWidgets/ProgressBar";
+import { ToastContainer, toast } from "react-toastify";
+import Booking from "@/components/miniWidgets/Wrapper";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -27,11 +29,15 @@ export default function RootLayout({ children }) {
         `}
       >
         <MenuProvider>
-          <ProgressBarProviders>
-            <Navbar />
-            {children}
-            <Footer />
-          </ProgressBarProviders>
+          <main className=" w-screen box-border overflow-hidden">
+            <ProgressBarProviders>
+              <Navbar />
+              {children}
+              <Footer />
+            </ProgressBarProviders>
+            <ToastContainer />
+            <Booking />
+          </main>
         </MenuProvider>
       </body>
     </html>

@@ -20,15 +20,17 @@ function HeroSection({ text }) {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="absolute inset-0 bg-black bg-opacity-70 border-b-8 border-orange-600">
+      <div className="absolute inset-0 bg-black bg-opacity-70 border-b-8 h-full border-orange-600">
         <Navbar />
-        <h3
-          className="text-white font-bold capitalize text-6xl letter-wide absolute right-[40%] top-[50%]"
-          data-aos="fade-in"
-          data-aos-delay={200}
-        >
-          {text}
-        </h3>
+        <div className="flex items-center justify-center h-full">
+          <h3
+            className="text-white font-bold capitalize text-4xl sm:text-6xl pt-4 letter-wide "
+            data-aos="fade-in"
+            data-aos-delay={200}
+          >
+            {text}
+          </h3>
+        </div>
       </div>
     </section>
   );

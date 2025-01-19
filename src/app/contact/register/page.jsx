@@ -10,7 +10,7 @@ const page = () => {
       }}
     >
       <div className="relative   flex flex-col md:flex-row items-center  justify-evenly bg-gray-900  bg-opacity-50 min-h-screen text-white">
-        <div className=" w-[30%] mx-auto h-[350px]">
+        <div className="w-[70%] md:w-[45%] lg:w-[30%] mx-auto h-[350px]">
           <RegisterForm />
         </div>
       </div>

@@ -25,7 +25,7 @@ const ReservationForm = () => {
             data-aos-delay={600}
           >
             <div className="flex items-center ">
-              <div>
+              <div className="w-auto">
                 {" "}
                 <Heading text="Reservation" />
               </div>{" "}

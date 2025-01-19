@@ -47,3 +47,11 @@ body {
 .wave-animation {
   animation: waveAnimation 5s linear infinite;
 }
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* Ensures all elements respect border width */
+  margin: 0; /* Remove default margin that might cause overflow */
+  padding: 0; /* Remove default padding that might cause overflow */
+}

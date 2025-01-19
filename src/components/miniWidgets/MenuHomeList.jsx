@@ -19,8 +19,8 @@ const MenuHome = () => {
   };
 
   return (
-    <div className="border-2 w-[80%] mx-auto">
-      <div className="grid grid-cols-1 border-2 sm:grid-cols-2 lg:grid-cols-3 items-center gap-8 w-[100%] mx-auto">
+    <div className=" w-[80%] mx-auto">
+      <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 items-center gap-8 w-[100%] mx-auto">
         {menuList &&
           menuList.map((item, index) => (
             <div

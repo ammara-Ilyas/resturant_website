@@ -58,7 +58,7 @@ const Navbar = () => {
   return (
     <div>
       <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 py-4 font-sans text-white ${
+        className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 py-4 font-sans text-white ${
           isScrolled ? "bg-gray-900 shadow-lg" : `bg-opacity-20`
         }`}
       >
@@ -97,7 +97,7 @@ const Navbar = () => {
         <div
           className={`${
             nav
-              ? "fixed md:hidden left-0 top-0 w-[80%] h-full ease-in-out duration-500"
+              ? "fixed md:hidden left-0 top-0 w-[100%] sm:w-[80%] h-full ease-in-out duration-500"
               : "ease-in-out w-[60%] duration-500 fixed top-0 bottom-0 left-[-100%]"
           } text-white bg-black z-50 bg-opacity-95 pt-8`}
         >
@@ -121,12 +121,13 @@ const Navbar = () => {
                 <Link
                   key={i}
                   href={item.link}
-                  className="p-4 border-b pl-16 rounded-xl text-white hover:bg-red-600 duration-300 hover:text-white cursor-pointer border-gray-600  font-semibold capitalize"
+                  className="p-4 border-b pl-16 rounded-xl text-white hover:bg-orange-600 duration-300 hover:text-white cursor-pointer border-gray-600  font-semibold capitalize"
+                  onClick={() => setNav(false)}
                 >
                   {item.nav}
                 </Link>
               ))}
-              <Link className="border-2 pl-16 pt-10" href="#booking">
+              <Link className=" pl-16 pt-10" href="#booking">
                 <Button text="Book a tabel" />
               </Link>{" "}
             </>

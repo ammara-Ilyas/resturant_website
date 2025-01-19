@@ -34,8 +34,8 @@ const CustomDot = ({ onClick, ...rest }) => {
 const EventSlider = () => {
   useEffect(() => {
     AOS.init({
-      duration: 1000, // Animation duration in milliseconds
-      offset: 100, // Offset from the top before animation starts
+      duration: 1000,
+      offset: 100,
     });
   }, []);
   const testimonials = [
@@ -76,29 +76,27 @@ const EventSlider = () => {
     },
   ];
 
-  // State to track the currently active slide
-  const carouselRef = useRef(null); // Ref to access the carousel instance
+  const carouselRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Function to programmatically center the active card
   const centerActiveCard = (index) => {
     if (carouselRef.current) {
-      carouselRef.current.goToSlide(index); // Navigate to the specific slide
+      carouselRef.current.goToSlide(index);
     }
-    setActiveIndex(index); // Update active index
+    setActiveIndex(index);
   };
 
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 3, // Show 4 items on desktop
+      items: 3,
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
-      items: 2, // Show 2 items on tablets
+      items: 2,
     },
     mobile: {
-      breakpoint: { max: 464, min: 0 },
+      breakpoint: { max: 650, min: 0 },
       items: 1, // Show 1 item on mobile
     },
   };
@@ -107,13 +105,13 @@ const EventSlider = () => {
       <div className="flex items-center w-[70%] justify-center mx-auto ">
         {" "}
         <span className="h-[2px] w-[8%] mr-1 border-[1px] rounded-md border-custom-color"></span>{" "}
-        <div className="w-[6%]">
+        <div className="w-auto">
           {" "}
           <Heading text="Event" />
         </div>{" "}
         <span className="h-[2px] w-[8%] border-[1px] ml-2 rounded-md border-custom-color"></span>{" "}
       </div>
-      <h2 className="text-black text-4xl mt-2 mb-6 text-center font-serif font-bold  letter-wide">
+      <h2 className="text-black text-3xl sm:text-4xl mt-2 mb-6 text-center font-serif font-bold  letter-wide">
         Our Special Events
       </h2>
 

@@ -5,10 +5,12 @@ import Link from "next/link";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const LoginForm = () => {
+  const router = useRouter();
   // State for form data
   const [loginData, setLoginData] = useState({
     email: "",
@@ -28,29 +30,42 @@ const LoginForm = () => {
   // Handler for form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Start loading
     setIsLoading(true);
-
     setTimeout(() => {
       setIsLoading(false);
 
-      const isSuccessful = Math.random() > 0.5;
-      if (isSuccessful) {
-        toast.success("Login successful! 🎉", {
-          position: "top-center",
+      // Validate email and password
+      if (!loginData.email || !loginData.password) {
+        toast.error("Email and password are required.", {
+          position: "top-right",
         });
+        return;
       } else {
-        toast.error("Login failed. Please try again.", {
-          position: "top-center",
-        });
+        localStorage.setItem("user", loginData);
+        router.push("/");
       }
 
-      // Reset form fields
-      setLoginData({
-        email: "",
-        password: "",
-      });
+      // Simulate a login success or failure
+      const isSuccessful = Math.random() > 0.5;
+
+      if (isSuccessful) {
+        localStorage.setItem("user", JSON.stringify(loginData));
+
+        toast.success("Login successful! 🎉", {
+          position: "top-right",
+        });
+
+        // Reset form fields after success
+        setLoginData({
+          email: "",
+          password: "",
+        });
+      } else {
+        // Show error toast for failed login
+        toast.error("Login failed. Please try again.", {
+          position: "top-right",
+        });
+      }
     }, 2000);
   };
 
@@ -66,10 +81,8 @@ const LoginForm = () => {
       data-aos="fade-up"
       data-aos-delay={300}
     >
+      {" "}
       <h1 className="text-2xl font-bold text-center text-orange-600">Login</h1>
-
-      <ToastContainer />
-
       <form className="flex flex-col gap-6 mt-6" onSubmit={handleSubmit}>
         {/* Email Input */}
         <div>

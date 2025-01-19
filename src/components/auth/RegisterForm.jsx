@@ -4,10 +4,11 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Logo from "../layout/components/Logo";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 const RegisterForm = () => {
-  // State for form data
+  const router = useRouter();
+
   const [registerData, setRegisterData] = useState({
     name: "",
     email: "",
@@ -34,22 +35,19 @@ const RegisterForm = () => {
     // Password mismatch validation
     if (registerData.password !== registerData.confirmPassword) {
       toast.error("Passwords do not match!", {
-        position: "top-center",
+        position: "top-right",
       });
       return;
     }
 
-    // Start loading
     setIsLoading(true);
 
-    // Simulate an API call
     setTimeout(() => {
-      // Example condition for an API response
       const isSuccessful = true; // Set this based on your API response
 
       if (isSuccessful) {
         toast.success("Registration successful! 🎉", {
-          position: "top-center",
+          position: "top-right",
         });
 
         // Reset form fields after successful submission
@@ -61,14 +59,16 @@ const RegisterForm = () => {
         });
       } else {
         toast.error("Registration failed. Please try again.", {
-          position: "top-center",
+          position: "top-right",
         });
       }
 
       // Stop loading
       setIsLoading(false);
-    }, 2000); // Simulate 2-second API delay
+    }, 2000);
+    router.push("/contact/login");
   };
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -84,7 +84,7 @@ const RegisterForm = () => {
       <h1 className="text-2xl font-bold text-center text-orange-600">
         Register
       </h1>
-      <ToastContainer />
+      {/* <ToastContainer /> */}
 
       <form className="flex flex-col gap-6 mt-6" onSubmit={handleSubmit}>
         {/* Name Input */}

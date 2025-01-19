@@ -12,7 +12,7 @@ const page = () => {
         <div className="flex items-center w-[70%] justify-center ">
           {" "}
           <span className="h-[2px] w-[8%] mr-1 border-[1px] rounded-md border-custom-color"></span>{" "}
-          <div className="w-[13%]">
+          <div className="w-auto">
             {" "}
             <Heading text="Food Menu" />
           </div>{" "}

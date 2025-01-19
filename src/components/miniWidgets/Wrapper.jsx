@@ -6,7 +6,7 @@ import "aos/dist/aos.css";
 import Heading from "../miniWidgets/Heading";
 import { useMenu } from "@/contextApi/MenuContext";
 import BookingForm from "./BookingForm";
-const Wrapper = () => {
+const Booking = () => {
   const { isBook, setIsBook } = useMenu();
   useEffect(() => {
     AOS.init({
@@ -50,4 +50,4 @@ const Wrapper = () => {
   );
 };
 
-export default Wrapper;
+export default Booking;

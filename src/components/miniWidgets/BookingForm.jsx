@@ -1,10 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
+import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const BookingForm = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -42,40 +44,43 @@ const BookingForm = () => {
       toast.error("Phone number must be at least 10 digits!");
       return;
     }
+    let isLogin = localStorage.getItem("user");
+    if (isLogin) {
+      setLoading(true);
+      try {
+        // Simulate API call
+        //   const response = await fetch("/api/bookings", {
+        //     method: "POST",
+        //     headers: { "Content-Type": "application/json" },
+        //     body: JSON.stringify(formData),
+        //   });
 
-    setLoading(true);
+        //   if (!response.ok) {
+        //     throw new Error("Failed to submit booking.");
+        //   }
+        console.log("booking form", formData);
 
-    try {
-      // Simulate API call
-      //   const response = await fetch("/api/bookings", {
-      //     method: "POST",
-      //     headers: { "Content-Type": "application/json" },
-      //     body: JSON.stringify(formData),
-      //   });
+        //   const result = await response.json();
+        toast.success("Booking submitted successfully!");
 
-      //   if (!response.ok) {
-      //     throw new Error("Failed to submit booking.");
-      //   }
-      console.log("booking form", formData);
-
-      //   const result = await response.json();
-      toast.success("Booking submitted successfully!");
-
-      // Reset form after successful submission
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        people: "People 1",
-        date: "",
-        time: "",
-        specialRequest: "",
-      });
-    } catch (error) {
-      toast.error("Error submitting booking. Please try again.");
-      console.error("Error:", error);
-    } finally {
-      setLoading(false);
+        // Reset form after successful submission
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          people: "People 1",
+          date: "",
+          time: "",
+          specialRequest: "",
+        });
+      } catch (error) {
+        toast.error("Error submitting booking. Please try again.");
+        console.error("Error:", error);
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      router.push("/contact/login");
     }
   };
 
@@ -158,7 +163,6 @@ const BookingForm = () => {
           )}
         </button>
       </form>
-      <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
     </div>
   );
 };

@@ -1,15 +1,18 @@
 "use client";
-
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const ContactForm = () => {
-  // State to manage form data
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
     message: "",
   });
+
+  const [loading, setLoading] = useState(false);
 
   // Handler to update state when input changes
   const handleChange = (e) => {
@@ -21,21 +24,36 @@ const ContactForm = () => {
   };
 
   // Handler for form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Submitted:", formData);
+    setLoading(true);
 
-    // Reset form after submission
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
+    try {
+      // Simulate form submission
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
+      toast.success("Message sent successfully!", {
+        position: "top-right",
+      });
+
+      // Reset form after successful submission
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      toast.error("Failed to send the message. Please try again!", {
+        position: "top-right",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className="p-6 bg-white shadow-md rounded-md w-[85%] mx-auto ">
+    <div className="p-6 bg-white shadow-md rounded-md w-[85%] mx-auto">
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         {/* Name Input */}
         <input
@@ -54,7 +72,7 @@ const ContactForm = () => {
           value={formData.email}
           onChange={handleChange}
           placeholder="Your Email"
-          className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-orange-400  focus:border-orange-400 "
+          className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-orange-400"
         />
 
         {/* Subject Input */}
@@ -80,9 +98,14 @@ const ContactForm = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full p-3 text-white bg-orange-500 rounded-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400"
+          className="w-full p-3 text-white bg-orange-500 rounded-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400 flex justify-center items-center"
+          disabled={loading}
         >
-          Send Message
+          {loading ? (
+            <CircularProgress size={24} style={{ color: "#fff" }} />
+          ) : (
+            "Send Message"
+          )}
         </button>
       </form>
     </div>
