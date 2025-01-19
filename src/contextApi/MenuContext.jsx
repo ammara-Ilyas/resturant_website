@@ -14,6 +14,8 @@ export const MenuProvider = ({ children }) => {
   const [menuList, setMenuList] = useState([]);
   const [FilteredMenuList, setFilteredMenuList] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isBook, setIsBook] = useState(false);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -40,6 +42,8 @@ export const MenuProvider = ({ children }) => {
         menuList,
         setMenuList,
         loading,
+        isBook,
+        setIsBook,
       }}
     >
       {children}

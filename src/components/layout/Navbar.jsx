@@ -5,9 +5,12 @@ import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import Button from "../miniWidgets/Button";
 import { useRouter } from "next/navigation";
 import Logo from "./components/Logo";
-import Image from "next/image";
+import { useMenu } from "@/contextApi/MenuContext";
+import { usePathname } from "next/navigation";
 const Navbar = () => {
+  const { isBook, setIsBook } = useMenu();
   const router = useRouter();
+  const pathname = usePathname();
   const [nav, setNav] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -34,17 +37,24 @@ const Navbar = () => {
     },
     {
       nav: "services",
-      link: "/",
+      link: "/service",
+    },
+
+    {
+      nav: "menu",
+      link: "/menu",
     },
     {
       nav: "about",
       link: "/about",
     },
     {
-      nav: "menu",
-      link: "/menu",
+      nav: "contact",
+      link: "/contact",
     },
   ];
+  console.log("Pathname in navbar", pathname);
+
   return (
     <div>
       <nav
@@ -63,19 +73,19 @@ const Navbar = () => {
                 <Link
                   key={i}
                   href={page.link}
-                  className={`relative  mx-3 py-[2px] border-b-2 border-transparent hover:border-transparent group text-sm font-semibold cursor-pointer uppercase 
-                  ${
-                    router.pathname === page.link
-                      ? "text-yellow-600"
-                      : "text-white"
-                  }
+                  className={`relative  mx-3 py-[3px] border-b-2 border-transparent hover:border-transparent group p-[2px] text-sm font-semibold cursor-pointer uppercase 
                   `}
                 >
                   {page.nav}
-                  <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                  <span
+                    className={`  ${pathname === page.link ? "w-full" : "w-0"}
+                  absolute bottom-0 left-0  w-0 h-[2px] bg-orange-600 transition-all duration-300 group-hover:w-full`}
+                  ></span>
                 </Link>
               ))}
-              <Button text="Book a tabel" />
+              <div onClick={() => setIsBook(true)}>
+                <Button text="Book a tabel" />
+              </div>
             </>
           </div>
           {/* Mobile Navigation Icon */}
@@ -89,13 +99,13 @@ const Navbar = () => {
             nav
               ? "fixed md:hidden left-0 top-0 w-[80%] h-full ease-in-out duration-500"
               : "ease-in-out w-[60%] duration-500 fixed top-0 bottom-0 left-[-100%]"
-          } text-white pt-8`}
+          } text-white bg-black z-50 bg-opacity-95 pt-8`}
         >
           {/* Mobile Logo */}
           {/* Logo */}
-          <div className=" flex items-center justify-between px-10 ">
-            <div className="text-2xl font-bold bg-white p-2 rounded px-3 text-black">
-              <span className="text-red-500">R</span>umble
+          <div className=" flex items-center justify-between px-10  bg-black">
+            <div>
+              <Logo />
             </div>
             <AiOutlineClose
               size={20}
@@ -111,12 +121,14 @@ const Navbar = () => {
                 <Link
                   key={i}
                   href={item.link}
-                  className="p-4 border-b rounded-xl text-white hover:bg-red-600 duration-300 hover:text-white cursor-pointer border-gray-600  font-semibold capitalize"
+                  className="p-4 border-b pl-16 rounded-xl text-white hover:bg-red-600 duration-300 hover:text-white cursor-pointer border-gray-600  font-semibold capitalize"
                 >
                   {item.nav}
                 </Link>
               ))}
-              {/* <Butnton text="Booking" /> */}
+              <Link className="border-2 pl-16 pt-10" href="#booking">
+                <Button text="Book a tabel" />
+              </Link>{" "}
             </>
           </div>
         </div>

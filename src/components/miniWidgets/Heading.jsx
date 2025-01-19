@@ -9,7 +9,7 @@ const dancingScript = Dancing_Script({
 export default function Heading({ text }) {
   return (
     <div className={`${dancingScript.className} flex flex-row items-center `}>
-      <h4 className="text-3xl text-custom-color font-bold">{text}</h4>
+      <h4 className="text-3xl text-orange-600 font-bold">{text}</h4>
     </div>
   );
 }

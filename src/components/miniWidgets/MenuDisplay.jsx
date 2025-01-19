@@ -63,7 +63,7 @@ const MenuDisplay = () => {
                 >
                   {/* Clickable Image Container */}
                   <div
-                    className="border-2 border-yellow-600 -rotate-12 group-hover:rotate-0 group-hover:scale-105 duration-300 transition-transform ease-in-out p-2 h-[260px] w-[260px]"
+                    className="border-2 border-orange-600 -rotate-12 group-hover:rotate-0 group-hover:scale-105 duration-300 transition-transform ease-in-out p-2 h-[260px] w-[260px]"
                     onClick={() => handleIndex(index)}
                   >
                     <Image
@@ -81,7 +81,7 @@ const MenuDisplay = () => {
                       {item.name}
                     </h4>
                     <p className="text-gray-500 text-sm">{item.description}</p>
-                    <p className="text-yellow-600 text-lg font-bold mt-2">
+                    <p className="text-orange-600 text-lg font-bold mt-2">
                       {item.price}
                     </p>
                   </div>

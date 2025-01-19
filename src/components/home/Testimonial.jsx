@@ -7,11 +7,11 @@ import "react-multi-carousel/lib/styles.css";
 import Heading from "../miniWidgets/Heading";
 
 const CustomDot = ({ onClick, ...rest }) => {
-  const { active, index } = rest; // Get dot's index and active state
+  const { active, index } = rest;
   // console.log("rest", rest);
 
   const handleClick = () => {
-    console.log(`Dot clicked for card index: ${index}`); // Log the card index
+    console.log(`Dot clicked for card index: ${index}`);
     onClick();
   };
 
@@ -24,7 +24,7 @@ const CustomDot = ({ onClick, ...rest }) => {
         width: "18px",
         height: "18px",
         borderRadius: "50%",
-        border: "2px solid green",
+        margin: "4px",
       }}
       onClick={handleClick}
     />

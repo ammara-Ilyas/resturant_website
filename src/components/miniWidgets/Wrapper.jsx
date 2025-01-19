@@ -4,9 +4,10 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Heading from "../miniWidgets/Heading";
+import { useMenu } from "@/contextApi/MenuContext";
 import BookingForm from "./BookingForm";
 const Wrapper = () => {
-  const [isBook, setIsBook] = useState(true);
+  const { isBook, setIsBook } = useMenu();
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -35,7 +36,7 @@ const Wrapper = () => {
                 {" "}
                 <Heading text="Reservation" />
               </div>{" "}
-              <span className="h-[2px] w-[7%] items-center border-[1px] rounded-md border-yellow-500"></span>{" "}
+              <span className="h-[2px] w-[7%] items-center border-[1px] rounded-md border-orange-500"></span>{" "}
             </div>
 
             <h3 className="text-3xl font-bold mb-6 font-sans letter-wide">
