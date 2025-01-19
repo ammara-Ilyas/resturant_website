@@ -8,21 +8,20 @@ import ReservationForm from "@/components/home/ReservationForm";
 import TestimonialSlider from "@/components/home/Testimonial";
 import EventSlider from "@/components/home/Event";
 // import CatSlider from "@/components/miniWidgets/Slider";
-import MenuList from "@/components/menu/MenuList";
-import MenuSlide from "@/components/menu/MenuSlide";
+import Wrapper from "@/components/miniWidgets/Wrapper";
+import Menu from "@/components/home/Menu";
 export default function Home() {
   return (
     <>
       <Hero />
       <About />
-      <MenuSlide />
-      {/* <CatSlider /> */}
-      <MenuList />
       <FeatureCards />
+      <Menu />
       <EventSlider />
       <ChefsCard />
       <ReservationForm />
       <PopularMenu />
+      <Wrapper />
       <TestimonialSlider />
     </>
   );

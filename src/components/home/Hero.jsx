@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Button from "../miniWidgets/Button";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -19,7 +20,9 @@ export default function Hero() {
             Tempor erat elitr rebus at clita. Diam dolor diam ipsum sit. Aliqu
             diam amet diam et eos.
           </p>
-          <Button text="Book A tabel" />
+          <Link href="#booking">
+            <Button text="Book A tabel" />
+          </Link>
         </div>
 
         {/* Rotating Dish */}

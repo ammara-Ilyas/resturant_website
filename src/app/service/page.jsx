@@ -5,7 +5,7 @@ import HeroSection from "@/components/miniWidgets/HeroSection";
 const page = () => {
   return (
     <>
-      <HeroSection />
+      <HeroSection text="Services" />
       <Event />
       <FeatureCards />
     </>

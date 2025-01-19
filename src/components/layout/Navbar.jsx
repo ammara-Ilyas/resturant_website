@@ -4,8 +4,7 @@ import Link from "next/link";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import Button from "../miniWidgets/Button";
 import { useRouter } from "next/navigation";
-import { PiForkKnifeFill } from "react-icons/pi";
-
+import Logo from "./components/Logo";
 import Image from "next/image";
 const Navbar = () => {
   const router = useRouter();
@@ -56,18 +55,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center flex-row px-10">
           {" "}
           {/* Logo */}
-          <div className=" flex flex-row items-center ">
-            <span className="text-4xl text-yellow-500 ">
-              <PiForkKnifeFill className="text-yellow-500" />
-            </span>
-            <div className="flex flex-col items-center">
-              <span className="h-[5px] w-full bg-yellow-500 rounded-lg"></span>
-              <p className="text-white uppercase text-2xl font-bold">
-                Yumyyatch
-              </p>
-              <span className="h-[5px] w-full bg-yellow-500 rounded-lg"></span>
-            </div>
-          </div>
+          <Logo />
           {/* Links */}
           <div className="hidden md:flex items-center justify-center gap-2">
             <>

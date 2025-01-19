@@ -8,8 +8,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        "custom-color": "#FFD700",
-        background: "var(--background)",
+        "custom-color": "#FFA500",
+        "custom-orange": "theme('colors.orange.600')", // References Tailwind's orange-600        background: "var(--background)",
         foreground: "var(--foreground)",
       },
       fontFamily: {

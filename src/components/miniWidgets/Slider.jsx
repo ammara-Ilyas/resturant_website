@@ -1,5 +1,8 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
+import { IoChevronForward } from "react-icons/io5";
+import { GrFormPrevious } from "react-icons/gr";
 
 const Slider = ({ sliderData, initialIndex = 0 }) => {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
@@ -19,26 +22,26 @@ const Slider = ({ sliderData, initialIndex = 0 }) => {
   };
 
   return (
-    <div className="relative w-full max-w-2xl mx-auto">
+    <div className="relative w-full max-w-3xl  mx-auto ">
       {/* Slider Navigation Arrows */}
       <button
         onClick={handlePrev}
         className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full z-10"
         style={{ zIndex: 20 }}
       >
-        &#8249;
+        <GrFormPrevious />
       </button>
       <button
         onClick={handleNext}
         className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full z-10"
         style={{ zIndex: 20 }}
       >
-        &#8250;
+        <IoChevronForward />
       </button>
       {/* Slider Content */}
-      <div className="overflow-hidden rounded-lg">
+      <div className="overflow-hidden rounded-lg  ">
         <div
-          className="flex transition-transform duration-500"
+          className="flex transition-transform duration-500  "
           style={{
             transform: `translateX(-${currentIndex * 100}%)`,
           }}
@@ -46,15 +49,19 @@ const Slider = ({ sliderData, initialIndex = 0 }) => {
           {sliderData.map((item, index) => (
             <div
               key={index}
-              className="min-w-full flex justify-center items-center bg-black/50"
+              className="min-w-full  flex h-[500px] justify-center items-center bg-black/10 overflow-visible"
             >
-              <img
-                src={item.image}
-                alt={item.title}
-                className="w-full object-cover"
-                style={{ maxHeight: "400px" }}
-              />
-              <div className="absolute bg-black bg-opacity-50 text-white p-4 rounded bottom-4 left-4">
+              <div className=" w-full mx-auto h-[500px] relative">
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  className="object-cover h-full w-full "
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </div>
+
+              <div className="absolute bg-black bg-opacity-50  text-white p-4 rounded bottom-4 left-4">
                 <h3 className="font-bold">{item.title}</h3>
                 <p>{item.description}</p>
               </div>

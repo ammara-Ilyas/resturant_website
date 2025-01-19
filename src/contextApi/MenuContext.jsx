@@ -13,18 +13,23 @@ export const MenuProvider = ({ children }) => {
   const [category, setCategory] = useState("Starters");
   const [menuList, setMenuList] = useState([]);
   const [FilteredMenuList, setFilteredMenuList] = useState([]);
-  // Menu data
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("data/menu.json");
-      const data = await res.json();
-      console.log("data", data);
-      setMenuList(data);
-      setFilteredMenuList(data);
+      try {
+        const response = await fetch("/data/menu.json");
+        let data = await response.json();
+        console.log("data in context", data);
+        setMenuList(data);
+        setFilteredMenuList(data);
+      } catch (error) {
+        console.error(error);
+      }
+      setLoading(false);
     };
     fetchData();
   }, []);
+
   return (
     <MenuContext.Provider
       value={{
@@ -34,6 +39,7 @@ export const MenuProvider = ({ children }) => {
         setFilteredMenuList,
         menuList,
         setMenuList,
+        loading,
       }}
     >
       {children}

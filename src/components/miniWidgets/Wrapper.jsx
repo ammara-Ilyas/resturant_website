@@ -1,11 +1,12 @@
 "use client";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Heading from "../miniWidgets/Heading";
-import VideoPopup from "../miniWidgets/Video";
-import BookingForm from "../miniWidgets/BookingForm";
-const ReservationForm = () => {
+import BookingForm from "./BookingForm";
+const Wrapper = () => {
+  const [isBook, setIsBook] = useState(true);
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -13,16 +14,21 @@ const ReservationForm = () => {
     });
   }, []);
   return (
-    <div className="bg-gray-50 py-16 " id="booking">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 px-8  items-center">
-          {/* Left Section: Image with Play Button */}
-          <VideoPopup />
-          {/* Right Section: Form */}
+    <>
+      {isBook && (
+        <div className="fixed top-0 left-0 bg-black bg-opacity-90 h-screen w-full flex items-center justify-center z-50">
+          {/* Close button */}
+          <button
+            className="absolute top-5 right-5 text-white text-2xl font-bold z-50"
+            onClick={() => setIsBook(false)}
+          >
+            &times;
+          </button>
+          {/* Slider component */}
           <div
             className="bg-[#0b132a] text-white shadow-lg p-8"
             data-aos="fade-up"
-            data-aos-delay={600}
+            data-aos-delay={200}
           >
             <div className="flex items-center ">
               <div>
@@ -36,11 +42,11 @@ const ReservationForm = () => {
               Book A Table Online
             </h3>
             <BookingForm />
-          </div>
+          </div>{" "}
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 
-export default ReservationForm;
+export default Wrapper;
