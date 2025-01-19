@@ -29,7 +29,7 @@ const ReservationForm = () => {
                 {" "}
                 <Heading text="Reservation" />
               </div>{" "}
-              <span className="h-[2px] w-[7%] items-center border-[1px] rounded-md border-yellow-500"></span>{" "}
+              <span className="h-[2px] w-[7%] items-center border-[1px] rounded-md border-orange-500"></span>{" "}
             </div>
 
             <h3 className="text-3xl font-bold mb-6 font-sans letter-wide">

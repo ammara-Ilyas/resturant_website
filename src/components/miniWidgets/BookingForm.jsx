@@ -9,12 +9,11 @@ const BookingForm = () => {
     name: "",
     email: "",
     phone: "",
-    people: "People 1",
+    people: "1",
     date: "",
     time: "",
     specialRequest: "",
   });
-
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
@@ -91,7 +90,7 @@ const BookingForm = () => {
             value={formData.name}
             onChange={handleChange}
             placeholder="Your Name"
-            className="p-3 rounded bg-gray-100 text-gray-800 w-full focus:outline-none focus:ring focus:ring-orange-400"
+            className="p-3 rounded bg-gray-100 text-gray-800 w-full focus:outline-none focus:ring focus:ring-orange-600"
           />
           <input
             type="email"
@@ -99,7 +98,7 @@ const BookingForm = () => {
             value={formData.email}
             onChange={handleChange}
             placeholder="Your Email"
-            className="p-3 rounded bg-gray-100 text-gray-800 w-full focus:outline-none focus:ring focus:ring-orange-400"
+            className="p-3 rounded bg-gray-100 text-gray-800 w-full focus:outline-none focus:ring focus:ring-orange-600"
           />
         </div>
         {/* Row 2: Phone Number & Number of People */}
@@ -110,19 +109,16 @@ const BookingForm = () => {
             value={formData.phone}
             onChange={handlePhoneChange}
             placeholder="Your Phone Number"
-            className="p-3 rounded bg-gray-100 text-gray-800 w-full focus:outline-none focus:ring focus:ring-orange-400"
+            className="p-3 rounded bg-gray-100 text-gray-800 w-full focus:outline-none focus:ring focus:ring-orange-600"
           />
-          <select
+          <input
             name="people"
+            type="number"
+            placeholder="1"
             value={formData.people}
             onChange={handleChange}
-            className="p-3 rounded bg-gray-100 text-gray-800 w-full focus:outline-none focus:ring focus:ring-orange-400"
-          >
-            <option>People 1</option>
-            <option>People 2</option>
-            <option>People 3</option>
-            <option>People 4</option>
-          </select>
+            className="p-3 rounded bg-gray-100 text-gray-800 w-full focus:outline-none focus:ring focus:ring-orange-600"
+          />
         </div>
         {/* Row 3: Date & Time */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -131,14 +127,14 @@ const BookingForm = () => {
             name="date"
             value={formData.date}
             onChange={handleChange}
-            className="p-3 rounded bg-gray-100 text-gray-800 w-full focus:outline-none focus:ring focus:ring-orange-400"
+            className="p-3 rounded bg-gray-100 text-gray-800 w-full focus:outline-none focus:ring focus:ring-orange-600"
           />
           <input
             type="time"
             name="time"
             value={formData.time}
             onChange={handleChange}
-            className="p-3 rounded bg-gray-100 text-gray-800 w-full focus:outline-none focus:ring focus:ring-orange-400"
+            className="p-3 rounded bg-gray-100 text-gray-800 w-full focus:outline-none focus:ring focus:ring-orange-600"
           />
         </div>
         {/* Row 4: Special Request */}
@@ -148,12 +144,12 @@ const BookingForm = () => {
           value={formData.specialRequest}
           onChange={handleChange}
           placeholder="Special Request"
-          className="p-3 rounded bg-gray-100 text-gray-800 w-full focus:outline-none focus:ring focus:ring-orange-400 mb-4"
+          className="p-3 rounded bg-gray-100 text-gray-800 w-full focus:outline-none focus:ring focus:ring-orange-600 mb-4"
         ></textarea>
         {/* Submit Button with Loader */}
         <button
           type="submit"
-          className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-lg shadow-lg transition duration-300 flex justify-center items-center"
+          className="w-full bg-orange-600 hover:bg-orange-600 text-white font-bold py-3 rounded-lg shadow-lg transition duration-300 flex justify-center items-center"
         >
           {loading ? (
             <CircularProgress size={24} color="inherit" />
