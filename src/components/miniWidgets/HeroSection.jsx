@@ -25,7 +25,7 @@ function HeroSection({ text }) {
         <div className="flex items-center justify-center h-full">
           <h3
             className="text-white font-bold capitalize text-4xl sm:text-6xl pt-4 letter-wide "
-            data-aos="fade-in"
+            data-aos="fade-down"
             data-aos-delay={200}
           >
             {text}

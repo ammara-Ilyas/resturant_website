@@ -10,7 +10,7 @@ const MenuList = () => {
       <div className=" w-[80%] mx-auto">
         <MenuDisplay />
       </div>
-      <div className="mt-20 border-2 flex flex-col items-center justify-center">
+      <div className="mt-20 flex flex-col items-center justify-center">
         <HeadingText heading="Check Out Our Sweets" text="Dessert" />
         <MenuDessert />
       </div>
