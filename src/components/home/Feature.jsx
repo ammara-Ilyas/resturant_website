@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Heading from "../miniWidgets/Heading";
+import Heading, { HeadingText } from "../miniWidgets/Heading";
 export default function FeatureCards() {
   const features = [
     {
@@ -43,18 +43,8 @@ export default function FeatureCards() {
   }, []);
   return (
     <div className="flex flex-col items-center justify-between mt-10">
-      <div className="flex items-center w-[70%] justify-center">
-        {" "}
-        <span className="h-[2px] w-[8%] mr-1 border-[1px] rounded-md border-custom-color"></span>{" "}
-        <div className="w-auto">
-          {" "}
-          <Heading text="Sevices" />
-        </div>{" "}
-        <span className="h-[2px] w-[8%] border-[1px] ml-1 rounded-md border-custom-color"></span>{" "}
-      </div>
-      <h2 className="text-black mb-6 text-4xl font-serif font-bold  letter-wide">
-        Our Fast Sevices
-      </h2>
+      <HeadingText heading=" Our Fast Sevices" text="Sevices" />
+
       <div
         style={{
           backgroundImage: "url('/images/bg-hero.jpg')",

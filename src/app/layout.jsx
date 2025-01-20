@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
         `}
       >
         <MenuProvider>
-          <main className=" w-screen box-border overflow-hidden">
+          <main className=" w-[100%] box-border overflow-hidden">
             <ProgressBarProviders>
               <Navbar />
               {children}

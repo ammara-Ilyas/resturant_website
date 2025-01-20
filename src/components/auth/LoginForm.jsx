@@ -110,7 +110,7 @@ const LoginForm = () => {
             Don't have account{" "}
             <Link
               href="/contact/register"
-              className="underline text-blue-600 italic"
+              className="underline text-orange-600 italic"
             >
               Register
             </Link>{" "}

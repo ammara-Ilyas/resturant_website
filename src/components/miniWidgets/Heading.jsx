@@ -1,6 +1,9 @@
 // pages/index.js
+"use client";
 import { Dancing_Script } from "next/font/google";
-
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 const dancingScript = Dancing_Script({
   subsets: ["latin"],
   weight: ["400", "700"],
@@ -25,9 +28,19 @@ export const Party = ({ text }) => {
 };
 
 export const HeadingText = ({ heading, text }) => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animation duration in milliseconds
+      offset: 100, // Offset from the top before animation starts
+    });
+  }, []);
   return (
     <div className="w-[100%] flex flex-col items-center justify-center">
-      <div className="flex items-center w-[70%] justify-center">
+      <div
+        className="flex items-center w-[70%] justify-center"
+        data-aos="fade-up"
+        data-aos-delay={300}
+      >
         {" "}
         <span className="h-[2px] w-[8%] mr-1 border-[1px] rounded-md border-custom-color"></span>{" "}
         <div className="w-auto">
@@ -40,7 +53,11 @@ export const HeadingText = ({ heading, text }) => {
         </div>{" "}
         <span className="h-[2px] w-[8%] border-[1px] ml-1 rounded-md border-custom-color"></span>{" "}
       </div>
-      <h2 className="text-black mb-6 text-4xl font-serif font-bold  letter-wide">
+      <h2
+        className="text-black mb-6 text-4xl font-serif font-bold  letter-wide"
+        data-aos="fade-up"
+        data-aos-delay={300}
+      >
         {heading}
       </h2>
     </div>

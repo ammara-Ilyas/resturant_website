@@ -137,7 +137,7 @@ const RegisterForm = () => {
             Already have account{" "}
             <Link
               href="/contact/login"
-              className="underline text-blue-600 italic"
+              className="underline text-orange-600 italic"
             >
               Login
             </Link>
