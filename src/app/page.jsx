@@ -21,7 +21,6 @@ export default function Home() {
       <ChefsCard />
       <ReservationForm />
       <PopularMenu />
-      <Wrapper />
       <TestimonialSlider />
     </>
   );

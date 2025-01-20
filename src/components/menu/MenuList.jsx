@@ -3,7 +3,7 @@ import MenuDisplay from "../miniWidgets/MenuDisplay";
 import MenuFilter from "./MenuFilter";
 import Heading from "../miniWidgets/Heading";
 import { HeadingText } from "../miniWidgets/Heading";
-import { MenuDessert } from "../miniWidgets/MenuDisplay";
+import { MenuDessert, MenuFood } from "../miniWidgets/MenuDisplay";
 const MenuList = () => {
   return (
     <div className="flex flex-col ">
@@ -13,6 +13,10 @@ const MenuList = () => {
       <div className="mt-20 flex flex-col items-center justify-center">
         <HeadingText heading="Check Out Our Sweets" text="Dessert" />
         <MenuDessert />
+      </div>
+      <div className="mt-20 flex flex-col items-center justify-center">
+        <HeadingText heading="Check Out Our Food" text="Dessert" />
+        <MenuFood />
       </div>
     </div>
   );
