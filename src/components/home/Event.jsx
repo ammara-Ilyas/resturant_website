@@ -1,7 +1,7 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { EventCard } from "../miniWidgets/Card";
-import Heading from "../miniWidgets/Heading";
+import Heading, { HeadingText } from "../miniWidgets/Heading";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import AOS from "aos";
@@ -30,7 +30,50 @@ const CustomDot = ({ onClick, ...rest }) => {
     />
   );
 };
-
+const events = [
+  {
+    party: "Custom Parties",
+    price: 275,
+    image: "/images/events/event_01.avif",
+    message:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. In necessitatibus magni repudiandae earum totam ea tenetur, officiis facilis? A, consectetur.",
+  },
+  {
+    party: "Private Parties",
+    price: 265,
+    image: "/images/events/event_02.jpg",
+    message:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. In necessitatibus magni repudiandae earum totam ea tenetur, officiis facilis? A, consectetur.",
+  },
+  {
+    party: "Wedding Parties",
+    price: 255,
+    image: "/images/events/event_03.jpg",
+    message:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. In necessitatibus magni repudiandae earum totam ea tenetur, officiis facilis? A, consectetur.",
+  },
+  {
+    party: "Birthday Parties",
+    price: 290,
+    image: "/images/events/event_04.jpg",
+    message:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. In necessitatibus magni repudiandae earum totam ea tenetur, officiis facilis? A, consectetur.",
+  },
+  {
+    party: "Custom Parties",
+    price: 275,
+    image: "/images/events/event_01.avif",
+    message:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. In necessitatibus magni repudiandae earum totam ea tenetur, officiis facilis? A, consectetur.",
+  },
+  {
+    party: "Custom Parties",
+    price: 300,
+    image: "/images/events/event_05.jpg",
+    message:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. In necessitatibus magni repudiandae earum totam ea tenetur, officiis facilis? A, consectetur.",
+  },
+];
 const EventSlider = () => {
   useEffect(() => {
     AOS.init({
@@ -38,43 +81,6 @@ const EventSlider = () => {
       offset: 100,
     });
   }, []);
-  const testimonials = [
-    {
-      party: "Custom Parties",
-      price: 275,
-      image: "/images/events/event_01.avif",
-      message:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. In necessitatibus magni repudiandae earum totam ea tenetur, officiis facilis? A, consectetur.",
-    },
-    {
-      party: "Private Parties",
-      price: 265,
-      image: "/images/events/event_02.jpg",
-      message:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. In necessitatibus magni repudiandae earum totam ea tenetur, officiis facilis? A, consectetur.",
-    },
-    {
-      party: "Wedding Parties",
-      price: 255,
-      image: "/images/events/event_03.jpg",
-      message:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. In necessitatibus magni repudiandae earum totam ea tenetur, officiis facilis? A, consectetur.",
-    },
-    {
-      party: "Birthday Parties",
-      price: 290,
-      image: "/images/events/event_04.jpg",
-      message:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. In necessitatibus magni repudiandae earum totam ea tenetur, officiis facilis? A, consectetur.",
-    },
-    {
-      party: "Custom Parties",
-      price: 300,
-      image: "/images/events/event_05.jpg",
-      message:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. In necessitatibus magni repudiandae earum totam ea tenetur, officiis facilis? A, consectetur.",
-    },
-  ];
 
   const carouselRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -102,18 +108,7 @@ const EventSlider = () => {
   };
   return (
     <div className="my-20 ">
-      <div className="flex items-center w-[70%] justify-center mx-auto ">
-        {" "}
-        <span className="h-[2px] w-[8%] mr-1 border-[1px] rounded-md border-custom-color"></span>{" "}
-        <div className="w-auto">
-          {" "}
-          <Heading text="Event" />
-        </div>{" "}
-        <span className="h-[2px] w-[8%] border-[1px] ml-2 rounded-md border-custom-color"></span>{" "}
-      </div>
-      <h2 className="text-black text-3xl sm:text-4xl mt-2 mb-6 text-center font-serif font-bold  letter-wide">
-        Our Special Events
-      </h2>
+      <HeadingText heading=" Our Special Events" text="Event" />
 
       <div className="w-[100%] mx-auto ">
         <Carousel
@@ -145,7 +140,7 @@ const EventSlider = () => {
           swipeable
           afterChange={(nextSlideIndex) => setActiveIndex(nextSlideIndex)} // Track active index
         >
-          {testimonials.map((testimonial, index) => (
+          {events.map((testimonial, index) => (
             <div
               key={index}
               className="border-l-[1px]"
@@ -162,3 +157,20 @@ const EventSlider = () => {
 };
 
 export default EventSlider;
+
+export const EventGrid = () => {
+  return (
+    <div className="border-2 grid gap-[1px] grid-col-1 md:grid-cols-2 lg:grid-cols-3">
+      {events.map((testimonial, index) => (
+        <div
+          key={index}
+          className="  w-[100%]"
+          // data-aos="fade-in"
+          // data-aos-delay={index * 300}
+        >
+          <EventCard testimonial={testimonial} />
+        </div>
+      ))}
+    </div>
+  );
+};

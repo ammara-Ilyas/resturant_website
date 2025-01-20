@@ -42,7 +42,7 @@ export default function FeatureCards() {
     });
   }, []);
   return (
-    <div className="flex flex-col items-center justify-between">
+    <div className="flex flex-col items-center justify-between mt-10">
       <div className="flex items-center w-[70%] justify-center">
         {" "}
         <span className="h-[2px] w-[8%] mr-1 border-[1px] rounded-md border-custom-color"></span>{" "}

@@ -138,5 +138,75 @@
     "description": "Lorem, deren, trataro, filede, nerada",
     "price": "$5.95",
     "image": "/images/menu/menu-item-1.png"
+  },
+  {
+    "name": "Cras Ultricies",
+    "category": "Dessert",
+    "description": "Lorem, deren, trataro, filede, nerada",
+    "price": "$6.50",
+    "image": "/images/menu/menu-item-1.png"
+  },
+  {
+    "name": "Duis Ultricies",
+    "category": "Dessert",
+    "description": "Lorem, deren, trataro, filede, nerada",
+    "price": "$5.95",
+    "image": "/images/menu/menu-item-1.png"
+  },
+  {
+    "name": "Chocolate Heaven",
+    "category": "Dessert",
+    "description": "Rich chocolate cake with a molten lava center",
+    "price": "$6.95",
+    "image": "/images/menu/menu-item-1.png"
+  },
+  {
+    "name": "Vanilla Dream",
+    "category": "Dessert",
+    "description": "Creamy vanilla panna cotta with fresh berries",
+    "price": "$5.50",
+    "image": "/images/menu/menu-item-1.png"
+  },
+  {
+    "name": "Berry Bliss",
+    "category": "Dessert",
+    "description": "Mixed berry parfait with layers of cream and granola",
+    "price": "$4.75",
+    "image": "/images/menu/menu-item-1.png"
+  },
+  {
+    "name": "Lemon Tart",
+    "category": "Dessert",
+    "description": "Zesty lemon tart with a buttery crust",
+    "price": "$6.25",
+    "image": "/images/menu/menu-item-1.png"
+  },
+  {
+    "name": "Caramel Delight",
+    "category": "Dessert",
+    "description": "Salted caramel cheesecake with a hint of chocolate",
+    "price": "$7.50",
+    "image": "/images/menu/menu-item-1.png"
+  },
+  {
+    "name": "Fruit Symphony",
+    "category": "Dessert",
+    "description": "Seasonal fruit platter with honey and mint",
+    "price": "$5.95",
+    "image": "/images/menu/menu-item-1.png"
+  },
+  {
+    "name": "Toffee Temptation",
+    "category": "Dessert",
+    "description": "Sticky toffee pudding with warm caramel sauce",
+    "price": "$6.75",
+    "image": "/images/menu/menu-item-1.png"
+  },
+  {
+    "name": "Mint Chocolate Bliss",
+    "category": "Dessert",
+    "description": "Mint chocolate chip ice cream with fudge topping",
+    "price": "$4.95",
+    "image": "/images/menu/menu-item-1.png"
   }
 ]

@@ -12,6 +12,7 @@ const MenuButton = () => {
     "Lunch",
     "Dinner",
     "Starters",
+    "Dessert",
   ]);
   const [selectedCate, setSelectedCate] = useState("Breakfast");
 
@@ -54,6 +55,7 @@ export function SortComponent({ setIsGrid, isGrid }) {
     "Lunch",
     "Dinner",
     "Starters",
+    "Dessert",
   ]);
   const [selectedCategory, setSelectedCategory] = useState("All");
 
