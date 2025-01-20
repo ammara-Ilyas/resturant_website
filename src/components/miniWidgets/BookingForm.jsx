@@ -4,9 +4,11 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useMenu } from "@/contextApi/MenuContext";
 
 const BookingForm = () => {
   const router = useRouter();
+  const { isBook, setIsBook } = useMenu();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -34,18 +36,18 @@ const BookingForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate phone number
-    if (!formData.phone) {
-      toast.error("Phone number is required!");
-      return;
-    }
-
-    if (formData.phone.length < 10) {
-      toast.error("Phone number must be at least 10 digits!");
-      return;
-    }
     let isLogin = localStorage.getItem("user");
     if (isLogin) {
+      // Validate phone number
+      if (!formData.phone) {
+        toast.error("Phone number is required!");
+        return;
+      }
+
+      if (formData.phone.length < 10) {
+        toast.error("Phone number must be at least 10 digits!");
+        return;
+      }
       setLoading(true);
       try {
         // Simulate API call
@@ -62,7 +64,7 @@ const BookingForm = () => {
 
         //   const result = await response.json();
         toast.success("Booking submitted successfully!");
-
+        setIsBook(false);
         // Reset form after successful submission
         setFormData({
           name: "",
@@ -76,11 +78,14 @@ const BookingForm = () => {
       } catch (error) {
         toast.error("Error submitting booking. Please try again.");
         console.error("Error:", error);
+        setIsBook(false);
       } finally {
         setLoading(false);
+        setIsBook(false);
       }
     } else {
       router.push("/contact/login");
+      setIsBook(false);
     }
   };
 
