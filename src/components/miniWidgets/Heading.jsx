@@ -54,7 +54,7 @@ export const HeadingText = ({ heading, text }) => {
         <span className="h-[2px] w-[8%] border-[1px] ml-1 rounded-md border-custom-color"></span>{" "}
       </div>
       <h2
-        className="text-black mb-6 text-4xl font-serif font-bold  letter-wide"
+        className="text-black mb-6 text-4xl font-serif font-bold mt-3  letter-wide"
         data-aos="fade-up"
         data-aos-delay={300}
       >

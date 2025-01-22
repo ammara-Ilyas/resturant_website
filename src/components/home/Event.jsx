@@ -6,6 +6,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Link from "next/link";
 const CustomDot = ({ onClick, ...rest }) => {
   const { active, index } = rest; // Get dot's index and active state
   // console.log("rest", rest);
@@ -32,6 +33,7 @@ const CustomDot = ({ onClick, ...rest }) => {
 };
 const events = [
   {
+    id: 1,
     party: "Custom Parties",
     price: 275,
     image: "/images/events/event_01.avif",
@@ -39,6 +41,8 @@ const events = [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. In necessitatibus magni repudiandae earum totam ea tenetur, officiis facilis? A, consectetur.",
   },
   {
+    id: 2,
+
     party: "Private Parties",
     price: 265,
     image: "/images/events/event_02.jpg",
@@ -46,6 +50,8 @@ const events = [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. In necessitatibus magni repudiandae earum totam ea tenetur, officiis facilis? A, consectetur.",
   },
   {
+    id: 3,
+
     party: "Wedding Parties",
     price: 255,
     image: "/images/events/event_03.jpg",
@@ -53,6 +59,8 @@ const events = [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. In necessitatibus magni repudiandae earum totam ea tenetur, officiis facilis? A, consectetur.",
   },
   {
+    id: 4,
+
     party: "Birthday Parties",
     price: 290,
     image: "/images/events/event_04.jpg",
@@ -60,6 +68,8 @@ const events = [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. In necessitatibus magni repudiandae earum totam ea tenetur, officiis facilis? A, consectetur.",
   },
   {
+    id: 5,
+
     party: "Custom Parties",
     price: 275,
     image: "/images/events/event_01.avif",
@@ -67,6 +77,8 @@ const events = [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. In necessitatibus magni repudiandae earum totam ea tenetur, officiis facilis? A, consectetur.",
   },
   {
+    id: 6,
+
     party: "Custom Parties",
     price: 300,
     image: "/images/events/event_05.jpg",
@@ -140,14 +152,14 @@ const EventSlider = () => {
           swipeable
           afterChange={(nextSlideIndex) => setActiveIndex(nextSlideIndex)} // Track active index
         >
-          {events.map((testimonial, index) => (
+          {events.map((event, index) => (
             <div
               key={index}
               className="border-l-[1px]"
               data-aos="fade-up"
               data-aos-delay={(index + 1) * 300}
             >
-              <EventCard testimonial={testimonial} />
+              <EventCard testimonial={event} />
             </div>
           ))}
         </Carousel>
@@ -161,14 +173,16 @@ export default EventSlider;
 export const EventGrid = () => {
   return (
     <div className="border-2 grid gap-[1px] grid-col-1 md:grid-cols-2 lg:grid-cols-3">
-      {events.map((testimonial, index) => (
+      {events.map((event, index) => (
         <div
           key={index}
           className="  w-[100%]"
           // data-aos="fade-in"
           // data-aos-delay={index * 300}
         >
-          <EventCard testimonial={testimonial} />
+          <Link href={`/events/${event.id}`}>
+            <EventCard testimonial={event} />
+          </Link>
         </div>
       ))}
     </div>

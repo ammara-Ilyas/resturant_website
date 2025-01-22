@@ -20,7 +20,6 @@ export default function Home() {
       <EventSlider />
       <ChefsCard />
       <ReservationForm />
-      <PopularMenu />
       <TestimonialSlider />
     </>
   );

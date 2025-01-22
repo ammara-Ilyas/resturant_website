@@ -70,8 +70,7 @@ const MenuDisplay = () => {
                       isGrid === "grid"
                         ? " flex-col border-orange-600 -rotate-[8deg] "
                         : "flex-row w-[100%] border-2 rotate-0 "
-                    } 
-items-center px-0 justify-center border-2 rounded-lg  p-2 group-hover:rotate-0 group-hover:scale-105 duration-300 transition-transform ease-in-out cursor-pointer`}
+                    } items-center px-0 justify-center border-2 rounded-lg  p-2 group-hover:rotate-0 group-hover:scale-105 duration-300 transition-transform ease-in-out cursor-pointer`}
                     onClick={() => handleIndex(index)}
                   >
                     {/* Image Container */}

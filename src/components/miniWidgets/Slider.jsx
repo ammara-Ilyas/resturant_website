@@ -49,22 +49,24 @@ const Slider = ({ sliderData, initialIndex = 0 }) => {
           {sliderData.map((item, index) => (
             <div
               key={index}
-              className="min-w-full  flex h-[500px] justify-center items-center bg-black/10 overflow-visible"
+              className="min-w-full flex h-[500px] justify-center items-center bg-black/10 overflow-hidden relative"
             >
-              <div className=" w-full mx-auto h-[500px] relative">
+              {/* Image Container */}
+              <div className="w-full mx-auto h-full relative">
                 <Image
                   src={item.image}
-                  alt={item.name}
-                  className="object-cover h-full w-full "
-                  fill
+                  alt={item.image}
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-md"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
 
-              <div className="absolute bg-black bg-opacity-50  text-white p-4 rounded bottom-4 left-4">
+              {/* <div className="absolute bg-black bg-opacity-50  text-white p-4 rounded bottom-4 left-4">
                 <h3 className="font-bold">{item.title}</h3>
                 <p>{item.description}</p>
-              </div>
+              </div> */}
             </div>
           ))}
         </div>
