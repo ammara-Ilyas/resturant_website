@@ -1,12 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { useMenu } from "@/contextApi/MenuContext";
 import Slider from "./Slider";
 const MenuHome = () => {
-  const { menuList } = useMenu();
+  // const { menuList } = useMenu();
   const [selectedIndex, setSelectedIndex] = useState(null);
-
+  const menuList = [];
   // Function to handle item selection
   const handleIndex = (index) => {
     console.log("Selected index:", index);
@@ -17,13 +16,18 @@ const MenuHome = () => {
   const handleClose = () => {
     setSelectedIndex(null);
   };
-  const displayitems = menuList.slice(0, 6);
+  const displayitems = menuList.forEach((item) => {
+    console.log("item", item.items);
+
+    // return item.items.slice(0, 6);
+  });
+  console.log("display", displayitems);
 
   return (
     <div className=" w-[80%] mx-auto">
       <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 items-center gap-8 w-[100%] mx-auto">
         {menuList &&
-          displayitems.map((item, index) => (
+          menuList.map((item, index) => (
             <div
               key={index}
               className="bg-white flex flex-col items-center pt-4  group font-sans letter-wide"
@@ -34,8 +38,8 @@ const MenuHome = () => {
               >
                 {" "}
                 <Image
-                  src={item.image}
-                  alt={item.name}
+                  src={item[index].img}
+                  alt={item[index].name}
                   width={300}
                   height={160}
                   className="object-cover  p-2"
@@ -43,11 +47,11 @@ const MenuHome = () => {
               </div>
               <div className="p-4 text-center mt-7 ">
                 <h4 className="text-lg font-semibold text-gray-800">
-                  {item.name}
+                  {item[index].name}
                 </h4>
-                <p className="text-gray-500 text-sm">{item.description}</p>
+                <p className="text-gray-500 text-sm">{item[index].des}</p>
                 <p className="text-orange-600 text-lg font-bold mt-2">
-                  {item.price}
+                  {item[index].price}
                 </p>
               </div>
             </div>

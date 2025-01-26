@@ -8,7 +8,8 @@ import Logo from "./components/Logo";
 import { useMenu } from "@/contextApi/MenuContext";
 import { usePathname } from "next/navigation";
 const Navbar = () => {
-  const { isBook, setIsBook } = useMenu();
+  const [isBook, setIsBook] = useState(false);
+  // const { isBook, setIsBook } = useMenu();
   const router = useRouter();
   const pathname = usePathname();
   const [nav, setNav] = useState(false);

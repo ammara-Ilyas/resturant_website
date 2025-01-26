@@ -1,212 +1,354 @@
-[
-  {
-    "name": "Magnam Tiste",
-    "category": "Starters",
-    "description": "Lorem, deren, trataro, filede, nerada",
-    "price": "$5.95",
-    "image": "/images/menu/menu-item-1.png"
-  },
-  {
-    "name": "Aut Luia",
-    "category": "Starters",
-    "description": "Lorem, deren, trataro, filede, nerada",
-    "price": "$14.95",
-    "image": "/images/menu/menu-item-2.png"
-  },
-  {
-    "name": "Est Eligendi",
-    "category": "Breakfast",
-    "description": "Lorem, deren, trataro, filede, nerada",
-    "price": "$8.95",
-    "image": "/images/menu/menu-item-3.png"
-  },
-  {
-    "name": "Eos Luibusdam",
-    "category": "Lunch",
-    "description": "Lorem, deren, trataro, filede, nerada",
-    "price": "$12.95",
-    "image": "/images/menu/menu-item-4.png"
-  },
-  {
-    "name": "Laboriosam Direva",
-    "category": "Dinner",
-    "description": "Lorem, deren, trataro, filede, nerada",
-    "price": "$9.95",
-    "image": "/images/menu/menu-item-5.png"
-  },
-  {
-    "name": "Vero Amet",
-    "category": "Lunch",
-    "description": "Lorem, deren, trataro, filede, nerada",
-    "price": "$10.95",
-    "image": "/images/menu/menu-item-1.png"
-  },
-  {
-    "name": "Nemo Ipsum",
-    "category": "Dinner",
-    "description": "Lorem, deren, trataro, filede, nerada",
-    "price": "$15.95",
-    "image": "/images/menu/menu-item-1.png"
-  },
-  {
-    "name": "Dolor Sit",
-    "category": "Breakfast",
-    "description": "Lorem, deren, trataro, filede, nerada",
-    "price": "$7.95",
-    "image": "/images/menu/menu-item-1.png"
-  },
-  {
-    "name": "Amet Consectetur",
-    "category": "Starters",
-    "description": "Lorem, deren, trataro, filede, nerada",
-    "price": "$6.95",
-    "image": "/images/menu/menu-item-1.png"
-  },
-  {
-    "name": "Adipiscing Elit",
-    "category": "Dessert",
-    "description": "Lorem, deren, trataro, filede, nerada",
-    "price": "$4.95",
-    "image": "/images/menu/menu-item-1.png"
-  },
-  {
-    "name": "Fusce Vestibulum",
-    "category": "Starters",
-    "description": "Lorem, deren, trataro, filede, nerada",
-    "price": "$5.50",
-    "image": "/images/menu/menu-item-1.png"
-  },
-  {
-    "name": "Curabitur Sollicitudin",
-    "category": "Lunch",
-    "description": "Lorem, deren, trataro, filede, nerada",
-    "price": "$13.95",
-    "image": "/images/menu/menu-item-1.png"
-  },
-  {
-    "name": "Pellentesque Habitant",
-    "category": "Breakfast",
-    "description": "Lorem, deren, trataro, filede, nerada",
-    "price": "$9.25",
-    "image": "/images/menu/menu-item-1.png"
-  },
-  {
-    "name": "Suspendisse Ornare",
-    "category": "Dinner",
-    "description": "Lorem, deren, trataro, filede, nerada",
-    "price": "$11.75",
-    "image": "/images/menu/menu-item-1.png"
-  },
-  {
-    "name": "Cras Ultricies",
-    "category": "Dessert",
-    "description": "Lorem, deren, trataro, filede, nerada",
-    "price": "$6.50",
-    "image": "/images/menu/menu-item-1.png"
-  },
-  {
-    "name": "Quisque Euismod",
-    "category": "Lunch",
-    "description": "Lorem, deren, trataro, filede, nerada",
-    "price": "$12.50",
-    "image": "/images/menu/menu-item-1.png"
-  },
-  {
-    "name": "Vestibulum Ante",
-    "category": "Breakfast",
-    "description": "Lorem, deren, trataro, filede, nerada",
-    "price": "$8.50",
-    "image": "/images/menu/menu-item-1.png"
-  },
-  {
-    "name": "Nullam Vitae",
-    "category": "Starters",
-    "description": "Lorem, deren, trataro, filede, nerada",
-    "price": "$6.25",
-    "image": "/images/menu/menu-item-1.png"
-  },
-  {
-    "name": "Mauris Varius",
-    "category": "Dinner",
-    "description": "Lorem, deren, trataro, filede, nerada",
-    "price": "$14.50",
-    "image": "/images/menu/menu-item-1.png"
-  },
-  {
-    "name": "Duis Ultricies",
-    "category": "Dessert",
-    "description": "Lorem, deren, trataro, filede, nerada",
-    "price": "$5.95",
-    "image": "/images/menu/menu-item-1.png"
-  },
-  {
-    "name": "Cras Ultricies",
-    "category": "Dessert",
-    "description": "Lorem, deren, trataro, filede, nerada",
-    "price": "$6.50",
-    "image": "/images/menu/menu-item-1.png"
-  },
-  {
-    "name": "Duis Ultricies",
-    "category": "Dessert",
-    "description": "Lorem, deren, trataro, filede, nerada",
-    "price": "$5.95",
-    "image": "/images/menu/menu-item-1.png"
-  },
-  {
-    "name": "Chocolate Heaven",
-    "category": "Dessert",
-    "description": "Rich chocolate cake with a molten lava center",
-    "price": "$6.95",
-    "image": "/images/menu/menu-item-1.png"
-  },
-  {
-    "name": "Vanilla Dream",
-    "category": "Dessert",
-    "description": "Creamy vanilla panna cotta with fresh berries",
-    "price": "$5.50",
-    "image": "/images/menu/menu-item-1.png"
-  },
-  {
-    "name": "Berry Bliss",
-    "category": "Dessert",
-    "description": "Mixed berry parfait with layers of cream and granola",
-    "price": "$4.75",
-    "image": "/images/menu/menu-item-1.png"
-  },
-  {
-    "name": "Lemon Tart",
-    "category": "Dessert",
-    "description": "Zesty lemon tart with a buttery crust",
-    "price": "$6.25",
-    "image": "/images/menu/menu-item-1.png"
-  },
-  {
-    "name": "Caramel Delight",
-    "category": "Dessert",
-    "description": "Salted caramel cheesecake with a hint of chocolate",
-    "price": "$7.50",
-    "image": "/images/menu/menu-item-1.png"
-  },
-  {
-    "name": "Fruit Symphony",
-    "category": "Dessert",
-    "description": "Seasonal fruit platter with honey and mint",
-    "price": "$5.95",
-    "image": "/images/menu/menu-item-1.png"
-  },
-  {
-    "name": "Toffee Temptation",
-    "category": "Dessert",
-    "description": "Sticky toffee pudding with warm caramel sauce",
-    "price": "$6.75",
-    "image": "/images/menu/menu-item-1.png"
-  },
-  {
-    "name": "Mint Chocolate Bliss",
-    "category": "Dessert",
-    "description": "Mint chocolate chip ice cream with fudge topping",
-    "price": "$4.95",
-    "image": "/images/menu/menu-item-1.png"
-  }
-]
+{
+  "categories": [
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "name": "Kheer",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 20
+        },
+        {
+          "name": "Gulab Jamun",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 30
+        },
+        {
+          "name": "Ras Malai",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 40
+        },
+        {
+          "name": "Jalebi",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 50
+        },
+        {
+          "name": "Shahi Tukray",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 60
+        }
+      ]
+    },
+    {
+      "name": "Karahi",
+      "items": [
+        {
+          "name": "Hadi Karahi",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 30
+        },
+        {
+          "name": "Chicken Karahi",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 40
+        },
+        {
+          "name": "Mutton Karahi",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 50
+        },
+        {
+          "name": "White Karahi",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 60
+        },
+        {
+          "name": "Beef Karahi",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 70
+        }
+      ]
+    },
+    {
+      "name": "BBQ",
+      "items": [
+        {
+          "name": "Seekh Kabab",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 25
+        },
+        {
+          "name": "Chicken Tikka",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 35
+        },
+        {
+          "name": "Malai Boti",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 45
+        },
+        {
+          "name": "Beef Boti",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 55
+        },
+        {
+          "name": "Fish Tikka",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 65
+        }
+      ]
+    },
+    {
+      "name": "Biryani and Rice",
+      "items": [
+        {
+          "name": "Chicken Biryani",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 20
+        },
+        {
+          "name": "Mutton Biryani",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 30
+        },
+        {
+          "name": "Pulao",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 40
+        },
+        {
+          "name": "Beef Biryani",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 50
+        },
+        {
+          "name": "Special Karachi Biryani",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 60
+        }
+      ]
+    },
+    {
+      "name": "Snacks",
+      "items": [
+        {
+          "name": "Samosa",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 15
+        },
+        {
+          "name": "Pakora",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 25
+        },
+        {
+          "name": "Chaat",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 35
+        },
+        {
+          "name": "Gol Gappay",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 45
+        },
+        {
+          "name": "Roll Paratha",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 55
+        }
+      ]
+    },
+    {
+      "name": "Special Dishes",
+      "items": [
+        {
+          "name": "Nihari",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 30
+        },
+        {
+          "name": "Haleem",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 40
+        },
+        {
+          "name": "Payee",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 50
+        },
+        {
+          "name": "Kunna Gosht",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 60
+        },
+        {
+          "name": "Chicken Handi",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 70
+        }
+      ]
+    },
+    {
+      "name": "Beverages",
+      "items": [
+        {
+          "name": "Lassi",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 20
+        },
+        {
+          "name": "Mint Lemonade",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 30
+        },
+        {
+          "name": "Rooh Afza",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 40
+        },
+        {
+          "name": "Soft Drink",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 50
+        },
+        {
+          "name": "Green Tea",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 60
+        }
+      ]
+    },
+    {
+      "name": "Seafood",
+      "items": [
+        {
+          "name": "Grilled Fish",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 40
+        },
+        {
+          "name": "Prawn Masala",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 50
+        },
+        {
+          "name": "Fish Karahi",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 60
+        },
+        {
+          "name": "Fried Fish",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 70
+        },
+        {
+          "name": "Prawn Biryani",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 80
+        }
+      ]
+    },
+    {
+      "name": "Fast Food",
+      "items": [
+        {
+          "name": "Zinger Burger",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 30
+        },
+        {
+          "name": "Club Sandwich",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 40
+        },
+        {
+          "name": "Shawarma",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 50
+        },
+        {
+          "name": "Cheese Fries",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 60
+        },
+        {
+          "name": "Chicken Nuggets",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 70
+        }
+      ]
+    },
+    {
+      "name": "Vegetarian Dishes",
+      "items": [
+        {
+          "name": "Aloo Palak",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 20
+        },
+        {
+          "name": "Mixed Vegetable Curry",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 30
+        },
+        {
+          "name": "Daal Makhani",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 40
+        },
+        {
+          "name": "Bhindi Masala",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 50
+        },
+        {
+          "name": "Baingan Bharta",
+          "img": "/images/res.jpg",
+          "des": "Lorem, deren, trataro, filede, nerada",
+          "price": 60
+        }
+      ]
+    }
+  ]
+}

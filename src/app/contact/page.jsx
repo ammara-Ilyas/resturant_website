@@ -6,6 +6,8 @@ import HeroSection from "@/components/miniWidgets/HeroSection";
 import ContactInfo from "@/components/auth/ContactInfo";
 import Heading from "@/components/miniWidgets/Heading";
 import EmbeddedMap from "@/components/auth/Map";
+import MenuForm from "@/components/menu/MenuForm";
+import MenuPackageForm from "@/components/menu/MenuPackageForm";
 const page = () => {
   useEffect(() => {});
   return (
@@ -30,6 +32,8 @@ const page = () => {
       <ContactInfo />
 
       <ContactForm />
+      <MenuForm />
+      <MenuPackageForm />
     </>
   );
 };

@@ -1,23 +1,23 @@
-import React from "react";
-import MenuDisplay from "../miniWidgets/MenuDisplay";
-import MenuFilter from "./MenuFilter";
-import Heading from "../miniWidgets/Heading";
-import { HeadingText } from "../miniWidgets/Heading";
-import { MenuDessert, MenuFood } from "../miniWidgets/MenuDisplay";
+"use client";
+import React, { useEffect } from "react";
+import { MenuDisplay } from "../miniWidgets/MenuDisplay";
+import { useDispatch, useSelector } from "react-redux";
+import MenuCategory from "./MenuCategory";
 const MenuList = () => {
+  const dispatch = useDispatch();
+  const { category, filteredMenuList, menuList, loading } = useSelector(
+    (state) => state.menu
+  );
+  useEffect(() => {});
   return (
-    <div className="flex flex-col ">
-      <div className=" w-[80%] mx-auto">
-        <MenuDisplay />
-      </div>
-      <div className="mt-20 flex flex-col items-center justify-center">
-        <HeadingText heading="Check Out Our Sweets" text="Dessert" />
-        <MenuDessert />
-      </div>
-      <div className="mt-20 flex flex-col items-center justify-center">
-        <HeadingText heading="Check Out Our Food" text="Dessert" />
-        <MenuFood />
-      </div>
+    <div className="flex flex-col  w-[90%] mx-auto ">
+      {menuList.map((menu, i) => (
+        <div className=" w-[90%] mx-auto " key={i}>
+          {" "}
+          <MenuCategory category={menu.name} />
+          <MenuDisplay menu={menu.items} />
+        </div>
+      ))}
     </div>
   );
 };

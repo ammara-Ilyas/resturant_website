@@ -54,8 +54,8 @@ const Slider = ({ sliderData, initialIndex = 0 }) => {
               {/* Image Container */}
               <div className="w-full mx-auto h-full relative">
                 <Image
-                  src={item.image}
-                  alt={item.image}
+                  src={item.img}
+                  alt={item.name}
                   layout="fill"
                   objectFit="cover"
                   className="rounded-md"

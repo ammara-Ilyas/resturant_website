@@ -1,5 +1,5 @@
 import React from "react";
-import ReservationForm from "./ReservationForm";
+import ReservationForm, { CheckAvailability } from "./ReservationForm";
 import SingleEventCard from "./SingleEventCard";
 import SingleEventDes from "./SingleEventDes";
 import SingleEventSlider from "./SingleEventSlider";
@@ -18,6 +18,7 @@ const SingleEvent = () => {
           <Ratings />
         </div>
         <div className="border-2 w-[40%] border-red-700">
+          <CheckAvailability />
           <ReservationForm />
         </div>
       </div>

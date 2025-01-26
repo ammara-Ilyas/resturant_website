@@ -4,10 +4,9 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Heading from "../miniWidgets/Heading";
-import { useMenu } from "@/contextApi/MenuContext";
 import BookingForm from "./BookingForm";
 const Booking = () => {
-  const { isBook, setIsBook } = useMenu();
+  const [isBook, setIsBook] = useState(false);
   useEffect(() => {
     AOS.init({
       duration: 1000,

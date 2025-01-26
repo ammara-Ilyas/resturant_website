@@ -1,8 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
+import ReduxProviders from "@/store/ReduxProvider";
 import Footer from "@/components/layout/Footer";
-import { MenuProvider } from "@/contextApi/MenuContext";
+import MenuProvider from "@/contextApi/MenuContext";
 import ProgressBarProviders from "@/components/miniWidgets/ProgressBar";
 import { ToastContainer, toast } from "react-toastify";
 import Booking from "@/components/miniWidgets/Wrapper";
@@ -28,17 +29,19 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased relativen 
         `}
       >
-        <MenuProvider>
-          <main className=" w-[100%] box-border overflow-hidden">
-            <ProgressBarProviders>
-              <Navbar />
-              {children}
-              <Footer />
-            </ProgressBarProviders>
-            <ToastContainer />
-            <Booking />
-          </main>
-        </MenuProvider>
+        <ReduxProviders>
+          <MenuProvider>
+            <main className=" w-[100%] box-border overflow-hidden">
+              <ProgressBarProviders>
+                <Navbar />
+                {children}
+                <Footer />
+              </ProgressBarProviders>
+              <ToastContainer />
+              <Booking />
+            </main>
+          </MenuProvider>
+        </ReduxProviders>
       </body>
     </html>
   );
