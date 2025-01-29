@@ -9,7 +9,6 @@ import "aos/dist/aos.css";
 import Link from "next/link";
 const CustomDot = ({ onClick, ...rest }) => {
   const { active, index } = rest; // Get dot's index and active state
-  // console.log("rest", rest);
 
   const handleClick = () => {
     console.log(`Dot clicked for card index: ${index}`); // Log the card index

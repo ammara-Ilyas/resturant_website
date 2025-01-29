@@ -242,6 +242,24 @@
           "img": "/images/res.jpg",
           "des": "Lorem, deren, trataro, filede, nerada",
           "price": 60
+        },
+        {
+          "name": "Fruit Punch",
+          "img": "/images/res.jpg",
+          "des": "A refreshing mix of fruits and juice",
+          "price": 35
+        },
+        {
+          "name": "Coconut Water",
+          "img": "/images/res.jpg",
+          "des": "Natural and hydrating, served chilled",
+          "price": 25
+        },
+        {
+          "name": "Herbal Cooler",
+          "img": "/images/res.jpg",
+          "des": "Infused with herbs for a calming start",
+          "price": 45
         }
       ]
     },

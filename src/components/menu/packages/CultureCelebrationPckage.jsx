@@ -54,7 +54,7 @@ export const CulturalCelebrationPackage = () => {
   return (
     <div className="flex flex-col items-center justify-center">
       <form className="bg-white text-black p-8    rounded-2xl shadow-md w-full max-w-lg">
-        <h2 className="text-2xl font-bold text-center text-orange-600 mb-6">
+        <h2 className="text-lg font-bold bg-orange-600 text-white py-2 px-4 rounded-t-lg">
           Cultural Celebration Package Offer
         </h2>
 

@@ -33,12 +33,12 @@ export default function RootLayout({ children }) {
           <MenuProvider>
             <main className=" w-[100%] box-border overflow-hidden">
               <ProgressBarProviders>
+                <Booking />
                 <Navbar />
                 {children}
                 <Footer />
               </ProgressBarProviders>
-              <ToastContainer />
-              <Booking />
+              <ToastContainer />]{" "}
             </main>
           </MenuProvider>
         </ReduxProviders>

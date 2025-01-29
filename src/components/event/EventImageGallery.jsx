@@ -29,12 +29,15 @@ const Gallery = () => {
   const selectedImages = images.slice(0, 5);
   const firstImg = images[0];
   const lastImg = images[images.length - 1];
-  console.log("last ", firstImg);
+  // console.log("last ", firstImg);
 
-  console.log("images in gallery", images);
+  // console.log("images in gallery", images);
 
   return (
-    <div>
+    <div id="photo" className="border rounded-lg shadow-md mt-5">
+      <h2 className="text-lg font-bold mb-12 bg-orange-600 text-white py-2 px-4 rounded-t-lg">
+        Gallery
+      </h2>
       <div className="grid my-5 grid-cols-3 grid-rows-[repeat(3,_150px)] gap-2 w-[90%] mx-auto ">
         {/* Large Image */}
         <div className="row-span-2 relative  ">

@@ -22,7 +22,7 @@ const MenuCategory = ({ category }) => {
       <div className="absolute inset-0 bg-black bg-opacity-70  rounded-lg h-full ">
         <div className="flex items-center justify-center h-full">
           <h3
-            className="text-white font-bold capitalize text-4xl sm:text-6xl  letter-wide "
+            className="text-white font-bold capitalize text-2xl sm:text-6xl  letter-wide "
             data-aos="fade-down"
             data-aos-delay={50}
           >

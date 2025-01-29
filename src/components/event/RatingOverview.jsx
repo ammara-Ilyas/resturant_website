@@ -31,7 +31,10 @@ const Ratings = () => {
     },
   ];
   return (
-    <div className="w-[100%] mx-auto bg-white shadow-md rounded-lg  border-black ">
+    <div
+      id="review"
+      className="w-[100%] mx-auto bg-white shadow-md rounded-lg  border-black "
+    >
       <h2 className="text-lg font-bold bg-orange-600 text-white py-2 px-4 rounded-t-lg">
         What {totalReviews.toLocaleString()} people are saying
       </h2>

@@ -1,11 +1,12 @@
 "use client";
+import Link from "next/link";
 import React, { useState } from "react";
 
 const sections = [
-  { id: "overview", label: "Overview" },
-  { id: "photo", label: "Photo" },
-  { id: "menu", label: "Menu" },
-  { id: "review", label: "Review" },
+  { id: "#overview", label: "Overview" },
+  { id: "#photo", label: "Photo" },
+  { id: "#menu", label: "Menu" },
+  { id: "#review", label: "Review" },
 ];
 export const ScrollToSection = () => {
   const handleScroll = (id) => {
@@ -19,13 +20,15 @@ export const ScrollToSection = () => {
       {/* Navigation Links */}
       <div className="flex space-x-4 bg-orange-600 text-white my-3 font-semibold rounded-t-lg py-1 ">
         {sections.map((section) => (
-          <button
-            key={section.id}
-            onClick={() => handleScroll(section.id)}
-            className="px-4 py-2  rounded-md transition-all duration-200 capitalize"
-          >
-            {section.label}
-          </button>
+          <Link href={section.id} key={section.id}>
+            {" "}
+            <button
+              onClick={() => handleScroll(section.id)}
+              className="px-4 py-2  rounded-md transition-all duration-200 capitalize"
+            >
+              {section.label}
+            </button>
+          </Link>
         ))}
       </div>
     </div>
@@ -54,7 +57,7 @@ const SingleEventDes = () => {
         ))}
       </div>
 
-      <div className="mt-6  ">
+      <div className="mt-6  " id="overview">
         <h2 className="text-lg font-bold  px-4 rounded-t-lg">Overview</h2>
         <div className="mt-3 px-6">
           {" "}

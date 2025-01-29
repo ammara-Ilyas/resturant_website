@@ -16,32 +16,35 @@ import {
   setMenuList,
   setFilteredMenuList,
   setLoading,
+  setEvents,
 } from "@/store/slice/MenuSlice";
 export default function Home() {
   const dispatch = useDispatch();
-  const { menuList, filteredMenuList, category, loading, isBook } = useSelector(
-    (state) => state.menu
-  );
+  const { menuList, filteredMenuList, category, loading, isBook, events } =
+    useSelector((state) => state.menu);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/data/menu.json");
-        const data = await response.json();
-        dispatch(setMenuList(data.categories));
-        dispatch(setFilteredMenuList(data.categories));
-        console.log("menu list", menuList);
-        console.log("menu filter list", filteredMenuList);
-      } catch (error) {
-        console.error(error);
-      }
-      dispatch(setLoading(false));
-    };
-    fetchData();
-  }, [dispatch]);
-
-  console.log("menu items", menuList);
-  console.log("menu filtered items", filteredMenuList);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch("/data/menu.json");
+  //       const data = await response.json();
+  //       dispatch(setMenuList(data.categories));
+  //       dispatch(setFilteredMenuList(data.categories));
+  //       const eventResponse = await fetch("/data/events.json");
+  //       const events = await eventResponse.json();
+  //       dispatch(setEvents(events.events));
+  //       localStorage.setItem("events", JSON.stringify(events.events)); // Correctly serialize and store
+  //       localStorage.setItem("menu", JSON.stringify(data.categories));
+  //       console.log("event list", events);
+  //       console.log("menu list", menuList);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //     dispatch(setLoading(false));
+  //   };
+  //   fetchData();
+  // }, [dispatch]);
+  // console.log("events", events);
 
   return (
     <>

@@ -1,79 +1,207 @@
-import { useState } from "react";
+"use client";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import CircularProgress from "@mui/material/CircularProgress";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  setTotalPrice,
+  setIsBook,
+  setIsMenuForm,
+} from "@/store/slice/EventSlice";
+import { toast } from "react-toastify";
+// import CheckAvailability from "./CheckAvailability";
+
 const ReservationForm = () => {
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  const [isAvail, setIsAvail] = useState(true);
+  const [selectedEvent, setSelectedEvent] = useState("");
+  const [standardPrice, setStandardPrice] = useState(0);
+  const [outStandardPrice, setOutStandardPrice] = useState(0);
+  const [selectedPrice, setSelectedPrice] = useState(0);
+  const [people, setPeople] = useState(0);
+  const [withMenu, setWithMenu] = useState(null);
+  const [price, setPrice] = useState(0);
+
+  const { events } = useSelector((state) => state.menu);
+
+  useEffect(() => {
+    if (selectedEvent) {
+      const selectedEventData = events.find(
+        (event) => event.name === selectedEvent
+      );
+      if (selectedEventData) {
+        setStandardPrice(selectedEventData.standardPrice);
+        setOutStandardPrice(selectedEventData.outStandardPrice);
+        setSelectedPrice(0);
+        setPrice(0); // Reset total price when event changes
+      }
+    }
+  }, [selectedEvent, events]);
+
+  useEffect(() => {
+    if (selectedPrice && people) {
+      setPrice(selectedPrice * people);
+    }
+  }, [selectedPrice, people]);
+
+  const handleProceed = () => {
+    if (!selectedEvent || !selectedPrice || people <= 0) {
+      toast.error("Please fill out all fields and select pricing.");
+      return;
+    }
+    if (withMenu === null) {
+      toast.error("Please select 'With Menu' or 'Without Menu'.");
+      return;
+    }
+
+    dispatch(setTotalPrice(price));
+
+    if (withMenu) {
+      dispatch(setIsMenuForm("menu"));
+    } else {
+      dispatch(setIsMenuForm("payment"));
+    }
+    dispatch(setIsBook(true));
+  };
+
   return (
-    <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-6">
-      {/* Header Section */}
-      <div className="mb-6 border-b pb-4">
-        <h1 className="text-xl font-semibold text-gray-800">La Connessa</h1>
-        <p className="text-gray-600">
-          <span className="font-medium">Fri, Feb 14</span> · 4:45 PM · 4 people
-          (Standard seating)
-        </p>
-        <div className="mt-2 text-sm text-blue-600 bg-blue-100 p-2 rounded">
-          We're holding this table for you for <strong>3:40 minutes</strong>
-        </div>
+    <div className="w-full mx-auto bg-white shadow-lg rounded-lg p-6">
+      <div className="mb-10">
+        <ul className="flex flex-row items-center text-black border-b-2 border-b-gray-400 font-semibold gap-5">
+          <li
+            onClick={() => setIsAvail(true)}
+            className={`cursor-pointer ${
+              isAvail ? "text-orange-600 border-b-2 border-orange-600" : ""
+            }`}
+          >
+            Availability
+          </li>
+          <li
+            onClick={() => setIsAvail(false)}
+            className={`cursor-pointer ${
+              !isAvail ? "text-orange-600 border-b-2 border-orange-600" : ""
+            }`}
+          >
+            Reservation
+          </li>
+        </ul>
       </div>
 
-      {/* Reservation Summary */}
-      <div className="mb-6 border-b pb-4">
-        <h2 className="text-lg font-semibold text-gray-800">
-          Reservation summary
-        </h2>
-        <div className="flex justify-between mt-2 text-gray-700">
-          <span>Experience</span>
-          <span>Valentine's Day Dinner</span>
-        </div>
-        <div className="flex justify-between mt-2 text-gray-700">
-          <span>Total</span>
-          <span className="font-medium">$200.00</span>
-        </div>
-        <p className="text-sm text-gray-500 mt-2">
-          Price listed includes all taxes, fees, and service charges.
-        </p>
+      <div className="w-full">
+        {isAvail ? (
+          <CheckAvailability />
+        ) : (
+          <div className="border rounded-lg shadow-md p-6">
+            <h2 className="text-lg font-bold bg-orange-600 text-white py-2 px-4 rounded-t-lg">
+              Reservation Summary
+            </h2>
+            <div className="grid grid-cols-2 gap-4 mt-4">
+              <input
+                type="text"
+                placeholder="First name"
+                className="p-3 border rounded-md"
+              />
+              <input
+                type="text"
+                placeholder="Last name"
+                className="p-3 border rounded-md"
+              />
+              <input
+                type="text"
+                placeholder="Phone number"
+                className="p-3 border rounded-md col-span-2"
+              />
+              <input
+                type="email"
+                placeholder="Email"
+                className="p-3 border rounded-md col-span-2"
+              />
+              <select
+                value={selectedEvent}
+                onChange={(e) => setSelectedEvent(e.target.value)}
+                className="p-3 border rounded-md"
+              >
+                <option value="">Select Event</option>
+                {events.map((event, i) => (
+                  <option key={i} value={event.name}>
+                    {event.name}
+                  </option>
+                ))}
+              </select>
+              <input
+                type="number"
+                placeholder="People"
+                value={people}
+                onChange={(e) => setPeople(parseInt(e.target.value) || 0)}
+                className="p-3 border rounded-md"
+              />
+              <div className="flex flex-row items-center">
+                <input
+                  id="standard"
+                  type="radio"
+                  name="price"
+                  checked={selectedPrice === standardPrice}
+                  onChange={() => setSelectedPrice(standardPrice)}
+                  className="w-4 h-4"
+                />
+                <label htmlFor="standard" className="ml-2 font-semibold">
+                  Standard: ${standardPrice}
+                </label>
+              </div>
+              <div className="flex flex-row items-center">
+                <input
+                  id="outStandard"
+                  type="radio"
+                  name="price"
+                  checked={selectedPrice === outStandardPrice}
+                  onChange={() => setSelectedPrice(outStandardPrice)}
+                  className="w-4 h-4"
+                />
+                <label htmlFor="outStandard" className="ml-2 font-semibold">
+                  OutStandard: ${outStandardPrice}
+                </label>
+              </div>
+              <div className="border-b-2 border-gray-500 font-bold text-lg col-span-2">
+                Total Price: ${price}
+              </div>
+              <div className="flex flex-row items-center">
+                <input
+                  id="withMenu"
+                  type="radio"
+                  name="menu"
+                  checked={withMenu === true}
+                  onChange={() => setWithMenu(true)}
+                  className="w-4 h-4"
+                />
+                <label htmlFor="withMenu" className="ml-2 font-semibold">
+                  With Menu
+                </label>
+              </div>
+              <div className="flex flex-row items-center">
+                <input
+                  id="withoutMenu"
+                  type="radio"
+                  name="menu"
+                  checked={withMenu === false}
+                  onChange={() => setWithMenu(false)}
+                  className="w-4 h-4"
+                />
+                <label htmlFor="withoutMenu" className="ml-2 font-semibold">
+                  Without Menu
+                </label>
+              </div>
+            </div>
+            <button
+              onClick={handleProceed}
+              className="w-full bg-orange-600 text-white font-medium py-3 rounded-md mt-4 hover:bg-orange-700 transition"
+            >
+              Proceed
+            </button>
+          </div>
+        )}
       </div>
-
-      {/* Diner Details */}
-      <div className="mb-6 border-b pb-4">
-        <h2 className="text-lg font-semibold text-gray-800">Diner details</h2>
-        <div className="grid grid-cols-2 gap-4 mt-4">
-          <input
-            type="text"
-            placeholder="First name"
-            className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
-          />
-          <input
-            type="text"
-            placeholder="Last name"
-            className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
-          />
-          <input
-            type="text"
-            placeholder="Phone number"
-            className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 col-span-2"
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 col-span-2"
-          />
-          <select className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
-            <option value="">Select an occasion (optional)</option>
-            <option value="birthday">Birthday</option>
-            <option value="anniversary">Anniversary</option>
-          </select>
-          <input
-            type="text"
-            placeholder="Add a special request (optional)"
-            className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 col-span-2"
-          />
-        </div>
-      </div>
-
-      {/* Submit Button */}
-      <button className="w-full bg-orange-600 text-white font-medium py-3 rounded-md hover:bg-red-700 transition duration-300">
-        Reserve
-      </button>
     </div>
   );
 };
@@ -85,6 +213,8 @@ export function CheckAvailability() {
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [loading, setLoading] = useState(false);
+  const [availability, setAvailability] = useState(null); // null: no check, true: available, false: unavailable
+  const [suggestedDates, setSuggestedDates] = useState([]); // Alternative dates
   const [message, setMessage] = useState("");
 
   const handleCheckAvailability = async () => {
@@ -95,223 +225,154 @@ export function CheckAvailability() {
 
     setLoading(true);
     setMessage("");
-
-    // Simulating an API call
-    setTimeout(() => {
-      setLoading(false);
-      setMessage("Availability confirmed!");
-    }, 2000);
-  };
-
-  return (
-    <div className="max-w-md mx-auto bg-white shadow-md rounded-lg p-6">
-      <h2 className="text-xl font-semibold mb-4">Check Availability</h2>
-
-      <div className="mb-4">
-        <label htmlFor="date" className="block text-gray-600 mb-2">
-          When
-        </label>
-        <input
-          type="date"
-          id="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          className="w-full border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500"
-        />
-      </div>
-
-      <div className="mb-4 grid grid-cols-2 gap-4">
-        <div>
-          <label htmlFor="start-time" className="block text-gray-600 mb-2">
-            Start Time
-          </label>
-          <input
-            type="time"
-            id="start-time"
-            value={startTime}
-            onChange={(e) => setStartTime(e.target.value)}
-            className="w-full border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500"
-          />
-        </div>
-        <div>
-          <label htmlFor="end-time" className="block text-gray-600 mb-2">
-            End Time
-          </label>
-          <input
-            type="time"
-            id="end-time"
-            value={endTime}
-            onChange={(e) => setEndTime(e.target.value)}
-            className="w-full border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500"
-          />
-        </div>
-      </div>
-
-      <button
-        onClick={handleCheckAvailability}
-        disabled={loading}
-        className={`w-full flex justify-center items-center bg-red-500 text-white py-2 px-4 rounded-md font-semibold ${
-          loading ? "opacity-50 cursor-not-allowed" : "hover:bg-red-600"
-        }`}
-      >
-        {loading ? (
-          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-        ) : (
-          "Check Availability"
-        )}
-      </button>
-
-      {message && (
-        <p className="mt-4 text-center text-sm font-medium text-gray-700">
-          {message}
-        </p>
-      )}
-    </div>
-  );
-}
-
-export const QuoteForm = () => {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    guests: "",
-    date: "",
-    occasion: "",
-    requirements: "",
-  });
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setSuccess(false);
+    setAvailability(null);
+    setSuggestedDates([]);
 
     try {
-      // Replace with your form submission logic
-      await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate API call
-      setSuccess(true);
+      // Simulating an API call
+      await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulated delay
+
+      const isAvailable = Math.random() > 0.5; // Randomly determine availability (replace with real API logic)
+
+      if (isAvailable) {
+        setAvailability(true);
+        setMessage("The selected date and time are available!");
+      } else {
+        setAvailability(false);
+        setMessage("The selected date and time are unavailable.");
+
+        // Generate 5 random alternative dates within the next 30 days
+        const randomDates = generateRandomDates(5, date);
+        setSuggestedDates(randomDates);
+      }
     } catch (error) {
-      console.error("Submission error:", error);
+      console.error("Availability check error:", error);
+      setMessage("An error occurred. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
+  // Function to generate 5 random dates within the next 30 days
+  const generateRandomDates = (count, baseDate) => {
+    const base = new Date(baseDate);
+    const randomDates = [];
+
+    for (let i = 0; i < count; i++) {
+      const randomDay = Math.floor(Math.random() * 30) + 1; // Random day within the next 30 days
+      const newDate = new Date(base);
+      newDate.setDate(base.getDate() + randomDay);
+      randomDates.push(newDate.toISOString().split("T")[0]); // Format as YYYY-MM-DD
+    }
+
+    return randomDates;
+  };
+
+  const handleDateSelection = (newDate) => {
+    setDate(newDate);
+    setAvailability(true); // Assume the newly selected date is available
+    setSuggestedDates([]);
+    setMessage("You selected an alternative date.");
+    console.log("date", newDate);
+  };
+
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded-lg p-8 w-full max-w-md"
-      >
-        <h2 className="text-2xl font-bold mb-4 text-center">
-          Get a Quote Today!
-        </h2>
-
+    <div className="rounded-lg shadow-md border">
+      <h2 className="text-lg font-bold bg-orange-600 text-white py-2 px-4 rounded-t-lg">
+        Check Availability
+      </h2>
+      <div className="max-w-md mx-auto bg-white shadow-md rounded-lg p-6">
         <div className="mb-4">
-          <label className="block text-gray-700">Your Full Name</label>
-          <input
-            type="text"
-            name="fullName"
-            value={formData.fullName}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-orange-500"
-            required
-          />
-        </div>
-
-        <div className="mb-4">
-          <label className="block text-gray-700">Email Address</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-orange-500"
-            required
-          />
-        </div>
-
-        <div className="mb-4">
-          <label className="block text-gray-700">Phone Number</label>
-          <input
-            type="tel"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-orange-500"
-            required
-          />
-        </div>
-
-        <div className="mb-4">
-          <label className="block text-gray-700">
-            Number of Guests (Tentative)
-          </label>
-          <input
-            type="number"
-            name="guests"
-            value={formData.guests}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-orange-500"
-          />
-        </div>
-
-        <div className="mb-4">
-          <label className="block text-gray-700">Tentative Dates</label>
           <input
             type="date"
-            name="date"
-            value={formData.date}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-orange-500"
-            required
+            id="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            className="w-full border-gray-300 rounded-md shadow-sm focus:ring-orangeS-500 focus:border-orangeS-500"
           />
         </div>
 
-        <div className="mb-4">
-          <label className="block text-gray-700">Occasion</label>
-          <input
-            type="text"
-            name="occasion"
-            value={formData.occasion}
-            onChange={handleChange}
-            placeholder="Wedding, Birthday, Farewell, etc."
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-orange-500"
-            required
-          />
-        </div>
-
-        <div className="mb-4">
-          <label className="block text-gray-700">Any Other Requirements</label>
-          <textarea
-            name="requirements"
-            value={formData.requirements}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-orange-500"
-          />
+        <div className="mb-4 grid grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="start-time" className="block text-gray-600 mb-2">
+              Start Time
+            </label>
+            <input
+              type="time"
+              id="start-time"
+              value={startTime}
+              onChange={(e) => setStartTime(e.target.value)}
+              className="w-full border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
+            />
+          </div>
+          <div>
+            <label htmlFor="end-time" className="block text-gray-600 mb-2">
+              End Time
+            </label>
+            <input
+              type="time"
+              id="end-time"
+              value={endTime}
+              onChange={(e) => setEndTime(e.target.value)}
+              className="w-full border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-600"
+            />
+          </div>
         </div>
 
         <button
-          type="submit"
-          className="w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 focus:outline-none focus:ring focus:ring-orange-300 flex items-center justify-center"
+          onClick={handleCheckAvailability}
           disabled={loading}
+          className={`w-full flex justify-center items-center bg-orange-600 text-white py-2 px-4 rounded-md font-semibold ${
+            loading ? "opacity-50 cursor-not-allowed" : "hover:bg-orange-600"
+          }`}
         >
-          {loading ? <CircularProgress size={24} color="inherit" /> : "Submit"}
+          {loading ? (
+            <div className="w-5 h-5  border-white border-t-transparent rounded-full animate-spin"></div>
+          ) : (
+            "Check Availability"
+          )}
         </button>
 
-        {success && (
-          <p className="text-green-500 text-center mt-4">
-            Form submitted successfully!
+        {/* Display messages */}
+        {message && (
+          <p
+            className={`mt-4 text-center text-sm font-medium ${
+              availability === true
+                ? "text-green-500"
+                : availability === false
+                ? "text-red-500"
+                : "text-gray-700"
+            }`}
+          >
+            {message}
           </p>
         )}
-      </form>
+
+        {/* Display alternative dates if unavailable */}
+        {availability === false && suggestedDates.length > 0 && (
+          <div className="mt-4">
+            <p className="text-gray-700 mb-2">
+              Here are some alternative dates:
+            </p>
+            <ul className="flex flex-row flex-wrap gap-2">
+              {suggestedDates.map((date) => (
+                <li
+                  key={date}
+                  className="mb-2 text-white bg-orange-600 py-2 px-4 rounded-lg"
+                >
+                  <button
+                    type="button"
+                    onClick={() => handleDateSelection(date)}
+                    className=""
+                  >
+                    {date}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
     </div>
   );
-};
+}

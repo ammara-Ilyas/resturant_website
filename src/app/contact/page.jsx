@@ -1,13 +1,14 @@
 "use client";
 import React, { useEffect } from "react";
-// import MapComponent from "@/components/auth/Map";
 import ContactForm from "@/components/auth/ContactForm";
 import HeroSection from "@/components/miniWidgets/HeroSection";
 import ContactInfo from "@/components/auth/ContactInfo";
 import Heading from "@/components/miniWidgets/Heading";
 import EmbeddedMap from "@/components/auth/Map";
-import MenuForm from "@/components/menu/MenuForm";
-import MenuPackageForm from "@/components/menu/MenuPackageForm";
+import MenuForm, { SelectedForm } from "@/components/menu/MenuForm";
+import MenuPackageForm, {
+  PaymentForm,
+} from "@/components/menu/MenuPackageForm";
 const page = () => {
   useEffect(() => {});
   return (
@@ -32,8 +33,9 @@ const page = () => {
       <ContactInfo />
 
       <ContactForm />
-      <MenuForm />
+      <SelectedForm isPayment={true} />
       <MenuPackageForm />
+      <PaymentForm />
     </>
   );
 };

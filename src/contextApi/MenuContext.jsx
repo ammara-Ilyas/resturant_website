@@ -5,32 +5,30 @@ import {
   setMenuList,
   setLoading,
   setFilteredMenuList,
+  setEvents,
 } from "@/store/slice/MenuSlice";
 
 const MenuProvider = ({ children }) => {
   const dispatch = useDispatch();
-  const { menuList, filteredMenuList, category, loading, isBook } = useSelector(
-    (state) => state.menu
-  );
+  const { menuList, filteredMenuList, category, loading, isBook, events } =
+    useSelector((state) => state.menu);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch("/data/menu.json");
         const data = await response.json();
-        dispatch(setMenuList(data.categories));
-        dispatch(setFilteredMenuList(data.categories));
-        console.log("menu list", menuList);
-        console.log("menu filter list", filteredMenuList);
+        dispatch(setEvents(data.events));
+        // dispatch(setFilteredMenuList(data.categories));
       } catch (error) {
         console.error(error);
       }
       dispatch(setLoading(false));
     };
     fetchData();
-  }, [dispatch]);
+  }, []);
 
-  console.log("menu items", menuList);
+  console.log("menu items", events);
   console.log("menu filtered items", filteredMenuList);
 
   return <>{children}</>;
