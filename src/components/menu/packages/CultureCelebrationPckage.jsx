@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
+import { setOrderedMenu } from "@/store/slice/OrderSlice";
+import { setIsMenuForm } from "@/store/slice/EventSlice";
 export const CulturalCelebrationPackage = () => {
+  const dispatch = useDispatch();
+
   const [packageMenu, setPackageMenu] = useState({
     karahi: [],
     biryaniAndRice: [],
@@ -19,21 +22,17 @@ export const CulturalCelebrationPackage = () => {
   const { menuList } = useSelector((state) => state.menu);
 
   useEffect(() => {
-    // Fetch categories dynamically from menuList
-    const karahi = menuList.find((item) => item.name === "Karahi");
-    const biryaniAndRice = menuList.find(
-      (item) => item.name === "Biryani and Rice"
-    );
-    const desserts = menuList.find((item) => item.name === "Desserts");
-    const snacks = menuList.find((item) => item.name === "Snacks");
-    const beverages = menuList.find((item) => item.name === "Beverages");
+    const getMenuItems = (category) => {
+      const item = menuList.find((menuItem) => menuItem.name === category);
+      return item ? item.items : [];
+    };
 
     setPackageMenu({
-      karahi: karahi ? karahi.items : [],
-      biryaniAndRice: biryaniAndRice ? biryaniAndRice.items : [],
-      desserts: desserts ? desserts.items : [],
-      snacks: snacks ? snacks.items : [],
-      beverages: beverages ? beverages.items : [],
+      karahi: getMenuItems("Karahi"),
+      biryaniAndRice: getMenuItems("Biryani and Rice"),
+      desserts: getMenuItems("Desserts"),
+      snacks: getMenuItems("Snacks"),
+      beverages: getMenuItems("Beverages"),
     });
   }, [menuList]);
 
@@ -41,30 +40,56 @@ export const CulturalCelebrationPackage = () => {
     const value = event.target.value;
     stateUpdater((prev) => {
       if (prev.includes(value)) {
-        // Remove if already selected
         return prev.filter((item) => item !== value);
       } else if (prev.length < maxSelection) {
-        // Allow up to the max selection
         return [...prev, value];
       }
-      return prev; // Do nothing if already at max selection
+      return prev;
     });
   };
 
-  return (
-    <div className="flex flex-col items-center justify-center">
-      <form className="bg-white text-black p-8    rounded-2xl shadow-md w-full max-w-lg">
-        <h2 className="text-lg font-bold bg-orange-600 text-white py-2 px-4 rounded-t-lg">
-          Cultural Celebration Package Offer
-        </h2>
+  const handleProceed = (event) => {
+    event.preventDefault();
 
-        {/* Karahi Checkbox Inputs */}
+    dispatch(
+      setOrderedMenu({
+        culturalCelebrationPackage: {
+          karahi: selectedKarahi,
+          biryaniAndRice: selectedBiryaniAndRice,
+          desserts: selectedDesserts[0] || "",
+          snacks: selectedSnacks,
+          beverages: selectedBeverages,
+        },
+      })
+    );
+    dispatch(setIsMenuForm("payment"));
+  };
+
+  return (
+    <div className="flex bg-white text-black flex-col rounded-2xl shadow-md items-center justify-center overflow-y-autow-full">
+      <h2 className="text-lg font-bold  mt-[580px]  bg-orange-600 mb-2 w-full text-white text-center py-2 px-4 rounded-t-lg">
+        Cultural Celebration Package Offer
+      </h2>
+      <form
+        onSubmit={handleProceed}
+        className="bg-white text-black p-8 rounded-2xl shadow-md w-full max-w-lg"
+      >
+        {/* Karahi Selection */}
+        <p className="font-semibold mx-20">Welcome drink included!</p>
+        {/* Additional Services */}
+        <div>
+          <h3 className="font-semibold">Additional Services:</h3>
+          <ul className="list-disc ml-5">
+            <li>Traditional Decor</li>
+          </ul>
+        </div>
         <div>
           <h3 className="font-semibold">Select Two Karahi Options:</h3>
           {packageMenu.karahi.map((item, index) => (
             <label key={index} style={{ display: "block", margin: "5px 0" }}>
               <input
                 type="checkbox"
+                className="mx-3 w-[15px] h-[15px] rounded-md"
                 value={item.name}
                 checked={selectedKarahi.includes(item.name)}
                 onChange={(e) => handleCheckboxChange(e, setSelectedKarahi, 2)}
@@ -78,7 +103,7 @@ export const CulturalCelebrationPackage = () => {
           ))}
         </div>
 
-        {/* Biryani and Rice Checkbox Inputs */}
+        {/* Biryani & Rice Selection */}
         <div>
           <h3 className="font-semibold">
             Select Two Biryani and Rice Options:
@@ -87,6 +112,7 @@ export const CulturalCelebrationPackage = () => {
             <label key={index} style={{ display: "block", margin: "5px 0" }}>
               <input
                 type="checkbox"
+                className="mx-3 w-[15px] h-[15px] rounded-md"
                 value={item.name}
                 checked={selectedBiryaniAndRice.includes(item.name)}
                 onChange={(e) =>
@@ -102,13 +128,14 @@ export const CulturalCelebrationPackage = () => {
           ))}
         </div>
 
-        {/* Desserts Checkbox Inputs */}
+        {/* Desserts Selection */}
         <div>
           <h3 className="font-semibold">Select One Dessert:</h3>
           {packageMenu.desserts.map((item, index) => (
             <label key={index} style={{ display: "block", margin: "5px 0" }}>
               <input
                 type="checkbox"
+                className="mx-3 w-[15px] h-[15px] rounded-md"
                 value={item.name}
                 checked={selectedDesserts.includes(item.name)}
                 onChange={(e) =>
@@ -124,13 +151,14 @@ export const CulturalCelebrationPackage = () => {
           ))}
         </div>
 
-        {/* Snacks Checkbox Inputs */}
+        {/* Snacks Selection */}
         <div>
           <h3 className="font-semibold">Select Three Snacks:</h3>
           {packageMenu.snacks.map((item, index) => (
             <label key={index} style={{ display: "block", margin: "5px 0" }}>
               <input
                 type="checkbox"
+                className="mx-3 w-[15px] h-[15px] rounded-md"
                 value={item.name}
                 checked={selectedSnacks.includes(item.name)}
                 onChange={(e) => handleCheckboxChange(e, setSelectedSnacks, 3)}
@@ -144,13 +172,14 @@ export const CulturalCelebrationPackage = () => {
           ))}
         </div>
 
-        {/* Beverages Checkbox Inputs */}
+        {/* Beverages Selection */}
         <div>
           <h3 className="font-semibold">Select Two Beverages:</h3>
           {packageMenu.beverages.map((item, index) => (
             <label key={index} style={{ display: "block", margin: "5px 0" }}>
               <input
                 type="checkbox"
+                className="mx-3 w-[15px] h-[15px] rounded-md"
                 value={item.name}
                 checked={selectedBeverages.includes(item.name)}
                 onChange={(e) =>
@@ -165,53 +194,14 @@ export const CulturalCelebrationPackage = () => {
             </label>
           ))}
         </div>
+
+        <button
+          type="submit"
+          className="w-full bg-orange-600 text-white font-medium py-3 rounded-md mt-4 hover:bg-orange-700 transition"
+        >
+          Proceed
+        </button>
       </form>
-
-      {/* Additional Services */}
-      <div>
-        <h3 className="font-semibold">Additional Services:</h3>
-        <ul>
-          <li>Traditional Decor</li>
-        </ul>
-      </div>
-
-      {/* Debugging Output */}
-      <div style={{ marginTop: "20px" }}>
-        <h4>Selected Karahi (Max 2):</h4>
-        <ul>
-          {selectedKarahi.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-
-        <h4>Selected Biryani and Rice (Max 2):</h4>
-        <ul>
-          {selectedBiryaniAndRice.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-
-        <h4>Selected Dessert (Max 1):</h4>
-        <ul>
-          {selectedDesserts.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-
-        <h4>Selected Snacks (Max 3):</h4>
-        <ul>
-          {selectedSnacks.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-
-        <h4>Selected Beverages (Max 2):</h4>
-        <ul>
-          {selectedBeverages.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-      </div>
     </div>
   );
 };

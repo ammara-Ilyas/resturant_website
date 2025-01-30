@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
+import { setOrderedMenu } from "@/store/slice/OrderSlice";
+import { setIsMenuForm } from "@/store/slice/EventSlice";
 export const CorporateEventPackage = () => {
+  const dispatch = useDispatch();
+
   const [packageMenu, setPackageMenu] = useState({
     bbq: [],
     karahi: [],
@@ -21,23 +24,18 @@ export const CorporateEventPackage = () => {
   const { menuList } = useSelector((state) => state.menu);
 
   useEffect(() => {
-    // Fetch categories dynamically from menuList
-    const bbq = menuList.find((item) => item.name === "BBQ");
-    const karahi = menuList.find((item) => item.name === "Karahi");
-    const biryaniAndRice = menuList.find(
-      (item) => item.name === "Biryani and Rice"
-    );
-    const desserts = menuList.find((item) => item.name === "Desserts");
-    const snacks = menuList.find((item) => item.name === "Snacks");
-    const beverages = menuList.find((item) => item.name === "Beverages");
+    const getMenuItems = (category) => {
+      const item = menuList.find((menuItem) => menuItem.name === category);
+      return item ? item.items : [];
+    };
 
     setPackageMenu({
-      bbq: bbq ? bbq.items : [],
-      karahi: karahi ? karahi.items : [],
-      biryaniAndRice: biryaniAndRice ? biryaniAndRice.items : [],
-      desserts: desserts ? desserts.items : [],
-      snacks: snacks ? snacks.items : [],
-      beverages: beverages ? beverages.items : [],
+      bbq: getMenuItems("BBQ"),
+      karahi: getMenuItems("Karahi"),
+      biryaniAndRice: getMenuItems("Biryani and Rice"),
+      desserts: getMenuItems("Desserts"),
+      snacks: getMenuItems("Snacks"),
+      beverages: getMenuItems("Beverages"),
     });
   }, [menuList]);
 
@@ -45,30 +43,50 @@ export const CorporateEventPackage = () => {
     const value = event.target.value;
     stateUpdater((prev) => {
       if (prev.includes(value)) {
-        // Remove if already selected
         return prev.filter((item) => item !== value);
       } else if (prev.length < maxSelection) {
-        // Allow up to the max selection
         return [...prev, value];
       }
-      return prev; // Do nothing if already at max selection
+      return prev;
     });
   };
 
-  return (
-    <div className="flex flex-col items-center justify-center">
-      <form className="bg-white text-black p-8    rounded-2xl shadow-md w-full max-w-lg">
-        <h2 className="text-lg font-bold bg-orange-600 text-white py-2 px-4 rounded-t-lg">
-          Corporate Event Package Offer
-        </h2>
+  const handleProceed = (event) => {
+    event.preventDefault();
 
-        {/* BBQ Checkbox Inputs */}
+    dispatch(
+      setOrderedMenu({
+        corporateEventPackage: {
+          bbq: selectedBBQ,
+          karahi: selectedKarahi,
+          biryaniAndRice: selectedBiryaniRice,
+          desserts: selectedDesserts,
+          snacks: selectedSnacks,
+          beverages: selectedBeverages,
+        },
+      })
+    );
+    dispatch(setIsMenuForm("payment"));
+  };
+
+  return (
+    <div className="flex bg-white mt-[680px] text-black flex-col rounded-2xl shadow-md items-center justify-center w-full">
+      <h2 className="text-lg font-bold  bg-orange-600 mb-2 w-full text-white text-center py-2 px-4 rounded-t-lg">
+        Corporate Event Package Offer
+      </h2>
+      <form
+        onSubmit={handleProceed}
+        className="bg-white text-black p-8 rounded-2xl shadow-md w-full max-w-lg"
+      >
+        {/* BBQ Selection */}
+        <p className="font-semibold mx-20">Welcome drink included!</p>
         <div>
           <h3 className="font-semibold">Select Three BBQ Options:</h3>
           {packageMenu.bbq.map((item, index) => (
             <label key={index} style={{ display: "block", margin: "5px 0" }}>
               <input
                 type="checkbox"
+                className="mx-3 w-[15px] h-[15px] rounded-md"
                 value={item.name}
                 checked={selectedBBQ.includes(item.name)}
                 onChange={(e) => handleCheckboxChange(e, setSelectedBBQ, 3)}
@@ -81,13 +99,14 @@ export const CorporateEventPackage = () => {
           ))}
         </div>
 
-        {/* Karahi Checkbox Inputs */}
+        {/* Karahi Selection */}
         <div>
           <h3 className="font-semibold">Select Two Karahi Options:</h3>
           {packageMenu.karahi.map((item, index) => (
             <label key={index} style={{ display: "block", margin: "5px 0" }}>
               <input
                 type="checkbox"
+                className="mx-3 w-[15px] h-[15px] rounded-md"
                 value={item.name}
                 checked={selectedKarahi.includes(item.name)}
                 onChange={(e) => handleCheckboxChange(e, setSelectedKarahi, 2)}
@@ -101,13 +120,14 @@ export const CorporateEventPackage = () => {
           ))}
         </div>
 
-        {/* Biryani and Rice Checkbox Inputs */}
+        {/* Biryani & Rice Selection */}
         <div>
           <h3 className="font-semibold">Select Two Biryani or Rice Options:</h3>
           {packageMenu.biryaniAndRice.map((item, index) => (
             <label key={index} style={{ display: "block", margin: "5px 0" }}>
               <input
                 type="checkbox"
+                className="mx-3 w-[15px] h-[15px] rounded-md"
                 value={item.name}
                 checked={selectedBiryaniRice.includes(item.name)}
                 onChange={(e) =>
@@ -123,13 +143,14 @@ export const CorporateEventPackage = () => {
           ))}
         </div>
 
-        {/* Desserts Checkbox Inputs */}
+        {/* Desserts Selection */}
         <div>
           <h3 className="font-semibold">Select Two Desserts:</h3>
           {packageMenu.desserts.map((item, index) => (
             <label key={index} style={{ display: "block", margin: "5px 0" }}>
               <input
                 type="checkbox"
+                className="mx-3 w-[15px] h-[15px] rounded-md"
                 value={item.name}
                 checked={selectedDesserts.includes(item.name)}
                 onChange={(e) =>
@@ -145,13 +166,14 @@ export const CorporateEventPackage = () => {
           ))}
         </div>
 
-        {/* Snacks Checkbox Inputs */}
+        {/* Snacks Selection */}
         <div>
           <h3 className="font-semibold">Select Two Snacks:</h3>
           {packageMenu.snacks.map((item, index) => (
             <label key={index} style={{ display: "block", margin: "5px 0" }}>
               <input
                 type="checkbox"
+                className="mx-3 w-[15px] h-[15px] rounded-md"
                 value={item.name}
                 checked={selectedSnacks.includes(item.name)}
                 onChange={(e) => handleCheckboxChange(e, setSelectedSnacks, 2)}
@@ -165,13 +187,14 @@ export const CorporateEventPackage = () => {
           ))}
         </div>
 
-        {/* Beverages Checkbox Inputs */}
+        {/* Beverages Selection */}
         <div>
           <h3 className="font-semibold">Select Two Beverages:</h3>
           {packageMenu.beverages.map((item, index) => (
             <label key={index} style={{ display: "block", margin: "5px 0" }}>
               <input
                 type="checkbox"
+                className="mx-3 w-[15px] h-[15px] rounded-md"
                 value={item.name}
                 checked={selectedBeverages.includes(item.name)}
                 onChange={(e) =>
@@ -186,52 +209,14 @@ export const CorporateEventPackage = () => {
             </label>
           ))}
         </div>
+
+        <button
+          type="submit"
+          className="w-full bg-orange-600 text-white font-medium py-3 rounded-md mt-4 hover:bg-orange-700 transition"
+        >
+          Proceed
+        </button>
       </form>
-
-      {/* Debugging Output */}
-      <div style={{ marginTop: "20px" }}>
-        <h4>Selected BBQ (Max 3):</h4>
-        <ul>
-          {selectedBBQ.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-
-        <h4>Selected Karahi (Max 2):</h4>
-        <ul>
-          {selectedKarahi.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-
-        <h4>Selected Biryani and Rice (Max 2):</h4>
-        <ul>
-          {selectedBiryaniRice.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-
-        <h4>Selected Desserts (Max 2):</h4>
-        <ul>
-          {selectedDesserts.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-
-        <h4>Selected Snacks (Max 2):</h4>
-        <ul>
-          {selectedSnacks.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-
-        <h4>Selected Beverages (Max 2):</h4>
-        <ul>
-          {selectedBeverages.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-      </div>
     </div>
   );
 };

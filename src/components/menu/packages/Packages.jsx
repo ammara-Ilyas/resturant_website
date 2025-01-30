@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setOrderedMenu } from "@/store/slice/OrderSlice";
-
+import { setIsMenuForm } from "@/store/slice/EventSlice";
 export const TeaPackage = () => {
   const dispatch = useDispatch();
   const [teaMenu, setTeaMenu] = useState({
@@ -47,6 +47,7 @@ export const TeaPackage = () => {
         teaPackage: { tea: selectedTea, snacks: selectedSnacks },
       })
     );
+    dispatch(setIsMenuForm("payment"));
   };
 
   return (
@@ -63,6 +64,7 @@ export const TeaPackage = () => {
               <label key={index} style={{ display: "block", margin: "5px 0" }}>
                 <input
                   type="radio"
+                  className="mx-3 w-[15px] h-[15px] rounded-md"
                   name="tea-package"
                   value={item}
                   checked={selectedTea === item}
@@ -80,6 +82,7 @@ export const TeaPackage = () => {
               <label key={index} style={{ display: "block", margin: "5px 0" }}>
                 <input
                   type="checkbox"
+                  className="mx-3 w-[15px] h-[15px] rounded-md"
                   value={snack.name}
                   checked={selectedSnacks.includes(snack.name)}
                   onChange={handleSnackChange}
@@ -101,20 +104,6 @@ export const TeaPackage = () => {
           Proceed
         </button>
       </form>
-
-      {/* Debugging Output (optional) */}
-      <div style={{ marginTop: "20px" }}>
-        <h4 className="font-semibold">Selected Tea/Coffee:</h4>
-        <p>{selectedTea || "None selected"}</p>
-        <h4 className="font-semibold">Selected Snacks:</h4>
-        <ul>
-          {selectedSnacks.length > 0 ? (
-            selectedSnacks.map((snack, index) => <li key={index}>{snack}</li>)
-          ) : (
-            <li>None selected</li>
-          )}
-        </ul>
-      </div>
     </div>
   );
 };
@@ -177,6 +166,7 @@ export const NormalPackage = () => {
         },
       })
     );
+    dispatch(setIsMenuForm("payment"));
   };
 
   return (
@@ -194,6 +184,7 @@ export const NormalPackage = () => {
             <label key={index} className="block my-2">
               <input
                 type="checkbox"
+                className="mx-3 w-[15px] h-[15px] rounded-md"
                 value={snack.name}
                 checked={selectedSnacks.includes(snack.name)}
                 onChange={handleSnackChange}
@@ -214,6 +205,7 @@ export const NormalPackage = () => {
             <label key={index} className="block my-2">
               <input
                 type="radio"
+                className="mx-3 w-[15px] h-[15px] rounded-md"
                 name="biryani-rice"
                 value={item.name}
                 checked={selectedBiryaniRice === item.name}
@@ -231,6 +223,7 @@ export const NormalPackage = () => {
             <label key={index} className="block my-2">
               <input
                 type="radio"
+                className="mx-3 w-[15px] h-[15px] rounded-md"
                 name="beverages"
                 value={item.name}
                 checked={selectedBeverage === item.name}
@@ -248,22 +241,6 @@ export const NormalPackage = () => {
           Proceed
         </button>
       </form>
-
-      {/* Debugging Output (optional) */}
-      <div style={{ marginTop: "20px" }}>
-        <h4 className="font-semibold">Selected Snacks:</h4>
-        <ul>
-          {selectedSnacks.length > 0 ? (
-            selectedSnacks.map((snack, index) => <li key={index}>{snack}</li>)
-          ) : (
-            <li>None selected</li>
-          )}
-        </ul>
-        <h4 className="font-semibold">Selected Biryani/Rice:</h4>
-        <p>{selectedBiryaniRice || "None selected"}</p>
-        <h4 className="font-semibold">Selected Beverage:</h4>
-        <p>{selectedBeverage || "None selected"}</p>
-      </div>
     </div>
   );
 };
@@ -335,7 +312,7 @@ export const StandardPackage = () => {
     setSelectedBeverage(event.target.value);
 
   // Save Selection
-  useEffect(() => {
+  const handleProceed = () => {
     dispatch(
       setOrderedMenu({
         standardPackage: {
@@ -347,14 +324,8 @@ export const StandardPackage = () => {
         },
       })
     );
-  }, [
-    selectedBBQ,
-    selectedKarahi,
-    selectedBiryaniRice,
-    selectedDessert,
-    selectedBeverage,
-    dispatch,
-  ]);
+    dispatch(setIsMenuForm("payment"));
+  };
 
   return (
     <div className="flex bg-white text-black flex-col rounded-2xl shadow-md items-center justify-center overflow-y-auto mt-28 w-full">
@@ -374,6 +345,7 @@ export const StandardPackage = () => {
             <label key={index} style={{ display: "block", margin: "5px 0" }}>
               <input
                 type="checkbox"
+                className="mx-3 w-[15px] h-[15px] rounded-md"
                 value={item.name}
                 checked={selectedBBQ.includes(item.name)}
                 onChange={handleBBQChange}
@@ -393,6 +365,7 @@ export const StandardPackage = () => {
             <label key={index} style={{ display: "block", margin: "5px 0" }}>
               <input
                 type="radio"
+                className="mx-3 w-[15px] h-[15px] rounded-md"
                 name="karahi"
                 value={item.name}
                 checked={selectedKarahi === item.name}
@@ -410,6 +383,7 @@ export const StandardPackage = () => {
             <label key={index} style={{ display: "block", margin: "5px 0" }}>
               <input
                 type="radio"
+                className="mx-3 w-[15px] h-[15px] rounded-md"
                 name="biryani-rice"
                 value={item.name}
                 checked={selectedBiryaniRice === item.name}
@@ -427,6 +401,7 @@ export const StandardPackage = () => {
             <label key={index} style={{ display: "block", margin: "5px 0" }}>
               <input
                 type="radio"
+                className="mx-3 w-[15px] h-[15px] rounded-md"
                 name="desserts"
                 value={item.name}
                 checked={selectedDessert === item.name}
@@ -444,6 +419,7 @@ export const StandardPackage = () => {
             <label key={index} style={{ display: "block", margin: "5px 0" }}>
               <input
                 type="radio"
+                className="mx-3 w-[15px] h-[15px] rounded-md"
                 name="beverages"
                 value={item.name}
                 checked={selectedBeverage === item.name}
@@ -453,6 +429,12 @@ export const StandardPackage = () => {
             </label>
           ))}
         </div>
+        <button
+          onClick={handleProceed}
+          className="w-full bg-orange-600 text-white font-medium py-3 rounded-md mt-4 hover:bg-orange-700 transition"
+        >
+          Proceed
+        </button>
       </div>
     </div>
   );

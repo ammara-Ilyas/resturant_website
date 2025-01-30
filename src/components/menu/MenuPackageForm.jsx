@@ -11,7 +11,7 @@ import CorporateEventPackage from "./packages/CooperatePackage";
 import LuxuryBanquetPackage from "./packages/LuxuryPackage";
 import KidsPartyPackage from "./packages/KidsPartyPackage";
 import CulturalCelebrationPackage from "./packages/CultureCelebrationPckage";
-
+import CoupleCelebrationPackage from "./packages/CoupleCelebrationPackage";
 // Map each package name to its corresponding component
 const packageComponents = {
   "Tea Package": TeaPackage,
@@ -23,6 +23,7 @@ const packageComponents = {
   "Luxury Banquet Package": LuxuryBanquetPackage,
   "Kids Party Package": KidsPartyPackage,
   "Cultural Celebration Package": CulturalCelebrationPackage,
+  "Couple Celebration Package": CoupleCelebrationPackage,
 };
 
 const MenuPackageForm = ({ selectedPackage }) => {
@@ -39,7 +40,7 @@ const MenuPackageForm = ({ selectedPackage }) => {
   const SelectedPackageComponent = packageComponents[selectedPackage];
 
   return (
-    <div className="menu-package-form border-2 mt-32  py-10 ">
+    <div className="menu-package-form mt-32  py-10 ">
       {/* Render the selected package only */}
       {SelectedPackageComponent ? (
         <SelectedPackageComponent

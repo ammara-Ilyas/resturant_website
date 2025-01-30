@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   events: [],
-  totalPrice: 0,
+  totalPrice: 1,
   isBook: true,
   IsMenuForm: "menu",
 };
@@ -22,6 +22,7 @@ const eventSlice = createSlice({
     },
     setTotalPrice: (state, action) => {
       state.totalPrice = action.payload;
+      console.log("Updated Ordered price:", state.totalPrice); // Debugging log
     },
     setEvents: (state, action) => {
       state.events = action.payload;

@@ -1,4 +1,3 @@
-import OutstandingPackage from "@/components/menu/packages/OutstandardPackage";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
@@ -16,6 +15,7 @@ const orderSlice = createSlice({
   reducers: {
     setOrderedMenu: (state, action) => {
       state.orderedMenu = { ...state.orderedMenu, ...action.payload };
+      console.log("Updated Ordered Menu:", state.orderedMenu); // Debugging log
     },
   },
 });
