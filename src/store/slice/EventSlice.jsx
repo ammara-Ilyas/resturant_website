@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   events: [],
   totalPrice: 1,
-  isBook: true,
-  IsMenuForm: "menu",
+  isBook: false,
+  IsMenuForm: "payment",
 };
 
 const eventSlice = createSlice({
