@@ -5,32 +5,34 @@ const Company = () => {
     <div>
       {/* Company */}
       <div>
-        <h4 className="text-lg text-orange-400 font-semibold mb-4">Company</h4>
+        <h4 className="text-lg text-orange-400 font-semibold mb-4">
+          Yummy Yatch
+        </h4>
         <ul className="space-y-2">
           <li>
-            <a href="#" className="hover:text-white">
+            <Link href="/about" className="hover:text-white">
               About Us
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" className="hover:text-white">
+            <Link href="#" className="hover:text-white">
               Contact Us
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" className="hover:text-white">
+            <Link href="/bookings" className="hover:text-white">
               Reservation
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" className="hover:text-white">
-              Privacy Policy
-            </a>
+            <Link href="/login" className="hover:text-white">
+              Login
+            </Link>
           </li>
           <li>
-            <a href="#" className="hover:text-white">
-              Terms & Conditions
-            </a>
+            <Link href="/contact/register" className="hover:text-white">
+              Resgistration
+            </Link>
           </li>
         </ul>
       </div>
