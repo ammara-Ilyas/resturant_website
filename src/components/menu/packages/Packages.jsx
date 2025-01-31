@@ -178,7 +178,7 @@ export const NormalPackage = () => {
   };
 
   return (
-    <div className="flex bg-gray-900/80 text-white flex-col rounded-2xl shadow-md items-center justify-center overflow-y-auto mt-28 w-[300px] sm:w-[400px] md:w-[500px]">
+    <div className="flex bg-gray-900/80 text-white w-[300px] sm:w-[400px] md:w-[500px] flex-col rounded-2xl shadow-md items-center justify-center overflow-y-auto mt-28 ">
       <h2 className="text-lg font-bold bg-orange-600 mb-2 w-full text-white text-center py-2 px-4 rounded-t-lg">
         Normal Package Offer
       </h2>
