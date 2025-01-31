@@ -155,10 +155,10 @@ const BookingForm = () => {
 
         {/* Price Details */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <p className="border-2 p-3 rounded text-gray-800 font-semibold">
+          <p className="border-2 p-3 rounded bg-white text-gray-800 font-semibold">
             30$ / Person
           </p>
-          <p className="border-2 p-3 rounded text-gray-800 font-semibold">
+          <p className="border-2 p-3 rounded bg-white text-gray-800 font-semibold">
             Total Price: ${totalPrice}
           </p>
         </div>
