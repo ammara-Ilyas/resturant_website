@@ -4,10 +4,18 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useDispatch } from "react-redux";
+import {
+  setTotalPrice,
+  setIsMenuForm,
+  setIsBook,
+} from "@/store/slice/EventSlice";
 
 const BookingForm = () => {
   const router = useRouter();
-  const [isBook, setIsBook] = useState(false);
+  const dispatch = useDispatch();
+  const pricePerPerson = 30; // Fixed price per person
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -17,16 +25,23 @@ const BookingForm = () => {
     time: "",
     specialRequest: "",
   });
+
+  const [totalPrice, setTotalPriceState] = useState(0); // Initialize total price to zero
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    if (name === "people") {
+      const peopleCount = parseInt(value, 10) || 0;
+      setTotalPriceState(peopleCount * pricePerPerson);
+    }
+
     setFormData({ ...formData, [name]: value });
   };
 
   const handlePhoneChange = (e) => {
     const value = e.target.value;
-    // Allow only numeric input
     if (/^\d*$/.test(value)) {
       setFormData({ ...formData, phone: value });
     }
@@ -34,64 +49,53 @@ const BookingForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     let isLogin = localStorage.getItem("user");
+
     if (isLogin) {
-      // Validate phone number
       if (!formData.phone) {
         toast.error("Phone number is required!");
         return;
       }
-
       if (formData.phone.length < 10) {
         toast.error("Phone number must be at least 10 digits!");
         return;
       }
+
       setLoading(true);
       try {
-        // Simulate API call
-        //   const response = await fetch("/api/bookings", {
-        //     method: "POST",
-        //     headers: { "Content-Type": "application/json" },
-        //     body: JSON.stringify(formData),
-        //   });
+        console.log("Booking form data:", formData);
 
-        //   if (!response.ok) {
-        //     throw new Error("Failed to submit booking.");
-        //   }
-        console.log("booking form", formData);
-
-        //   const result = await response.json();
         toast.success("Booking submitted successfully!");
-        setIsBook(false);
-        // Reset form after successful submission
+
+        dispatch(setTotalPrice(totalPrice)); // Store total price in Redux
+        dispatch(setIsMenuForm("payment"));
+        dispatch(setIsBook(true));
         setFormData({
           name: "",
           email: "",
           phone: "",
-          people: "People 1",
+          people: "1",
           date: "",
           time: "",
           specialRequest: "",
         });
+
+        setTotalPriceState(0); // Reset total price to zero
       } catch (error) {
         toast.error("Error submitting booking. Please try again.");
         console.error("Error:", error);
-        setIsBook(false);
       } finally {
         setLoading(false);
-        setIsBook(false);
       }
     } else {
       router.push("/contact/login");
-      setIsBook(false);
     }
   };
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        {/* Row 1: Name and Email */}
+        {/* Name & Email */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <input
             type="text"
@@ -110,7 +114,8 @@ const BookingForm = () => {
             className="p-3 rounded bg-gray-100 text-gray-800 w-full focus:outline-none focus:ring focus:ring-orange-600"
           />
         </div>
-        {/* Row 2: Phone Number & Number of People */}
+
+        {/* Phone & Number of People */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <input
             type="tel"
@@ -123,13 +128,14 @@ const BookingForm = () => {
           <input
             name="people"
             type="number"
-            placeholder="1"
+            min="1"
             value={formData.people}
             onChange={handleChange}
             className="p-3 rounded bg-gray-100 text-gray-800 w-full focus:outline-none focus:ring focus:ring-orange-600"
           />
         </div>
-        {/* Row 3: Date & Time */}
+
+        {/* Date & Time */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <input
             type="date"
@@ -146,7 +152,18 @@ const BookingForm = () => {
             className="p-3 rounded bg-gray-100 text-gray-800 w-full focus:outline-none focus:ring focus:ring-orange-600"
           />
         </div>
-        {/* Row 4: Special Request */}
+
+        {/* Price Details */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <p className="border-2 p-3 rounded text-gray-800 font-semibold">
+            30$ / Person
+          </p>
+          <p className="border-2 p-3 rounded text-gray-800 font-semibold">
+            Total Price: ${totalPrice}
+          </p>
+        </div>
+
+        {/* Special Request */}
         <textarea
           rows="4"
           name="specialRequest"
@@ -155,15 +172,16 @@ const BookingForm = () => {
           placeholder="Special Request"
           className="p-3 rounded bg-gray-100 text-gray-800 w-full focus:outline-none focus:ring focus:ring-orange-600 mb-4"
         ></textarea>
-        {/* Submit Button with Loader */}
+
+        {/* Submit Button */}
         <button
           type="submit"
-          className="w-full bg-orange-600 hover:bg-orange-600 text-white font-bold py-3 rounded-lg shadow-lg transition duration-300 flex justify-center items-center"
+          className="w-full bg-orange-600 hover:bg-orange-500 text-white font-bold py-3 rounded-lg shadow-lg transition duration-300 flex justify-center items-center"
         >
           {loading ? (
             <CircularProgress size={24} color="inherit" />
           ) : (
-            "BOOK NOW"
+            `BOOK NOW`
           )}
         </button>
       </form>

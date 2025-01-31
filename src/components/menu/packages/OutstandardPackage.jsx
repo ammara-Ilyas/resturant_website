@@ -70,7 +70,7 @@ export const OutstandingPackage = () => {
   };
 
   return (
-    <div className="flex bg-white text-black flex-col rounded-2xl shadow-md items-center justify-center overflow-y-autow-full">
+    <div className="flex  bg-gray-900/80 text-white w-[300px] sm:w-[400px] md:w-[500px]  flex-col rounded-2xl shadow-md items-center justify-center overflow-y-auto  ">
       <h2 className="text-lg font-bold  mt-[680px]  bg-orange-600 mb-2 w-full text-white text-center py-2 px-4 rounded-t-lg">
         Outstanding Package Offer
       </h2>

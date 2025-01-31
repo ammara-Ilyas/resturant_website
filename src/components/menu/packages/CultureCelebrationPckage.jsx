@@ -66,13 +66,13 @@ export const CulturalCelebrationPackage = () => {
   };
 
   return (
-    <div className="flex bg-white text-black flex-col rounded-2xl shadow-md items-center justify-center overflow-y-autow-full">
+    <div className="flex  bg-gray-900/80 text-white w-[300px] sm:w-[400px] md:w-[500px]  flex-col rounded-2xl shadow-md items-center justify-center overflow-y-autow-full">
       <h2 className="text-lg font-bold  mt-[580px]  bg-orange-600 mb-2 w-full text-white text-center py-2 px-4 rounded-t-lg">
         Cultural Celebration Package Offer
       </h2>
       <form
         onSubmit={handleProceed}
-        className="bg-white text-black p-8 rounded-2xl shadow-md w-full max-w-lg"
+        className="p-8 rounded-2xl shadow-md w-full max-w-lg"
       >
         {/* Karahi Selection */}
         <p className="font-semibold mx-20">Welcome drink included!</p>

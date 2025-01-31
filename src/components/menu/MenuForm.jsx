@@ -50,7 +50,7 @@ export const MenuForm = () => {
   return (
     <>
       {isMenu ? (
-        <div className="bg-white text-white rounded-2xl shadow-md w-full max-w-lg">
+        <div className="bg-gray-800/90  text-white  rounded-2xl shadow-md w-full max-w-lg">
           <h1 className="text-lg text-center font-bold bg-orange-600 text-white py-2 px-4 rounded-t-lg">
             Select Menu Package
           </h1>
@@ -65,10 +65,10 @@ export const MenuForm = () => {
                       value={party.name}
                       checked={selectedParty?.name === party.name}
                       onChange={handleSelection}
-                      className="mr-3 h-5 w-5 text-orange-600 focus:ring-orange-500"
+                      className="mr-3 h-5 w-5 text-white focus:ring-orange-500"
                     />
-                    <span className="text-gray-700 text-lg">{party.name}</span>
-                    <span className="text-red-700 text-lg ml-10">
+                    <span className=" text-lg">{party.name}</span>
+                    <span className="text-gray-100 text-lg ml-10">
                       {party.price}$
                     </span>
                   </label>
@@ -101,8 +101,8 @@ export const SelectedMenu = ({ selectedParty, setisMenu }) => {
   return (
     <>
       {selectedParty && (
-        <div className="bg-opacity-15 bg-white">
-          <div className="w-full flex items-center justify-center   bg-gray-100">
+        <div className="">
+          <div className="w-full flex items-center justify-center   ">
             <MenuPackageForm selectedPackage={selectedParty.name} />
           </div>
           <div className="flex flex-row items-center justify-between">

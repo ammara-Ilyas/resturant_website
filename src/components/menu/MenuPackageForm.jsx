@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import OutstandingPackage from "./packages/OutstandardPackage";
 import FamilyFeastPackage from "./packages/FamilyFeastPackage";
 import { useSelector } from "react-redux";
@@ -12,6 +12,8 @@ import LuxuryBanquetPackage from "./packages/LuxuryPackage";
 import KidsPartyPackage from "./packages/KidsPartyPackage";
 import CulturalCelebrationPackage from "./packages/CultureCelebrationPckage";
 import CoupleCelebrationPackage from "./packages/CoupleCelebrationPackage";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 // Map each package name to its corresponding component
 const packageComponents = {
   "Tea Package": TeaPackage,
@@ -40,7 +42,7 @@ const MenuPackageForm = ({ selectedPackage }) => {
   const SelectedPackageComponent = packageComponents[selectedPackage];
 
   return (
-    <div className="menu-package-form mt-32  py-10 ">
+    <div className="menu-package-form mt-32 bg-opacity-0 text-white  py-10 ">
       {/* Render the selected package only */}
       {SelectedPackageComponent ? (
         <SelectedPackageComponent
@@ -48,9 +50,7 @@ const MenuPackageForm = ({ selectedPackage }) => {
           onSelection={(option) => handleSelection(selectedPackage, option)}
         />
       ) : (
-        <p className="text-gray-500 text-center">
-          No package found for the selected party.
-        </p>
+        <p className=" text-center">No package found for the selected party.</p>
       )}
     </div>
   );
@@ -59,14 +59,24 @@ const MenuPackageForm = ({ selectedPackage }) => {
 export default MenuPackageForm;
 
 export const PaymentForm = () => {
-  const [amount, setAmount] = useState(500); // Default payment amount
+  const router = useRouter();
   const { totalPrice, IsMenuForm, isBook } = useSelector(
     (state) => state.event
   );
+  const [amount, setAmount] = useState(0); // Default payment amount
+  useEffect(() => {
+    setAmount(Math.round((totalPrice * 20) / 100));
+  }, [totalPrice]);
+
+  const handleCheckout = (e) => {
+    e.preventDefault();
+    toast.success("Payment successful");
+    router.push("/order");
+  };
   return (
-    <div className="w-full flex items-center justify-center overflow-y-auto bg-gray-100">
-      <div className="bg-white  rounded-lg  mt-20 w-full max-w-md">
-        <h2 className="text-lg font-bold bg-orange-600 text-white py-2 px-4 rounded-t-lg">
+    <div className="w-full flex items-center justify-center overflow-y-auto ">
+      <div className="bg-gray-800  text-white  rounded-lg  mt-36 w-full max-w-md">
+        <h2 className="text-lg font-bold bg-orange-600 bg-opacity-95 text-center text-white py-2 px-4 rounded-t-lg">
           Pay Invoice
         </h2>
         {/* Header */}
@@ -82,18 +92,22 @@ export const PaymentForm = () => {
         {/* Payment amount */}
         <div className="mb-4  p-6">
           <div className="flex justify-between mx-10 items-center ">
-            <h4 className="text-2xl font-semibold">Payment</h4>
-            <p className="text-gray-900 text-xl font-bold mt-1">
-              ${Math.round(totalPrice)}
-            </p>
+            <h4 className="text-2xl font-semibold">Total Payment</h4>
+            <p className=" text-xl font-bold mt-1">${Math.round(totalPrice)}</p>
+          </div>
+          <div className="flex justify-between mx-10 items-center ">
+            <h4 className="text-2xl font-semibold">
+              20% Pay out of {Math.round(totalPrice)}
+            </h4>
+            <p className=" text-xl font-bold mt-1">${amount}</p>
           </div>
         </div>
 
         {/* Payment form */}
-        <form className=" p-6">
+        <form className=" p-6" onSubmit={handleCheckout}>
           {/* Name on card */}
           <div className="mb-4 ">
-            <label className="block text-sm font-medium text-gray-600 mb-1">
+            <label className="block text-sm font-medium  mb-1">
               Name on card
             </label>
             <input
@@ -105,7 +119,7 @@ export const PaymentForm = () => {
 
           {/* Card number */}
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-600 mb-1">
+            <label className="block text-sm font-medium  mb-1">
               Card number
             </label>
             <input
@@ -118,7 +132,7 @@ export const PaymentForm = () => {
           {/* Expiry date and security code */}
           <div className="flex space-x-4 mb-4">
             <div className="flex-1">
-              <label className="block text-sm font-medium text-gray-600 mb-1">
+              <label className="block text-sm font-medium  mb-1">
                 Expiry date
               </label>
               <input
@@ -128,7 +142,7 @@ export const PaymentForm = () => {
               />
             </div>
             <div className="flex-1">
-              <label className="block text-sm font-medium text-gray-600 mb-1">
+              <label className="block text-sm font-medium  mb-1">
                 Security code
               </label>
               <input
@@ -141,7 +155,7 @@ export const PaymentForm = () => {
 
           {/* ZIP/Postal code */}
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-600 mb-1">
+            <label className="block text-sm font-medium  mb-1">
               ZIP/Postal code
             </label>
             <input

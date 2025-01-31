@@ -55,15 +55,19 @@ const ReservationForm = () => {
       toast.error("Please select 'With Menu' or 'Without Menu'.");
       return;
     }
+    let isLogin = localStorage.getItem("user");
+    if (isLogin) {
+      dispatch(setTotalPrice(price));
 
-    dispatch(setTotalPrice(price));
-
-    if (withMenu) {
-      dispatch(setIsMenuForm("menu"));
+      if (withMenu) {
+        dispatch(setIsMenuForm("menu"));
+      } else {
+        dispatch(setIsMenuForm("payment"));
+      }
+      dispatch(setIsBook(true));
     } else {
-      dispatch(setIsMenuForm("payment"));
+      router.push("/contact/login");
     }
-    dispatch(setIsBook(true));
   };
 
   return (

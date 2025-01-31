@@ -51,17 +51,25 @@ export const TeaPackage = () => {
   };
 
   return (
-    <div className="flex bg-white text-black flex-col rounded-2xl shadow-md justify-center w-full">
+    <div className="flex bg-gray-900/80 text-white flex-col rounded-2xl shadow-md w-[300px] md:w-[400px]">
       <h2 className="text-lg font-bold bg-orange-600 mb-2 w-full text-white text-center py-2 px-4 rounded-t-lg">
         Tea Package Offer
       </h2>
-      <form onSubmit={handleProcced} className="w-full">
-        <div className="p-8 mx-16">
+      <form
+        onSubmit={handleProcced}
+        className="w-full flex flex-col items-start justify-start"
+      >
+        {/* <p className="font-semibold mx-20">Welcome Drink included!</p> */}
+        <div className="p-8 ">
           {/* Tea/Coffee Radio Inputs */}
           <div>
             <h3 className="font-semibold">Select One</h3>
             {teaMenu.tea.map((item, index) => (
-              <label key={index} style={{ display: "block", margin: "5px 0" }}>
+              <label
+                key={index}
+                style={{ display: "block", margin: "5px 0" }}
+                className="inline"
+              >
                 <input
                   type="radio"
                   className="mx-3 w-[15px] h-[15px] rounded-md"
@@ -170,7 +178,7 @@ export const NormalPackage = () => {
   };
 
   return (
-    <div className="flex bg-white text-black flex-col rounded-2xl shadow-md items-center justify-center overflow-y-auto mt-28 w-full">
+    <div className="flex bg-gray-900/80 text-white flex-col rounded-2xl shadow-md items-center justify-center overflow-y-auto mt-28 w-[300px] sm:w-[400px] md:w-[500px]">
       <h2 className="text-lg font-bold bg-orange-600 mb-2 w-full text-white text-center py-2 px-4 rounded-t-lg">
         Normal Package Offer
       </h2>
@@ -328,7 +336,7 @@ export const StandardPackage = () => {
   };
 
   return (
-    <div className="flex bg-white text-black flex-col rounded-2xl shadow-md items-center justify-center overflow-y-auto mt-28 w-full">
+    <div className="flex bg-gray-900/80 text-white flex-col rounded-2xl shadow-md items-center justify-center overflow-y-auto mt-28 w-[300px] sm:w-[400px] md:w-[500px]">
       <h2 className="text-lg font-bold bg-orange-600 mb-2 w-full text-white text-center py-2 px-4 rounded-t-lg">
         Standard Package Offer
       </h2>

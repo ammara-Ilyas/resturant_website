@@ -56,7 +56,11 @@ const Booking = () => {
   return (
     <>
       {isBook && (
-        <div className="fixed top-0 left-0 bg-black bg-opacity-90 h-screen w-full flex items-center justify-center z-50">
+        <div
+          className="fixed top-0 left-0 bg-gray-800/70 mx-auto max-h-full py-7 rounded-xl shadow-lg scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-300 overflow-y-auto h-screen w-full flex items-center justify-center z-50"
+          data-aos="fade-up"
+          data-aos-delay={300}
+        >
           {/* Close button */}
           <button
             className="absolute top-5 right-5 text-white text-2xl font-bold z-50"
@@ -65,13 +69,13 @@ const Booking = () => {
             &times;
           </button>
           {/* Slider component */}
-          <div
-            className="w-[40%] bg-white  mx-auto max-h-full py-7 rounded-xl shadow-lg scrollbar-thin overflow-y-auto  flex items-center  justify-center"
+          {/* <div
+            className="w-[40%] bg-gray-800/50 mx-auto max-h-full py-7 rounded-xl shadow-lg scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-300 overflow-y-auto flex items-center justify-center"
             data-aos="fade-up"
             data-aos-delay={300}
-          >
-            {IsMenuForm == "payment" ? <PaymentForm /> : <MenuForm />}
-          </div>
+          > */}
+          {IsMenuForm == "payment" ? <PaymentForm /> : <MenuForm />}
+          {/* </div> */}
         </div>
       )}
     </>
