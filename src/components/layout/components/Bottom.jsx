@@ -4,7 +4,7 @@ const Bottom = () => {
   return (
     <div className="mt-10 border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center text-sm">
       <p>
-        © Your Site Name, All Right Reserved. Designed By{" "}
+        © Ammara Ilyas, All Right Reserved. Designed By HTML Codex{" "}
         <a
           href="https://htmlcodex.com"
           target="_blank"
@@ -22,7 +22,7 @@ const Bottom = () => {
           rel="noopener noreferrer"
           className="text-orange-400 hover:text-white"
         >
-          ThemeWagon
+          Yummy Yatch
         </a>
       </p>
       <div className="flex space-x-4 mt-4 md:mt-0">
