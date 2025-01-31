@@ -1,7 +1,12 @@
 import React from "react";
-
+import HeroSection from "@/components/miniWidgets/HeroSection";
 const page = () => {
-  return <div>hello ordered</div>;
+  return (
+    <div>
+      <HeroSection text="Order" />
+      hello ordered
+    </div>
+  );
 };
 
 export default page;

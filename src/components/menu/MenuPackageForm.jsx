@@ -14,6 +14,8 @@ import CulturalCelebrationPackage from "./packages/CultureCelebrationPckage";
 import CoupleCelebrationPackage from "./packages/CoupleCelebrationPackage";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import { setIsBook } from "@/store/slice/EventSlice";
+import { useDispatch } from "react-redux";
 // Map each package name to its corresponding component
 const packageComponents = {
   "Tea Package": TeaPackage,
@@ -60,6 +62,7 @@ export default MenuPackageForm;
 
 export const PaymentForm = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const { totalPrice, IsMenuForm, isBook } = useSelector(
     (state) => state.event
   );
@@ -71,6 +74,7 @@ export const PaymentForm = () => {
   const handleCheckout = (e) => {
     e.preventDefault();
     toast.success("Payment successful");
+    dispatch(setIsBook(false));
     router.push("/order");
   };
   return (
@@ -113,7 +117,7 @@ export const PaymentForm = () => {
             <input
               type="text"
               placeholder="John Doe"
-              className="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+              className="w-full px-3 py-2 text-black border  rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border text-black-orange-500"
             />
           </div>
 
@@ -125,7 +129,7 @@ export const PaymentForm = () => {
             <input
               type="text"
               placeholder="1234 5678 9012 3456"
-              className="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+              className="w-full px-3 py-2 border text-black rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border text-black-orange-500"
             />
           </div>
 
@@ -138,7 +142,7 @@ export const PaymentForm = () => {
               <input
                 type="text"
                 placeholder="MM / YY"
-                className="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                className="w-full px-3 py-2 border text-black rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border text-black-orange-500"
               />
             </div>
             <div className="flex-1">
@@ -148,7 +152,7 @@ export const PaymentForm = () => {
               <input
                 type="text"
                 placeholder="123"
-                className="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                className="w-full px-3 py-2 border text-black rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border text-black-orange-500"
               />
             </div>
           </div>
@@ -161,7 +165,7 @@ export const PaymentForm = () => {
             <input
               type="text"
               placeholder="12345"
-              className="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+              className="w-full px-3 py-2 border text-black rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border text-black-orange-500"
             />
           </div>
 

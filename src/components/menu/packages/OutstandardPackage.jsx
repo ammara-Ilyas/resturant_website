@@ -76,7 +76,7 @@ export const OutstandingPackage = () => {
       </h2>
       <form
         onSubmit={handleProceed}
-        className="bg-white text-black p-8 rounded-2xl shadow-md w-full max-w-lg"
+        className="bg-transparent p-8 rounded-2xl shadow-md w-full max-w-lg"
       >
         <p className="font-semibold mx-10">
           Additional Services:{" "}

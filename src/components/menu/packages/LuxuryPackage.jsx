@@ -76,7 +76,7 @@ export const LuxuryBanquetPackage = () => {
       </h2>
       <form
         onSubmit={handleProceed}
-        className="bg-white text-black p-8 rounded-2xl shadow-md w-full max-w-lg"
+        className=" p-8 rounded-2xl bg-transparent shadow-md w-full max-w-lg"
       >
         {/* BBQ Selection */}
         <div>
