@@ -25,7 +25,7 @@ const Company = () => {
             </Link>
           </li>
           <li>
-            <Link href="/login" className="hover:text-white">
+            <Link href="/contact/login" className="hover:text-white">
               Login
             </Link>
           </li>
