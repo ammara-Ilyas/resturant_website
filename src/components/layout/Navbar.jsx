@@ -37,8 +37,8 @@ const Navbar = () => {
       link: "/",
     },
     {
-      nav: "services",
-      link: "/service",
+      nav: "venues",
+      link: "/events",
     },
 
     {
@@ -53,8 +53,12 @@ const Navbar = () => {
       nav: "contact",
       link: "/contact",
     },
+    {
+      nav: "Order",
+      link: "/order",
+    },
   ];
-  console.log("Pathname in navbar", pathname);
+  // console.log("Pathname in navbar", pathname);
 
   return (
     <div>
@@ -84,9 +88,9 @@ const Navbar = () => {
                   ></span>
                 </Link>
               ))}
-              <div onClick={() => setIsBook(true)}>
-                <Button text="Book a tabel" />
-              </div>
+              <Link href="/contact/login">
+                <Button text="Login" />
+              </Link>
             </>
           </div>
           {/* Mobile Navigation Icon */}
@@ -128,8 +132,8 @@ const Navbar = () => {
                   {item.nav}
                 </Link>
               ))}
-              <Link className=" pl-16 pt-10" href="#booking">
-                <Button text="Book a tabel" />
+              <Link className=" pl-16 pt-10" href="/contact/login">
+                <Button text="Login" />
               </Link>{" "}
             </>
           </div>
