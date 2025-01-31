@@ -22,7 +22,6 @@ export default function Page() {
       <HeroSection />
       <HeadingText heading="Event" text="event" />
       {/* <Gallery /> */}
-      <div>{param.id}</div>
       <SingleEvent />
     </>
   );

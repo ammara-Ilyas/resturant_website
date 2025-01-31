@@ -40,22 +40,17 @@ const Navbar = () => {
       nav: "venues",
       link: "/events",
     },
-
-    {
-      nav: "menu",
-      link: "/menu",
-    },
     {
       nav: "about",
       link: "/about",
     },
     {
-      nav: "contact",
-      link: "/contact",
+      nav: "menu",
+      link: "/menu",
     },
     {
-      nav: "Order",
-      link: "/order",
+      nav: "contact",
+      link: "/contact",
     },
   ];
   // console.log("Pathname in navbar", pathname);
@@ -88,8 +83,8 @@ const Navbar = () => {
                   ></span>
                 </Link>
               ))}
-              <Link href="/contact/login">
-                <Button text="Login" />
+              <Link href="/order">
+                <Button text="Booking" />
               </Link>
             </>
           </div>
@@ -132,8 +127,8 @@ const Navbar = () => {
                   {item.nav}
                 </Link>
               ))}
-              <Link className=" pl-16 pt-10" href="/contact/login">
-                <Button text="Login" />
+              <Link className=" pl-16 pt-10" href="/order">
+                <Button text="Booking" />
               </Link>{" "}
             </>
           </div>

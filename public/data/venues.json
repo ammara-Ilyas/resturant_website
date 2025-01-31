@@ -1,0 +1,349 @@
+[
+  {
+    "venue_name": "Grand Banquet Hall",
+    "description": "A luxurious event space with premium catering and elegant interiors.",
+    "gallery": ["image1.jpg", "image2.jpg", "image3.jpg"],
+    "menu_display": [
+      "Formal Package",
+      "Breakfast Package",
+      "Outdoor Package",
+      "Family Feast Package"
+    ],
+    "pricing": "$200 - $500 per event",
+    "reviews": [
+      {
+        "user": "JohnDoe",
+        "rating": 4.5,
+        "comment": "Great ambiance and excellent service!"
+      },
+      {
+        "user": "JaneSmith",
+        "rating": 4.0,
+        "comment": "The food was amazing, but the service was a bit slow."
+      }
+    ]
+  },
+  {
+    "venue_name": "Sunset Garden",
+    "description": "A beautiful outdoor venue perfect for weddings and celebrations.",
+    "gallery": ["garden1.jpg", "garden2.jpg", "garden3.jpg"],
+    "menu_display": [
+      "Luxury Beverage Package",
+      "Kids Party Package",
+      "Corporate Event Package"
+    ],
+    "pricing": "$300 - $700 per event",
+    "reviews": [
+      {
+        "user": "EmilyR",
+        "rating": 5.0,
+        "comment": "The sunset view made our wedding unforgettable!"
+      },
+      {
+        "user": "MikeT",
+        "rating": 4.2,
+        "comment": "Great venue, but parking was an issue."
+      }
+    ]
+  },
+  {
+    "venue_name": "Oceanview Ballroom",
+    "description": "A stunning venue with panoramic ocean views and modern decor.",
+    "gallery": ["ocean1.jpg", "ocean2.jpg", "ocean3.jpg"],
+    "menu_display": [
+      "Buffet Package",
+      "Cocktail Celebration Package",
+      "Couple Celebration Package"
+    ],
+    "pricing": "$400 - $900 per event",
+    "reviews": [
+      {
+        "user": "SarahL",
+        "rating": 4.8,
+        "comment": "Best event experience ever! The view was breathtaking."
+      },
+      {
+        "user": "DavidP",
+        "rating": 4.3,
+        "comment": "Loved the food and service, but the event ran a bit late."
+      }
+    ]
+  },
+  {
+    "venue_name": "Mountain Lodge Retreat",
+    "description": "A cozy, rustic lodge nestled in the mountains for a peaceful getaway.",
+    "gallery": ["lodge1.jpg", "lodge2.jpg", "lodge3.jpg"],
+    "menu_display": [
+      "Traditional Feast Package",
+      "Outdoor BBQ Package",
+      "Corporate Team Retreat Package"
+    ],
+    "pricing": "$250 - $600 per event",
+    "reviews": [
+      {
+        "user": "AnnaM",
+        "rating": 4.7,
+        "comment": "Such a relaxing and beautiful place for our retreat!"
+      },
+      {
+        "user": "ChrisB",
+        "rating": 4.5,
+        "comment": "Great for small gatherings, but limited seating indoors."
+      }
+    ]
+  },
+  {
+    "venue_name": "Downtown Conference Center",
+    "description": "A modern venue with state-of-the-art facilities for corporate events.",
+    "gallery": ["conference1.jpg", "conference2.jpg", "conference3.jpg"],
+    "menu_display": [
+      "Executive Business Package",
+      "Networking Cocktail Package",
+      "Tech Conference Package"
+    ],
+    "pricing": "$500 - $1000 per event",
+    "reviews": [
+      {
+        "user": "MarkC",
+        "rating": 4.9,
+        "comment": "Perfect for large business conferences with excellent amenities."
+      },
+      {
+        "user": "LindaW",
+        "rating": 4.6,
+        "comment": "Great location and facilities, but a bit pricey."
+      }
+    ]
+  },
+  {
+    "venue_name": "Grand Banquet Hall",
+    "description": "A luxurious event space with premium catering and elegant interiors.",
+    "gallery": ["image1.jpg", "image2.jpg", "image3.jpg"],
+    "menu_display": [
+      "Formal Package",
+      "Breakfast Package",
+      "Outdoor Package",
+      "Family Feast Package"
+    ],
+    "pricing": "$200 - $500 per event",
+    "reviews": [
+      {
+        "user": "JohnDoe",
+        "rating": 4.5,
+        "comment": "Great ambiance and excellent service!"
+      },
+      {
+        "user": "JaneSmith",
+        "rating": 4.0,
+        "comment": "The food was amazing, but the service was a bit slow."
+      }
+    ]
+  },
+  {
+    "venue_name": "Sunset Garden",
+    "description": "A beautiful outdoor venue perfect for weddings and celebrations.",
+    "gallery": ["garden1.jpg", "garden2.jpg", "garden3.jpg"],
+    "menu_display": [
+      "Luxury Beverage Package",
+      "Kids Party Package",
+      "Corporate Event Package"
+    ],
+    "pricing": "$300 - $700 per event",
+    "reviews": [
+      {
+        "user": "EmilyR",
+        "rating": 5.0,
+        "comment": "The sunset view made our wedding unforgettable!"
+      },
+      {
+        "user": "MikeT",
+        "rating": 4.2,
+        "comment": "Great venue, but parking was an issue."
+      }
+    ]
+  },
+  {
+    "venue_name": "Oceanview Ballroom",
+    "description": "A stunning venue with panoramic ocean views and modern decor.",
+    "gallery": ["ocean1.jpg", "ocean2.jpg", "ocean3.jpg"],
+    "menu_display": [
+      "Buffet Package",
+      "Cocktail Celebration Package",
+      "Couple Celebration Package"
+    ],
+    "pricing": "$400 - $900 per event",
+    "reviews": [
+      {
+        "user": "SarahL",
+        "rating": 4.8,
+        "comment": "Best event experience ever! The view was breathtaking."
+      },
+      {
+        "user": "DavidP",
+        "rating": 4.3,
+        "comment": "Loved the food and service, but the event ran a bit late."
+      }
+    ]
+  },
+  {
+    "venue_name": "Mountain Lodge Retreat",
+    "description": "A cozy, rustic lodge nestled in the mountains for a peaceful getaway.",
+    "gallery": ["lodge1.jpg", "lodge2.jpg", "lodge3.jpg"],
+    "menu_display": [
+      "Traditional Feast Package",
+      "Outdoor BBQ Package",
+      "Corporate Team Retreat Package"
+    ],
+    "pricing": "$250 - $600 per event",
+    "reviews": [
+      {
+        "user": "AnnaM",
+        "rating": 4.7,
+        "comment": "Such a relaxing and beautiful place for our retreat!"
+      },
+      {
+        "user": "ChrisB",
+        "rating": 4.5,
+        "comment": "Great for small gatherings, but limited seating indoors."
+      }
+    ]
+  },
+  {
+    "venue_name": "Downtown Conference Center",
+    "description": "A modern venue with state-of-the-art facilities for corporate events.",
+    "gallery": ["conference1.jpg", "conference2.jpg", "conference3.jpg"],
+    "menu_display": [
+      "Executive Business Package",
+      "Networking Cocktail Package",
+      "Tech Conference Package"
+    ],
+    "pricing": "$500 - $1000 per event",
+    "reviews": [
+      {
+        "user": "MarkC",
+        "rating": 4.9,
+        "comment": "Perfect for large business conferences with excellent amenities."
+      },
+      {
+        "user": "LindaW",
+        "rating": 4.6,
+        "comment": "Great location and facilities, but a bit pricey."
+      }
+    ]
+  },
+  {
+    "venue_name": "Royal Palace Venue",
+    "description": "A regal venue offering a grand atmosphere for weddings and corporate events.",
+    "gallery": ["palace1.jpg", "palace2.jpg", "palace3.jpg"],
+    "menu_display": [
+      "Royal Feast Package",
+      "Grand Banquet Package",
+      "Luxury VIP Package"
+    ],
+    "pricing": "$800 - $1500 per event",
+    "reviews": [
+      {
+        "user": "SophiaK",
+        "rating": 4.9,
+        "comment": "Felt like a dream wedding! Exceptional service and decor."
+      },
+      {
+        "user": "RobertF",
+        "rating": 4.7,
+        "comment": "Amazing experience, but the catering was slightly delayed."
+      }
+    ]
+  },
+  {
+    "venue_name": "Rustic Barn Events",
+    "description": "A charming barn-style venue for rustic weddings and country-style events.",
+    "gallery": ["barn1.jpg", "barn2.jpg", "barn3.jpg"],
+    "menu_display": [
+      "Farmhouse Feast Package",
+      "Country BBQ Package",
+      "Rustic Wedding Package"
+    ],
+    "pricing": "$300 - $800 per event",
+    "reviews": [
+      {
+        "user": "EmmaT",
+        "rating": 4.8,
+        "comment": "Beautiful venue with a cozy, country vibe. Highly recommend!"
+      },
+      {
+        "user": "JackB",
+        "rating": 4.5,
+        "comment": "A bit hard to find, but totally worth it!"
+      }
+    ]
+  },
+  {
+    "venue_name": "Skyline Rooftop",
+    "description": "A stylish rooftop venue with stunning city skyline views.",
+    "gallery": ["rooftop1.jpg", "rooftop2.jpg", "rooftop3.jpg"],
+    "menu_display": [
+      "Urban Cocktail Package",
+      "Rooftop Dinner Package",
+      "Luxury Sky Lounge Package"
+    ],
+    "pricing": "$600 - $1200 per event",
+    "reviews": [
+      {
+        "user": "ChrisM",
+        "rating": 4.9,
+        "comment": "The best rooftop venue in the city! Amazing atmosphere."
+      },
+      {
+        "user": "LucyH",
+        "rating": 4.6,
+        "comment": "Great place for a party, but a bit expensive."
+      }
+    ]
+  },
+  {
+    "venue_name": "Beachside Pavilion",
+    "description": "A beachfront venue offering the perfect setting for tropical-themed events.",
+    "gallery": ["beach1.jpg", "beach2.jpg", "beach3.jpg"],
+    "menu_display": [
+      "Tropical Feast Package",
+      "Seafood Extravaganza Package",
+      "Beach Party Package"
+    ],
+    "pricing": "$500 - $1100 per event",
+    "reviews": [
+      {
+        "user": "NathanW",
+        "rating": 4.8,
+        "comment": "A dream venue for a beach wedding. The waves added a magical touch!"
+      },
+      {
+        "user": "LauraC",
+        "rating": 4.4,
+        "comment": "Fantastic experience, but the sand can be tricky in formal shoes."
+      }
+    ]
+  },
+  {
+    "venue_name": "The Vintage Loft",
+    "description": "An artistic loft venue with an industrial-chic atmosphere for creative events.",
+    "gallery": ["loft1.jpg", "loft2.jpg", "loft3.jpg"],
+    "menu_display": [
+      "Creative Studio Package",
+      "Artistic Celebration Package",
+      "Indie Wedding Package"
+    ],
+    "pricing": "$400 - $900 per event",
+    "reviews": [
+      {
+        "user": "AlexD",
+        "rating": 4.7,
+        "comment": "Great vibe for an artsy wedding or photoshoot!"
+      },
+      {
+        "user": "MeganS",
+        "rating": 4.5,
+        "comment": "Loved the ambiance, but parking was a bit limited."
+      }
+    ]
+  }
+]
