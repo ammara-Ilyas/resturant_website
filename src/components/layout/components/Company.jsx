@@ -15,7 +15,7 @@ const Company = () => {
             </Link>
           </li>
           <li>
-            <Link href="#" className="hover:text-white">
+            <Link href="/contact" className="hover:text-white">
               Contact Us
             </Link>
           </li>
