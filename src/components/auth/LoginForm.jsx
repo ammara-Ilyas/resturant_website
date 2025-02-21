@@ -1,5 +1,5 @@
 "use client";
-
+import axios from "axios";
 import React, { useState } from "react";
 import Link from "next/link";
 import { useEffect } from "react";
@@ -8,7 +8,7 @@ import "aos/dist/aos.css";
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+const NEXT_PUBLIC_BASE_URL = "https://restweb.azurewebsites.net/";
 const LoginForm = () => {
   const router = useRouter();
   // State for form data
@@ -27,46 +27,70 @@ const LoginForm = () => {
     }));
   };
 
-  // Handler for form submission
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
+    e.preventDefault(); // Prevent form reload on submit
+    setIsLoading(true); // Show loading state
 
-      // Validate email and password
-      if (!loginData.email || !loginData.password) {
-        toast.error("Email and password are required.", {
+    // Validate email and password
+    if (!loginData.email || !loginData.password) {
+      toast.error("Email and password are required.", {
+        position: "top-right",
+      });
+      setIsLoading(false); // Stop loading
+      return;
+    }
+
+    try {
+      // Send POST request using fetch
+      const response = await fetch(`${NEXT_PUBLIC_BASE_URL}/users/login/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: loginData.email,
+          password: loginData.password,
+        }),
+      });
+      console.log("response", response);
+
+      // Check if the response is OK
+      if (response.ok) {
+        const user = await response.json(); // Parse JSON response
+
+        localStorage.setItem("token", JSON.stringify(user.user_id));
+        console.log("response user", user);
+
+        toast.success(`${user.message}! 🎉`, {
           position: "top-right",
         });
-        return;
-      } else {
-        localStorage.setItem("user", loginData);
-        router.push("/");
-      }
 
-      // Simulate a login success or failure
-      const isSuccessful = Math.random() > 0.5;
-
-      if (isSuccessful) {
-        localStorage.setItem("user", JSON.stringify(loginData));
-
-        toast.success("Login successful! 🎉", {
-          position: "top-right",
-        });
-
-        // Reset form fields after success
+        // Reset form fields
         setLoginData({
           email: "",
           password: "",
         });
+
+        // Navigate to the home page
+        router.push("/");
       } else {
-        // Show error toast for failed login
-        toast.error("Login failed. Please try again.", {
+        // Handle errors (e.g., 400 Bad Request)
+        const errorData = await response.json();
+        console.log("error bad ", errorData);
+
+        toast.error(errorData.detail || "Invalid email or password.", {
           position: "top-right",
         });
       }
-    }, 2000);
+    } catch (error) {
+      // Handle network or unexpected errors
+      console.error("Network error:", error);
+      toast.error("Network error. Please try again.", {
+        position: "top-right",
+      });
+    } finally {
+      setIsLoading(false); // Stop loading
+    }
   };
 
   useEffect(() => {
@@ -92,7 +116,7 @@ const LoginForm = () => {
             placeholder="Email"
             value={loginData.email}
             onChange={handleChange}
-            className="w-full p-3 bg-gray-700 text-white rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-orange-600 focus:bg-transparent "
+            className="w-full p-3 bg-gray-700 text-white rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-orange-600"
           />
         </div>
 

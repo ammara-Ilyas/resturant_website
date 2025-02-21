@@ -25,27 +25,27 @@ const Booking = () => {
     (state) => state.menu
   );
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/data/menu.json");
-        const data = await response.json();
-        dispatch(setMenuList(data.categories));
-        dispatch(setFilteredMenuList(data.categories));
-        const eventResponse = await fetch("/data/events.json");
-        const events = await eventResponse.json();
-        dispatch(setEvents(events.events));
-        localStorage.setItem("events", JSON.stringify(events.events)); // Correctly serialize and store
-        localStorage.setItem("menu", JSON.stringify(data.categories));
-        console.log("event list in wrappers", events);
-        console.log("menu list in wrappers", menuList);
-      } catch (error) {
-        console.error(error);
-      }
-      dispatch(setLoading(false));
-    };
-    fetchData();
-  }, [dispatch]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch("/data/menu.json");
+  //       const data = await response.json();
+  //       dispatch(setMenuList(data.categories));
+  //       dispatch(setFilteredMenuList(data.categories));
+  //       const eventResponse = await fetch("/data/events.json");
+  //       const events = await eventResponse.json();
+  //       dispatch(setEvents(events.events));
+  //       localStorage.setItem("events", JSON.stringify(events.events)); // Correctly serialize and store
+  //       localStorage.setItem("menu", JSON.stringify(data.categories));
+  //       console.log("event list in wrappers", events);
+  //       console.log("menu list in wrappers", menuList);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //     dispatch(setLoading(false));
+  //   };
+  //   fetchData();
+  // }, [dispatch]);
 
   useEffect(() => {
     AOS.init({

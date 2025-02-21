@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Navbar from "../layout/Navbar";
-function HeroSection({ text }) {
+function HeroSection({ text, img = "/images/bg-hero.jpg" }) {
   useEffect(() => {
     AOS.init({
       duration: 1000, // Animation duration in milliseconds
@@ -14,7 +14,7 @@ function HeroSection({ text }) {
     <section
       className="relative h-[55vh] bg-black bg-opacity-50 w-100vh"
       style={{
-        backgroundImage: `url("/images/bg-hero.jpg")`,
+        backgroundImage: `url(${img})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -24,7 +24,7 @@ function HeroSection({ text }) {
         <Navbar />
         <div className="flex items-center justify-center h-full">
           <h3
-            className="text-white font-bold capitalize text-4xl sm:text-6xl pt-4 letter-wide "
+            className="text-white italic font-bold capitalize text-4xl sm:text-6xl pt-4 letter-wide "
             data-aos="fade-down"
             data-aos-delay={200}
           >

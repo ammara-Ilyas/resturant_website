@@ -1,23 +1,44 @@
+"use client";
 import React, { useState, useEffect } from "react";
 import ReservationForm, {
   CheckAvailability,
   QuoteForm,
 } from "./ReservationForm";
+import HeroSection from "../miniWidgets/HeroSection";
 import SingleEventCard from "./SingleEventCard";
+import { HeadingText } from "../miniWidgets/Heading";
 import SingleEventDes from "./SingleEventDes";
 import SingleEventSlider from "./SingleEventSlider";
-import Ratings, { ReviewList } from "./RatingOverview";
+import Ratings, { FeedbackForm, ReviewList } from "./RatingOverview";
 import Gallery from "./EventImageGallery";
-const SingleEvent = () => {
+import { useSelector } from "react-redux";
+const SingleEvent = ({ id }) => {
+  const [eventById, setEventById] = useState(null);
+  const { events = [] } = useSelector((state) => state.event);
+
+  console.log("events in single event", events, "and Id", id);
+
+  useEffect(() => {
+    const foundEvent = events.find((event) => event.id == id);
+    console.log("event by id", foundEvent);
+    setEventById(foundEvent);
+  }, [id, events]);
+
+  if (!eventById)
+    return <p className="text-2xl italic p-24">Loading event...</p>;
   return (
     <div>
+      <HeroSection text={eventById.name} img={eventById.gallery[0]} />
+
+      <HeadingText heading={eventById.venue_name} text={eventById.name} />
+
       <div
         className="flex justify-center
      gap-5"
       >
         <div className="  w-[65%] ml-10 ">
-          <SingleEventDes />
-          <Gallery />
+          <SingleEventDes detail={eventById.detail} tags={eventById.tags} />
+          <Gallery images={eventById.gallery} />
           <PartyMenuDisplay />
           <Ratings />
         </div>
@@ -26,7 +47,8 @@ const SingleEvent = () => {
         </div>
       </div>
       <div>
-        <ReviewList />
+        <ReviewList reviews={eventById.reviews} />
+        <FeedbackForm />
       </div>
     </div>
   );
@@ -38,7 +60,7 @@ export const PartyMenuDisplay = () => {
   const [partyMenu, setPartyMenu] = useState([]);
   const [partyMenuName, setPartyMenuName] = useState("");
   const [partyMenuItems, setPartyMenuItems] = useState([]);
-  const [partyMenuPrice, setPartyMenuPrice] = useState(null);
+  const [partyMenuPrice, setPartyMenuPrice] = useState(0);
   useEffect(() => {
     const fetchData = async () => {
       try {

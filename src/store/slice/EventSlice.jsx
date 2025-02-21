@@ -22,7 +22,7 @@ const eventSlice = createSlice({
     },
     setTotalPrice: (state, action) => {
       state.totalPrice = action.payload;
-      console.log("Updated Ordered price:", state.totalPrice); // Debugging log
+      // console.log("Updated Ordered price:", state.totalPrice);
     },
     setEvents: (state, action) => {
       state.events = action.payload;

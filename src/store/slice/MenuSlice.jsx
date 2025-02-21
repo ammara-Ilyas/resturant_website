@@ -23,7 +23,6 @@ const initialState = {
   menuList: [],
   filteredMenuList: [],
   loading: true,
-  events: [],
 };
 
 const menuSlice = createSlice({
@@ -46,18 +45,10 @@ const menuSlice = createSlice({
     setIsBook: (state, action) => {
       state.isBook = action.payload;
     },
-    setEvents: (state, action) => {
-      state.events = action.payload;
-    },
   },
 });
 
-export const {
-  setMenuList,
-  setFilteredMenuList,
-  setLoading,
-  setIsBook,
-  setEvents,
-} = menuSlice.actions;
+export const { setMenuList, setFilteredMenuList, setLoading, setIsBook } =
+  menuSlice.actions;
 
 export default menuSlice.reducer;

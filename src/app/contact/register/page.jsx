@@ -4,7 +4,7 @@ import React from "react";
 const page = () => {
   return (
     <div
-      className="relative h-screen bg-cover bg-center mb-52 lg:mb-0"
+      className="relative h-screen bg-cover bg-center mb-52 lg:mb-0 pb-20"
       style={{
         backgroundImage: "url('/images/bg.gif')",
       }}

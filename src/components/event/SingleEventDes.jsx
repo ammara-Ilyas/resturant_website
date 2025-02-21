@@ -35,19 +35,18 @@ export const ScrollToSection = () => {
   );
 };
 
-const SingleEventDes = () => {
+const SingleEventDes = ({ detail, tags }) => {
   const [showFullText, setShowFullText] = useState(false);
 
-  const text = [
-    "Good for special occasions",
-    "Great for creative cocktails",
-    "Lively",
-  ];
+  // Define a character limit for the shortened text
+  const characterLimit = 350;
+
   return (
     <div>
       <ScrollToSection />
+
       <div className="flex jb items-center justify-center gap-4 mx-auto">
-        {text.map((btn, i) => (
+        {tags.map((btn, i) => (
           <button
             className="border-2 px-4 py-2 rounded-full bg-gray-50 hover:bg-gray-100 duration-300 transition-all ease-in-out cursor-text"
             key={i}
@@ -57,46 +56,19 @@ const SingleEventDes = () => {
         ))}
       </div>
 
-      <div className="mt-6  " id="overview">
-        <h2 className="text-lg font-bold  px-4 rounded-t-lg">Overview</h2>
+      <div className="mt-6" id="overview">
+        <h2 className="text-lg font-bold px-4 rounded-t-lg">Overview</h2>
         <div className="mt-3 px-6">
-          {" "}
           <p className="text-gray-600 leading-6">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-            fermentum, sem in lacinia luctus, metus nisi gravida sapien, ac
-            bibendum libero metus at urna. Vestibulum in augue vitae mi faucibus
-            venenatis et at purus. Praesent tincidunt dolor atiaculis malesuada.
-            Nam vulputate ligula vel nulla hendrerit, sitamet cursus ligula
-            cursus. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Excepturi consequatur dicta obcaecati aut, qui praesentium debitis.
-            Dolor quod ullam cum.
+            {showFullText ? detail : `${detail.slice(0, characterLimit)}...`}
           </p>
-          {showFullText ? (
-            <>
-              <p className="text-gray-600 leading-6 pt-1">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-                expedita, pariatur optio error laborum eaque perspiciatis?
-                Reprehenderit harum voluptas exercitationem.
-              </p>
-              <p className="text-gray-600 leading-6 pt-1">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
-                perferendis rem sint, natus saepe magni vero, porro inventore at
-                amet sed facilis beatae. A assumenda deleniti inventore,
-                corrupti deserunt fugiat!
-              </p>
-              <span
-                className="text-orange-600 text-sm cursor-pointer hover:text-orange-700 "
-                onClick={() => setShowFullText(false)}
-              >
-                Read less
-              </span>
-            </>
-          ) : (
+
+          {detail.length > characterLimit && (
             <span
-              className="text-orange-600 text-sm cursor-pointer hover:text-orange-700 "
-              onClick={() => setShowFullText(true)}
+              className="text-orange-600 text-sm cursor-pointer hover:text-orange-700"
+              onClick={() => setShowFullText(!showFullText)}
             >
-              Read more
+              {showFullText ? "Read less" : "Read more"}
             </span>
           )}
         </div>

@@ -1,10 +1,9 @@
 import React from "react";
 import NotFound from "@/components/miniWidgets/NotFound";
-import HeroSection from "@/components/miniWidgets/HeroSection";
+// import Hero from "@/components/home/Hero";
 const NotFoundPage = () => {
   return (
     <div>
-      <HeroSection heading="Not FOund" />
       <NotFound />
     </div>
   );

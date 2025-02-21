@@ -1,5 +1,9 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { Rating } from "@mui/material";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Ratings = () => {
   const totalReviews = 1325;
   const overallRating = 4.5;
@@ -24,6 +28,10 @@ const Ratings = () => {
     {
       name: "ambience",
       rating: 3.7,
+    },
+    {
+      name: "Cleanliness",
+      rating: 4.3,
     },
     {
       name: "value",
@@ -129,100 +137,179 @@ const reviews = [
     helpfulCount: 1,
     response: {
       responder: "STK - San Francisco",
-      date: "January 2, 2025",
       responseText:
         "Hi Francesca - I'm sorry your holiday did not go as planned. I hope ...",
     },
   },
 ];
 
-export const ReviewList = () => {
+import Avatar from "@mui/material/Avatar";
+
+export const ReviewList = ({ reviews }) => {
+  const getColorFromName = (name) => {
+    const colors = [
+      "bg-red-500",
+      "bg-blue-500",
+      "bg-green-500",
+      "bg-yellow-500",
+      "bg-purple-500",
+    ];
+    const index = name ? name.charCodeAt(0) % colors.length : 0;
+    return colors[index];
+  };
   return (
     <div className="max-w-2xl mx-auto py-6">
-      <h2 className="text-lg font-semibold mb-4">1,325 Reviews</h2>
+      <h2 className="text-lg font-semibold mb-4">{reviews.length} Reviews</h2>
+
       <select className="block mb-6 border border-gray-300 rounded-md p-2 text-sm w-full max-w-xs">
         <option>Lowest rating</option>
         <option>Highest rating</option>
         <option>Most recent</option>
       </select>
 
-      {reviews.map((review) => (
-        <div key={review.id} className="border-b border-gray-200 pb-6 mb-6">
+      {reviews.map((review, i) => (
+        <div key={i} className="border-b border-gray-200 pb-6 mb-6">
           {/* User Info */}
           <div className="flex items-center space-x-4 mb-4">
-            <div className="w-10 h-10 flex items-center justify-center rounded-full bg-purple-500 text-white font-bold text-lg">
-              {review.user.avatar}
-            </div>
+            <Avatar className={`text-white ${getColorFromName(review?.user)}`}>
+              {review?.user ? review.user.charAt(0).toUpperCase() : "?"}
+            </Avatar>
             <div>
-              <div className="font-semibold">{review.user.name}</div>
-              <div className="text-sm text-gray-500">
-                {review.user.location}
-              </div>
-              <div className="text-sm text-gray-500">
-                {review.user.reviewsCount} review
-              </div>
+              <div className="font-semibold">{review.user}</div>
             </div>
           </div>
 
           {/* Review Details */}
           <div className="mb-4">
-            <div className="flex items-center space-x-2">
-              {[...Array(5)].map((_, i) => (
-                <div
-                  key={i}
-                  className={`w-4 h-4 rounded-full ${
-                    i < review.rating ? "bg-red-500" : "bg-gray-200"
-                  }`}
-                ></div>
-              ))}
-            </div>
+            <Rating value={review.rating} readOnly precision={0.5} />
             <div className="text-sm text-gray-500">Dined on {review.date}</div>
           </div>
-          <div className="text-sm text-gray-700 mb-4">
-            <strong>Overall {review.rating} </strong>• Food{" "}
-            {review.details.food} • Service {review.details.service} • Ambience{" "}
-            {review.details.ambience}
-          </div>
-          <p className="text-gray-700 text-sm mb-4">{review.reviewText}</p>
 
-          {/* Restaurant Response */}
-          {review.response && (
-            <div className="bg-gray-100 p-4 rounded-md text-sm text-gray-700 mb-4">
-              <strong>{review.response.responder}</strong>{" "}
-              <span className="text-gray-500">
-                Responded on {review.response.date}
-              </span>
-              <p className="mt-2">{review.response.responseText}</p>
-            </div>
-          )}
-
-          {/* Helpful Section */}
-          <div className="flex items-center space-x-2">
-            <button className="flex items-center text-sm text-gray-500 hover:text-gray-700">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 mr-1"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M14 9l-6 6m0 0l6-6m-6 6V9"
-                />
-              </svg>
-              Is this helpful?
-            </button>
-            {review.helpfulCount > 0 && (
-              <span className="text-sm text-gray-500">
-                {review.helpfulCount} person found this helpful
-              </span>
-            )}
-          </div>
+          <p className="text-gray-700 text-sm mb-4">{review.comment}</p>
         </div>
       ))}
+    </div>
+  );
+};
+
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
+export const FeedbackForm = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    date: new Date().toISOString().split("T")[0], // Current date (YYYY-MM-DD)
+    rating: 0,
+    comment: "",
+  });
+  const [loading, setLoading] = useState(false);
+
+  // Handle input changes
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Handle rating change
+  const handleRatingChange = (event, newValue) => {
+    setFormData({ ...formData, rating: newValue });
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Validation
+    if (!formData.name || formData.rating === 0 || !formData.comment) {
+      toast.warning("Please fill all fields and select a rating!");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/feedback`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) throw new Error("Failed to submit feedback");
+
+      toast.success("Feedback submitted successfully!");
+      setFormData({
+        name: "",
+        date: new Date().toISOString().split("T")[0],
+        rating: 0,
+        comment: "",
+      });
+    } catch (error) {
+      toast.error("Error submitting feedback!");
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="max-w-2xl mx-auto p-6">
+      <ToastContainer />
+      {loading && (
+        <div className="text-center text-orange-600 animate-spin text-3xl">
+          🔄
+        </div>
+      )}
+
+      <div className="bg-white shadow-lg p-6 rounded-lg">
+        <h2 className="text-xl font-semibold mb-4 text-orange-600">
+          Submit Your Feedback
+        </h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Your Name"
+            className="w-full p-2 border rounded focus:border-orange-600 focus:ring-2 focus:ring-orange-600"
+            required
+          />
+
+          <input
+            type="date"
+            name="date"
+            value={formData.date}
+            readOnly
+            className="w-full p-2 border rounded bg-gray-100"
+          />
+
+          <div className="flex items-center space-x-3">
+            <span className="text-gray-600">Your Rating:</span>
+            <Rating
+              name="rating"
+              value={formData.rating}
+              onChange={handleRatingChange}
+              size="large"
+            />
+          </div>
+
+          <textarea
+            name="comment"
+            value={formData.comment}
+            onChange={handleChange}
+            placeholder="Write your feedback..."
+            className="w-full p-2 border rounded focus:border-orange-600 focus:ring-2 focus:ring-orange-600"
+            required
+          ></textarea>
+
+          <button
+            type="submit"
+            className="w-full p-2 bg-orange-600 text-white rounded hover:bg-orange-700 transition"
+          >
+            Submit Feedback
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

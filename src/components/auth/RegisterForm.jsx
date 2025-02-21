@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 const RegisterForm = () => {
   const router = useRouter();
+  const NEXT_PUBLIC_BASE_URL = "https://restweb.azurewebsites.net/";
 
   const [registerData, setRegisterData] = useState({
     name: "",
@@ -29,7 +30,7 @@ const RegisterForm = () => {
   };
 
   // Handler for form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Password mismatch validation
@@ -40,33 +41,65 @@ const RegisterForm = () => {
       return;
     }
 
+    console.log("register data", registerData);
+
     setIsLoading(true);
+    try {
+      const response = await fetch(`${NEXT_PUBLIC_BASE_URL}/users/signup/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: registerData.email,
+          username: registerData.name,
+          password: registerData.password,
+        }),
+      });
 
-    setTimeout(() => {
-      const isSuccessful = true; // Set this based on your API response
+      // Check if the response is OK
+      if (response.ok) {
+        const user = await response.json(); // Parse JSON response
 
-      if (isSuccessful) {
-        toast.success("Registration successful! 🎉", {
+        // Store token in localStorage
+        localStorage.setItem("token", JSON.stringify(user.user_id));
+
+        toast.success(`${user.message}! 🎉`, {
           position: "top-right",
         });
 
-        // Reset form fields after successful submission
+        // Reset form fields
         setRegisterData({
-          name: "",
           email: "",
+          name: "",
           password: "",
           confirmPassword: "",
         });
-      } else {
-        toast.error("Registration failed. Please try again.", {
-          position: "top-right",
-        });
-      }
 
-      // Stop loading
-      setIsLoading(false);
-    }, 2000);
-    router.push("/contact/login");
+        // Navigate to the login page (if needed)
+        router.push("/contact/login");
+      } else {
+        // Handle errors (e.g., 400 Bad Request)
+        const errorData = await response.json();
+        console.log("error data", errorData);
+
+        toast.error(
+          errorData.detail || "Registration failed. Please try again.",
+          {
+            position: "top-right",
+          }
+        );
+      }
+    } catch (error) {
+      // Handle network or unexpected errors
+      console.error("Network error:", error);
+
+      toast.error("Network error. Please try again.", {
+        position: "top-right",
+      });
+    } finally {
+      setIsLoading(false); // Stop loading
+    }
   };
 
   useEffect(() => {

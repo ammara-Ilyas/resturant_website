@@ -2,6 +2,8 @@
   "categories": [
     {
       "name": "Desserts",
+      "img": "/images/res.jpg",
+
       "items": [
         {
           "name": "Kheer",
@@ -37,6 +39,8 @@
     },
     {
       "name": "Karahi",
+      "img": "/images/res.jpg",
+
       "items": [
         {
           "name": "Hadi Karahi",
@@ -72,6 +76,8 @@
     },
     {
       "name": "BBQ",
+      "img": "/images/res.jpg",
+
       "items": [
         {
           "name": "Seekh Kabab",
@@ -107,6 +113,8 @@
     },
     {
       "name": "Biryani and Rice",
+      "img": "/images/res.jpg",
+
       "items": [
         {
           "name": "Chicken Biryani",
@@ -142,6 +150,8 @@
     },
     {
       "name": "Snacks",
+      "img": "/images/res.jpg",
+
       "items": [
         {
           "name": "Samosa",
@@ -177,6 +187,8 @@
     },
     {
       "name": "Special Dishes",
+      "img": "/images/res.jpg",
+
       "items": [
         {
           "name": "Nihari",
@@ -212,6 +224,8 @@
     },
     {
       "name": "Beverages",
+      "img": "/images/res.jpg",
+
       "items": [
         {
           "name": "Lassi",
@@ -265,6 +279,8 @@
     },
     {
       "name": "Seafood",
+      "img": "/images/res.jpg",
+
       "items": [
         {
           "name": "Grilled Fish",
@@ -300,6 +316,8 @@
     },
     {
       "name": "Fast Food",
+      "img": "/images/res.jpg",
+
       "items": [
         {
           "name": "Zinger Burger",
@@ -335,6 +353,8 @@
     },
     {
       "name": "Vegetarian Dishes",
+      "img": "/images/res.jpg",
+
       "items": [
         {
           "name": "Aloo Palak",
