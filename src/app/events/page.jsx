@@ -7,7 +7,7 @@ import ImageGallery from "@/components/about/Gallery";
 const page = () => {
   return (
     <>
-      <HeroSection text="Services" />
+      <HeroSection text="Venues" />
       <div className="mt-9">
         <HeadingText heading="Our Special Events" text="Event" />
         <EventGrid />

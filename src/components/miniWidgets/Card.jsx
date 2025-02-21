@@ -81,7 +81,7 @@ export const EventCard = ({ testimonial }) => {
       className="w-[100%] mx-auto h-[500px] group duration-500 transition-all ease-in-out"
       style={{
         position: "relative",
-        backgroundImage: `url(${testimonial.image})`,
+        backgroundImage: `url(${testimonial.gallery[0]})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -93,13 +93,13 @@ export const EventCard = ({ testimonial }) => {
 
         {/* Content */}
         <div className=" bottom-0 p-6 text-white w-full group-hover:scale-105 duration-500 transition-all ease-in-out ">
-          <Party text={testimonial.party} />
+          <Party text={testimonial.venue_name} />
           <div className=" flex flex-col justify-center">
             {" "}
-            <p className="text-3xl font-bold my-1">{testimonial.price}$</p>
-            <span className="inline-block w-[80px] h-[2px] bg-custom-color rounded-lg"></span>
+            <p className="text-2xl font-bold my-1">{testimonial.pricing}</p>
+            <span className="inline-block w-[63%] h-[2px] bg-custom-color rounded-lg"></span>
           </div>
-          <p className="text-[16px] pt-3">{testimonial.message}</p>
+          <p className="text-[16px] pt-3">{testimonial.description}</p>
         </div>
       </div>
     </div>

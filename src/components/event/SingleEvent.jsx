@@ -7,6 +7,7 @@ import ReservationForm, {
 import HeroSection from "../miniWidgets/HeroSection";
 import SingleEventCard from "./SingleEventCard";
 import { HeadingText } from "../miniWidgets/Heading";
+import CircularProgress from "@mui/material/CircularProgress";
 import SingleEventDes from "./SingleEventDes";
 import SingleEventSlider from "./SingleEventSlider";
 import Ratings, { FeedbackForm, ReviewList } from "./RatingOverview";
@@ -16,7 +17,7 @@ const SingleEvent = ({ id }) => {
   const [eventById, setEventById] = useState(null);
   const { events = [] } = useSelector((state) => state.event);
 
-  console.log("events in single event", events, "and Id", id);
+  // console.log("events in single event", events, "and Id", id);
 
   useEffect(() => {
     const foundEvent = events.find((event) => event.id == id);
@@ -24,8 +25,8 @@ const SingleEvent = ({ id }) => {
     setEventById(foundEvent);
   }, [id, events]);
 
-  if (!eventById)
-    return <p className="text-2xl italic p-24">Loading event...</p>;
+  if (!eventById) return <CircularProgress className="m-24" />;
+
   return (
     <div>
       <HeroSection text={eventById.name} img={eventById.gallery[0]} />

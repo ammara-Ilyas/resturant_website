@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { EventCard } from "../miniWidgets/Card";
 import Heading, { HeadingText } from "../miniWidgets/Heading";
 import Carousel from "react-multi-carousel";
+import { useSelector } from "react-redux";
 import "react-multi-carousel/lib/styles.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -30,62 +31,10 @@ const CustomDot = ({ onClick, ...rest }) => {
     />
   );
 };
-const events = [
-  {
-    id: 1,
-    party: "Custom Parties",
-    price: 275,
-    image: "/images/events/event_01.avif",
-    message:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. In necessitatibus magni repudiandae earum totam ea tenetur, officiis facilis? A, consectetur.",
-  },
-  {
-    id: 2,
 
-    party: "Private Parties",
-    price: 265,
-    image: "/images/events/event_02.jpg",
-    message:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. In necessitatibus magni repudiandae earum totam ea tenetur, officiis facilis? A, consectetur.",
-  },
-  {
-    id: 3,
-
-    party: "Wedding Parties",
-    price: 255,
-    image: "/images/events/event_03.jpg",
-    message:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. In necessitatibus magni repudiandae earum totam ea tenetur, officiis facilis? A, consectetur.",
-  },
-  {
-    id: 4,
-
-    party: "Birthday Parties",
-    price: 290,
-    image: "/images/events/event_04.jpg",
-    message:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. In necessitatibus magni repudiandae earum totam ea tenetur, officiis facilis? A, consectetur.",
-  },
-  {
-    id: 5,
-
-    party: "Custom Parties",
-    price: 275,
-    image: "/images/events/event_01.avif",
-    message:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. In necessitatibus magni repudiandae earum totam ea tenetur, officiis facilis? A, consectetur.",
-  },
-  {
-    id: 6,
-
-    party: "Custom Parties",
-    price: 300,
-    image: "/images/events/event_05.jpg",
-    message:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. In necessitatibus magni repudiandae earum totam ea tenetur, officiis facilis? A, consectetur.",
-  },
-];
 const EventSlider = () => {
+  const { events } = useSelector((state) => state.event);
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -114,7 +63,7 @@ const EventSlider = () => {
     },
     mobile: {
       breakpoint: { max: 650, min: 0 },
-      items: 1, // Show 1 item on mobile
+      items: 1,
     },
   };
   return (
@@ -123,7 +72,7 @@ const EventSlider = () => {
 
       <div className="w-[100%] mx-auto ">
         <Carousel
-          ref={carouselRef} // Attach the ref here
+          ref={carouselRef}
           additionalTransfrom={0}
           arrows={false}
           autoPlay
@@ -149,7 +98,7 @@ const EventSlider = () => {
           sliderClass=""
           slidesToSlide={1}
           swipeable
-          afterChange={(nextSlideIndex) => setActiveIndex(nextSlideIndex)} // Track active index
+          afterChange={(nextSlideIndex) => setActiveIndex(nextSlideIndex)}
         >
           {events.map((event, index) => (
             <div
@@ -158,7 +107,9 @@ const EventSlider = () => {
               data-aos="fade-up"
               data-aos-delay={(index + 1) * 300}
             >
-              <EventCard testimonial={event} />
+              <Link href={`/events/${event.id}`}>
+                <EventCard testimonial={event} />
+              </Link>
             </div>
           ))}
         </Carousel>
@@ -170,6 +121,8 @@ const EventSlider = () => {
 export default EventSlider;
 
 export const EventGrid = () => {
+  const { events } = useSelector((state) => state.event);
+
   return (
     <div className="border-2 grid gap-[1px] grid-col-1 md:grid-cols-2 lg:grid-cols-3">
       {events.map((event, index) => (

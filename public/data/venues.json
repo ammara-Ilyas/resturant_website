@@ -2,7 +2,7 @@
   {
     "id": 1,
 
-    "name": "Festival Celebration",
+    "name": "Engagement Party",
     "price": {
       "standardPrice": 20,
       "outStandardPrice": 30
@@ -50,7 +50,7 @@
   {
     "id": 2,
 
-    "name": "Festival Celebration",
+    "name": "Standard Birthday Party",
     "price": {
       "standardPrice": 20,
       "outStandardPrice": 30
@@ -94,7 +94,7 @@
   {
     "id": 3,
 
-    "name": "Festival Celebration",
+    "name": "Theme Wedding Party",
     "price": {
       "standardPrice": 20,
       "outStandardPrice": 30
@@ -139,7 +139,7 @@
   {
     "id": 4,
 
-    "name": "Festival Celebration",
+    "name": "Wedding Proposal",
     "price": {
       "standardPrice": 20,
       "outStandardPrice": 30
@@ -187,13 +187,13 @@
   {
     "id": 5,
 
-    "name": "Festival Celebration",
+    "name": "Bridal Shower",
     "price": {
       "standardPrice": 20,
       "outStandardPrice": 30
     },
     "venue_name": "Downtown Conference Center",
-    "tag": [
+    "tags": [
       "Scenic views and rooftop vibes",
       "Casual and laid-back atmosphere",
       "Trendy "
@@ -235,13 +235,13 @@
   {
     "id": 6,
 
-    "name": "Festival Celebration",
+    "name": "Casual Dinner Party",
     "price": {
       "standardPrice": 20,
       "outStandardPrice": 30
     },
     "venue_name": "Grand Banquet Hall",
-    "tag": [
+    "tags": [
       "Must-visit for cocktail lovers",
       "Trendy ",
       "Best for food enthusiasts"
@@ -283,7 +283,7 @@
   {
     "id": 7,
 
-    "name": "Festival Celebration",
+    "name": "Wedding Events",
     "price": {
       "standardPrice": 20,
       "outStandardPrice": 30
@@ -331,7 +331,7 @@
   {
     "id": 8,
 
-    "name": "Festival Celebration",
+    "name": "Corporate Event",
     "price": {
       "standardPrice": 20,
       "outStandardPrice": 30
@@ -375,7 +375,7 @@
   {
     "id": 9,
 
-    "name": "Festival Celebration",
+    "name": "Baby Shower",
     "price": {
       "standardPrice": 20,
       "outStandardPrice": 30
@@ -423,7 +423,7 @@
   {
     "id": 10,
 
-    "name": "Festival Celebration",
+    "name": "Gender Reveal Party",
     "price": {
       "standardPrice": 20,
       "outStandardPrice": 30
@@ -471,7 +471,7 @@
   {
     "id": 11,
 
-    "name": "Festival Celebration",
+    "name": "Graduation Party",
     "price": {
       "standardPrice": 20,
       "outStandardPrice": 30
@@ -519,7 +519,7 @@
   {
     "id": 12,
 
-    "name": "Festival Celebration",
+    "name": "Charity Gala",
     "price": {
       "standardPrice": 20,
       "outStandardPrice": 30
@@ -567,7 +567,7 @@
   {
     "id": 13,
 
-    "name": "Festival Celebration",
+    "name": "Retirement Celebration",
     "price": {
       "standardPrice": 20,
       "outStandardPrice": 30
@@ -615,7 +615,7 @@
   {
     "id": 14,
 
-    "name": "Festival Celebration",
+    "name": "Anniversary Dinner",
     "price": {
       "standardPrice": 20,
       "outStandardPrice": 30

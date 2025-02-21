@@ -46,14 +46,15 @@ const SingleEventDes = ({ detail, tags }) => {
       <ScrollToSection />
 
       <div className="flex jb items-center justify-center gap-4 mx-auto">
-        {tags.map((btn, i) => (
-          <button
-            className="border-2 px-4 py-2 rounded-full bg-gray-50 hover:bg-gray-100 duration-300 transition-all ease-in-out cursor-text"
-            key={i}
-          >
-            {btn}
-          </button>
-        ))}
+        {tags &&
+          tags.map((btn, i) => (
+            <button
+              className="border-2 px-4 py-2 rounded-full bg-gray-50 hover:bg-gray-100 duration-300 transition-all ease-in-out cursor-text"
+              key={i}
+            >
+              {btn}
+            </button>
+          ))}
       </div>
 
       <div className="mt-6" id="overview">
