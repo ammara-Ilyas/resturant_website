@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const NEXT_PUBLIC_BASE_URL = "https://restweb.azurewebsites.net/";

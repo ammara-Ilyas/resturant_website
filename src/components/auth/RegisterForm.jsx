@@ -4,7 +4,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import Link from "next/link";
 const RegisterForm = () => {
   const router = useRouter();
