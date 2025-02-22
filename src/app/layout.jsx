@@ -39,7 +39,7 @@ const fetchData = async () => {
 };
 
 export default async function RootLayout({ children }) {
-  const { menuData, eventData } = await fetchData(); // Fetch data before rendering
+  const { menuData, eventData } = await fetchData();
 
   return (
     <html lang="en">

@@ -67,7 +67,7 @@ const BookingForm = () => {
 
         toast.success("Booking submitted successfully!");
 
-        dispatch(setTotalPrice(totalPrice)); // Store total price in Redux
+        dispatch(setTotalPrice(totalPrice));
         dispatch(setIsMenuForm("payment"));
         dispatch(setIsBook(true));
         setFormData({

@@ -24,7 +24,7 @@ function DataInitializer({ menuData, eventData, children }) {
 
   useEffect(() => {
     if (menuData) {
-      console.log("menu data in Redux Proveider", menuData);
+      console.log("menu data in Redux Proveider", menuData.categories);
 
       dispatch(setMenuList(menuData.categories));
       dispatch(setFilteredMenuList(menuData.categories));

@@ -24,7 +24,7 @@ function HeroSection({ text, img = "/images/bg-hero.jpg" }) {
         <Navbar />
         <div className="flex items-center justify-center h-full">
           <h3
-            className="text-white italic font-bold capitalize text-4xl sm:text-6xl pt-4 letter-wide "
+            className=" animate-pulse bg-gradient-to-bl  from-red-500  via-orange-600 to-red-500 bg-clip-text text-transparent italic font-bold capitalize text-4xl sm:text-6xl pt-4 letter-wide "
             data-aos="fade-down"
             data-aos-delay={200}
           >

@@ -26,15 +26,31 @@ const ContactForm = () => {
   // Handler for form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!formData.name) {
+      toast.error("Please fill in your name first.", { position: "top-right" });
+      return;
+    }
+    if (!formData.email) {
+      toast.error("Please fill in your email first.", {
+        position: "top-right",
+      });
+      return;
+    }
+    if (!formData.subject) {
+      toast.error("Please fill in the subject first.", {
+        position: "top-right",
+      });
+      return;
+    }
+
     setLoading(true);
 
     try {
       // Simulate form submission
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
-      toast.success("Message sent successfully!", {
-        position: "top-right",
-      });
+      toast.success("Message sent successfully!", { position: "top-right" });
 
       // Reset form after successful submission
       setFormData({
@@ -55,7 +71,6 @@ const ContactForm = () => {
   return (
     <div className="p-6 bg-white shadow-md rounded-md w-[85%] mx-auto">
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-        {/* Name Input */}
         <input
           type="text"
           name="name"
@@ -64,8 +79,6 @@ const ContactForm = () => {
           placeholder="Your Name"
           className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-orange-400"
         />
-
-        {/* Email Input */}
         <input
           type="email"
           name="email"
@@ -74,8 +87,6 @@ const ContactForm = () => {
           placeholder="Your Email"
           className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-orange-400"
         />
-
-        {/* Subject Input */}
         <input
           type="text"
           name="subject"
@@ -84,8 +95,6 @@ const ContactForm = () => {
           placeholder="Subject"
           className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-orange-400"
         />
-
-        {/* Message Input */}
         <textarea
           name="message"
           value={formData.message}
@@ -94,8 +103,6 @@ const ContactForm = () => {
           rows={4}
           className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-orange-400"
         ></textarea>
-
-        {/* Submit Button */}
         <button
           type="submit"
           className="w-full p-3 text-white bg-orange-500 rounded-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400 flex justify-center items-center"
@@ -108,6 +115,7 @@ const ContactForm = () => {
           )}
         </button>
       </form>
+      <ToastContainer />
     </div>
   );
 };

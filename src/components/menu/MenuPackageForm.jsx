@@ -66,7 +66,7 @@ export const PaymentForm = () => {
   const { totalPrice, IsMenuForm, isBook } = useSelector(
     (state) => state.event
   );
-  const [amount, setAmount] = useState(0); // Default payment amount
+  const [amount, setAmount] = useState(0);
   useEffect(() => {
     setAmount(Math.round((totalPrice * 20) / 100));
   }, [totalPrice]);
@@ -74,9 +74,19 @@ export const PaymentForm = () => {
   const handleCheckout = (e) => {
     e.preventDefault();
     toast.success("Payment successful");
+    const newOrder = {
+      id: `INV${Math.floor(Math.random() * 1000)}`,
+      venue: "New Venue",
+      address: "New Address, NSW",
+      date: "Monday, 19 Feb 2025",
+      price: 20.5,
+    };
+    dispatch(addOrder(newOrder));
+
     dispatch(setIsBook(false));
     router.push("/order");
   };
+
   return (
     <div className="w-full flex items-center justify-center overflow-y-auto ">
       <div className="bg-gray-800  text-white  rounded-lg  mt-36 w-full max-w-md">

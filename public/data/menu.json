@@ -2,7 +2,7 @@
   "categories": [
     {
       "name": "Desserts",
-      "img": "/images/res.jpg",
+      "img": "/images/menu/cate/dessert.png",
 
       "items": [
         {
@@ -39,7 +39,7 @@
     },
     {
       "name": "Karahi",
-      "img": "/images/res.jpg",
+      "img": "/images/menu/cate/karahi.png",
 
       "items": [
         {
@@ -76,7 +76,7 @@
     },
     {
       "name": "BBQ",
-      "img": "/images/res.jpg",
+      "img": "/images/menu/cate/bbq.png",
 
       "items": [
         {
@@ -113,7 +113,7 @@
     },
     {
       "name": "Biryani and Rice",
-      "img": "/images/res.jpg",
+      "img": "/images/menu/cate/biryani.png",
 
       "items": [
         {
@@ -150,7 +150,7 @@
     },
     {
       "name": "Snacks",
-      "img": "/images/res.jpg",
+      "img": "/images/menu/cate/snack.png",
 
       "items": [
         {
@@ -187,7 +187,7 @@
     },
     {
       "name": "Special Dishes",
-      "img": "/images/res.jpg",
+      "img": "/images/menu/cate/special_dish.png",
 
       "items": [
         {
@@ -224,7 +224,7 @@
     },
     {
       "name": "Beverages",
-      "img": "/images/res.jpg",
+      "img": "/images/menu/cate/bevarages.png",
 
       "items": [
         {
@@ -279,7 +279,7 @@
     },
     {
       "name": "Seafood",
-      "img": "/images/res.jpg",
+      "img": "/images/menu/cate/sea_food.png",
 
       "items": [
         {
@@ -316,7 +316,7 @@
     },
     {
       "name": "Fast Food",
-      "img": "/images/res.jpg",
+      "img": "/images/menu/cate/fast_food.png",
 
       "items": [
         {
@@ -353,7 +353,7 @@
     },
     {
       "name": "Vegetarian Dishes",
-      "img": "/images/res.jpg",
+      "img": "/images/menu/cate/vege_01.png",
 
       "items": [
         {

@@ -3,7 +3,6 @@ import React, { useState, useMemo } from "react";
 import Image from "next/image";
 import Slider from "./Slider";
 import CircularProgress from "@mui/material/CircularProgress";
-
 export const MenuDisplay = ({ menu }) => {
   const [selectedIndex, setSelectedIndex] = useState(null);
   const handleClose = () => {

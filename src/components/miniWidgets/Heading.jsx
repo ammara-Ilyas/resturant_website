@@ -11,8 +11,10 @@ const dancingScript = Dancing_Script({
 
 export default function Heading({ text }) {
   return (
-    <div className={`${dancingScript.className} flex flex-row items-center `}>
-      <h4 className="text-3xl text-orange-600 font-bold">{text}</h4>
+    <div className={`${dancingScript.className} flex flex-row  items-center`}>
+      <h4 className="text-3xl bg-gradient-to-bl from-red-900 via-orange-600 to-red-500 bg-clip-text text-transparent font-bold w-fit">
+        {text}
+      </h4>
     </div>
   );
 }
@@ -54,12 +56,22 @@ export const HeadingText = ({ heading, text }) => {
         <span className="h-[2px] w-[8%] border-[1px] ml-1 rounded-md border-custom-color"></span>{" "}
       </div>
       <h2
-        className="text-black mb-6 text-4xl font-serif font-bold mt-3  letter-wide"
+        className="text-black mb-6  text-4xl font-serif font-bold mt-3  letter-wide"
         data-aos="fade-up"
         data-aos-delay={300}
       >
         {heading}
       </h2>
     </div>
+  );
+};
+
+export const Category = ({ text }) => {
+  return (
+    <h3
+      className={`${dancingScript.className} sm:text-4xl text-2xl md:text-6xl  animate-bounce bg-gradient-to-bl from-orange-500 via-orange-600 to-red-500 bg-clip-text text-transparent font-semibold uppercase`}
+    >
+      {text}
+    </h3>
   );
 };
