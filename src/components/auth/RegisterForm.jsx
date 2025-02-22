@@ -98,7 +98,7 @@ const RegisterForm = () => {
         position: "top-right",
       });
     } finally {
-      setIsLoading(false); // Stop loading
+      setIsLoading(false);
     }
   };
 
